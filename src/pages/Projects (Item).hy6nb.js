@@ -1,10 +1,31 @@
-// API Reference: https://www.wix.com/velo/reference/api-overview/introduction
-// “Hello, World!” Example: https://learn-code.wix.com/en/article/hello-world
+import { THEME, applyElementTheme } from 'public/theme';
 
 $w.onReady(function () {
-    // Write your JavaScript here
+  try {
+    if ($w('#page1')) applyElementTheme($w('#page1'), { backgroundColor: THEME.colors.aubergineDark });
+  } catch (e) {}
 
-    // To select an element by ID use: $w('#elementID')
+  try {
+    if ($w('#button1')) {
+      $w('#button1').label = "← Back to Projects";
+      applyElementTheme($w('#button1'), {
+        backgroundColor: THEME.colors.aubergineSurface,
+        color: THEME.colors.iceSilverBody
+      });
+    }
 
-    // Click 'Preview' to run your code
+    if ($w('#previousBtn')) {
+      applyElementTheme($w('#previousBtn'), {
+        backgroundColor: THEME.colors.aubergineSurface,
+        color: THEME.colors.marigoldPrimary
+      });
+    }
+
+    if ($w('#nextBtn')) {
+      applyElementTheme($w('#nextBtn'), {
+        backgroundColor: THEME.colors.aubergineSurface,
+        color: THEME.colors.marigoldPrimary
+      });
+    }
+  } catch (e) {}
 });

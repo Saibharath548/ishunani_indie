@@ -1,10 +1,9 @@
-// API Reference: https://www.wix.com/velo/reference/api-overview/introduction
-// “Hello, World!” Example: https://learn-code.wix.com/en/article/hello-world
+import { THEME, applyElementTheme } from 'public/theme';
+import { PROFILE_DATA, EXPERIENCE_JOURNEY } from 'public/portfolioData';
 
 $w.onReady(function () {
-    // Write your JavaScript here
-
-    // To select an element by ID use: $w('#elementID')
-
-    // Click 'Preview' to run your code
+  try {
+    if ($w('#page1')) applyElementTheme($w('#page1'), { backgroundColor: THEME.colors.aubergineDark });
+    if ($w('#section1')) applyElementTheme($w('#section1'), { backgroundColor: THEME.colors.aubergineDark });
+  } catch (e) {}
 });

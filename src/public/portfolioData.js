@@ -6,6 +6,7 @@
 export const PROFILE_DATA = {
   name: "Ishu Nani",
   role: "Indie Game Developer & Gameplay Programmer",
+  avatar: "./Pics/My%20Pic.jpeg",
   statusBadge: "Available for Collaborations",
   location: "India",
   headline: "Crafting physics-driven, responsive games & immersive 3D mechanics.",

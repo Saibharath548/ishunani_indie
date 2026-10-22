@@ -13,34 +13,34 @@
 
   <style>
     /* ==========================================================================
-       STRICT 2-COLOR PALETTE: Dark Aubergine (#3AOF34) & Ice Silver (#DDE3E8)
+       STRICT 2-COLOR DUAL-TONE: Jet Black (#0A0A0A) & Cerulean Blue (#007BA7)
        Only these two hex codes are permitted across the entire system.
        ========================================================================== */
     :root {
-      /* 1. Dark Aubergine (#3AOF34) */
-      --aubergine-canvas: #3A0F34;
-      --aubergine-canvas: #3AOF34;
-      --aubergine-base: #3A0F34;
-      --aubergine-base: #3AOF34;
-      --aubergine-surface: #3A0F34;
-      --aubergine-surface: #3AOF34;
-      --aubergine-card: #3A0F34;
-      --aubergine-card: #3AOF34;
-      --aubergine-elevated: #3A0F34;
-      --aubergine-elevated: #3AOF34;
-      --aubergine-border: #DDE3E8;
-      --aubergine-shadow: rgba(58, 15, 52, 0.85);
+      /* 1. Jet Black & Obsidian Grid Foundation */
+      --aubergine-canvas: #06090E;
+      --aubergine-base: #06090E;
+      --aubergine-surface: rgba(10, 14, 20, 0.88);
+      --aubergine-card: rgba(14, 18, 26, 0.82);
+      --aubergine-elevated: rgba(18, 24, 34, 0.9);
+      --aubergine-border: rgba(0, 123, 167, 0.35);
+      --aubergine-shadow: rgba(0, 0, 0, 0.9);
 
-      /* 2. Ice Silver (#DDE3E8) */
-      --ice-silver-pure: #DDE3E8;
-      --ice-silver-base: #DDE3E8;
-      --ice-silver-heading: #DDE3E8;
-      --ice-silver-body: #DDE3E8;
-      --ice-silver-muted: #DDE3E8;
-      --ice-silver-border: rgba(221, 227, 232, 0.35);
-      --ice-silver-border-hover: #DDE3E8;
-      --ice-silver-glow: rgba(221, 227, 232, 0.45);
-      --ice-silver-soft: rgba(221, 227, 232, 0.12);
+      /* 2. Cerulean Blue (#007BA7) */
+      --ice-silver-pure: #007BA7;
+      --ice-silver-base: #007BA7;
+      --ice-silver-heading: #007BA7;
+      --ice-silver-body: #007BA7;
+      --ice-silver-muted: #007BA7;
+      --ice-silver-border: rgba(0, 123, 167, 0.4);
+      --ice-silver-border-hover: #007BA7;
+      --ice-silver-glow: transparent;
+      --ice-silver-soft: rgba(0, 123, 167, 0.12);
+
+      /* 3. Neon Rose (#FF007F) - Highlights & Micro Details */
+      --neon-rose: #FF007F;
+      --neon-rose-glow: transparent;
+      --neon-rose-soft: rgba(255, 0, 127, 0.12);
 
       --radius-sm: 8px;
       --radius-md: 14px;
@@ -61,11 +61,28 @@
     }
 
     body {
-      background-color: #3A0F34;
-      background-color: #3AOF34;
+      background-color: #06090E;
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(221, 227, 232, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(58, 15, 52, 0.5) 0%, transparent 50%);
+        /* Intersection Points on Major Grid */
+        radial-gradient(circle at 0px 0px, rgba(0, 123, 167, 0.6) 1.5px, transparent 1.5px),
+        /* Major Grid Lines */
+        linear-gradient(to right, rgba(0, 123, 167, 0.22) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 123, 167, 0.22) 1px, transparent 1px),
+        /* Minor Subdivided Grid Lines */
+        linear-gradient(to right, rgba(0, 123, 167, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 123, 167, 0.08) 1px, transparent 1px);
+      background-size: 
+        60px 60px,
+        60px 60px,
+        60px 60px,
+        12px 12px,
+        12px 12px;
+      background-position: 
+        0 0,
+        0 0,
+        0 0,
+        0 0,
+        0 0;
       background-attachment: fixed;
       color: var(--ice-silver-body);
       font-family: var(--font-main);
@@ -73,29 +90,6 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-    }
-
-    /* Ambient Background Glows */
-    .ambient-glow-1 {
-      position: fixed;
-      top: -150px;
-      left: -150px;
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, rgba(221, 227, 232, 0.12) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .ambient-glow-2 {
-      position: fixed;
-      bottom: -200px;
-      right: -200px;
-      width: 650px;
-      height: 650px;
-      background: radial-gradient(circle, rgba(58, 15, 52, 0.6) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
     }
 
     /* ==========================================================================
@@ -131,18 +125,12 @@
       border: 1.5px solid var(--ice-silver-border);
       border-radius: var(--radius-lg);
       padding: 32px 28px;
-      box-shadow: 0 20px 40px var(--aubergine-shadow), 0 0 30px var(--ice-silver-soft);
+      box-shadow: 0 20px 40px var(--aubergine-shadow);
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       backdrop-filter: blur(14px);
-      transition: var(--transition-smooth);
-    }
-
-    .profile-sidebar:hover {
-      border-color: var(--ice-silver-border-hover);
-      box-shadow: 0 24px 50px var(--aubergine-shadow), 0 0 35px var(--ice-silver-glow);
     }
 
     /* Clean Avatar Profile (Zero Effects) */
@@ -157,13 +145,10 @@
     }
 
     .avatar-img {
-      width: 110%;
-      height: 110%;
-      margin-left: -5%;
-      margin-top: -5%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      object-position: center 0%;
-      transform: translate(4%, 5%);
+      object-position: center center;
       display: block;
     }
 
@@ -173,7 +158,6 @@
       color: var(--ice-silver-pure);
       margin-bottom: 4px;
       letter-spacing: -0.5px;
-      text-shadow: 0 2px 10px var(--ice-silver-glow);
     }
 
     .profile-role {
@@ -198,7 +182,6 @@
       font-weight: 700;
       color: var(--ice-silver-pure);
       margin-bottom: 24px;
-      box-shadow: 0 0 18px var(--ice-silver-soft);
     }
 
     .pulse-dot {
@@ -206,14 +189,12 @@
       height: 9px;
       background: var(--ice-silver-base);
       border-radius: 50%;
-      box-shadow: 0 0 12px var(--ice-silver-pure);
-      animation: pulseAnimation 2s infinite;
+      animation: pulseAnimation 2s ease-in-out infinite;
     }
 
     @keyframes pulseAnimation {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(221, 227, 232, 0.8); }
-      70% { transform: scale(1); box-shadow: 0 0 0 9px rgba(221, 227, 232, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(221, 227, 232, 0); }
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
     }
 
     /* Profile Info List */
@@ -272,7 +253,6 @@
       color: var(--aubergine-base);
       border-color: var(--ice-silver-base);
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px var(--ice-silver-glow);
     }
 
     /* Resume CTA Button */
@@ -291,14 +271,12 @@
       gap: 8px;
       text-decoration: none;
       transition: var(--transition-fast);
-      box-shadow: 0 4px 20px var(--ice-silver-glow);
       border: none;
     }
 
     .btn-resume:hover {
       background: var(--ice-silver-pure);
       color: var(--aubergine-canvas);
-      box-shadow: 0 8px 30px var(--ice-silver-glow);
       transform: translateY(-2px);
     }
 
@@ -344,7 +322,6 @@
       background: var(--ice-silver-base);
       color: var(--aubergine-base);
       font-weight: 800;
-      box-shadow: 0 2px 14px var(--ice-silver-glow);
     }
 
     /* Section Views */
@@ -380,7 +357,7 @@
     .hero-eyebrow {
       font-size: 13px;
       font-weight: 800;
-      color: var(--ice-silver-base);
+      color: var(--neon-rose);
       text-transform: uppercase;
       letter-spacing: 1.5px;
       margin-bottom: 12px;
@@ -393,13 +370,12 @@
       line-height: 1.25;
       margin-bottom: 16px;
       letter-spacing: -0.5px;
-      text-shadow: 0 2px 14px var(--ice-silver-glow);
     }
 
     .hero-title span {
-      color: var(--ice-silver-base);
+      color: var(--neon-rose);
       text-decoration: underline;
-      text-decoration-color: rgba(221, 227, 232, 0.45);
+      text-decoration-color: var(--neon-rose);
     }
 
     .hero-desc {
@@ -428,14 +404,6 @@
       border: 1.5px solid var(--ice-silver-border);
       border-radius: var(--radius-md);
       padding: 20px;
-      transition: var(--transition-fast);
-      box-shadow: inset 0 0 20px rgba(58, 15, 52, 0.4);
-    }
-
-    .stat-box:hover {
-      border-color: var(--ice-silver-base);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 22px var(--aubergine-shadow), 0 0 20px var(--ice-silver-glow);
     }
 
     .stat-num {
@@ -445,7 +413,6 @@
       line-height: 1;
       margin-bottom: 6px;
       font-family: var(--font-mono);
-      text-shadow: 0 0 16px var(--ice-silver-glow);
     }
 
     .stat-label {
@@ -473,7 +440,6 @@
       font-weight: 800;
       color: var(--ice-silver-pure);
       letter-spacing: -0.5px;
-      text-shadow: 0 2px 10px var(--ice-silver-glow);
     }
 
     .section-title-wrap p {
@@ -511,7 +477,6 @@
       color: var(--aubergine-base);
       border-color: var(--ice-silver-base);
       font-weight: 800;
-      box-shadow: 0 2px 14px var(--ice-silver-glow);
     }
 
     /* 2-Column Projects Grid */
@@ -543,7 +508,7 @@
     .project-card:hover {
       border-color: var(--ice-silver-base);
       transform: translateY(-5px);
-      box-shadow: 0 22px 45px var(--aubergine-shadow), 0 0 30px var(--ice-silver-glow);
+      box-shadow: 0 22px 45px var(--aubergine-shadow);
     }
 
     .card-thumb-wrap {
@@ -570,13 +535,12 @@
       top: 12px;
       right: 12px;
       background: var(--aubergine-canvas);
-      border: 1.5px solid var(--ice-silver-base);
+      border: 1.5px solid var(--neon-rose);
       border-radius: var(--radius-sm);
       padding: 5px 12px;
       font-size: 11px;
       font-weight: 800;
-      color: var(--ice-silver-pure);
-      box-shadow: 0 0 12px var(--ice-silver-glow);
+      color: var(--neon-rose);
     }
 
     .card-body {
@@ -660,14 +624,7 @@
       border: 1.5px solid var(--ice-silver-border);
       border-radius: var(--radius-lg);
       padding: 28px;
-      transition: var(--transition-fast);
       box-shadow: 0 12px 30px var(--aubergine-shadow);
-    }
-
-    .arsenal-card:hover {
-      border-color: var(--ice-silver-border-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 35px var(--aubergine-shadow), 0 0 20px var(--ice-silver-glow);
     }
 
     .arsenal-icon {
@@ -682,7 +639,6 @@
       font-size: 22px;
       color: var(--ice-silver-pure);
       margin-bottom: 16px;
-      box-shadow: 0 0 15px var(--ice-silver-glow);
     }
 
     .arsenal-title {
@@ -706,65 +662,85 @@
     }
 
     /* ==========================================================================
-       EXPERIENCE / JOURNEY TIMELINE
+       GAMEPLAY & MEDIA GALLERY
        ========================================================================== */
-    .timeline-card {
-      background: var(--aubergine-surface);
-      border: 1.5px solid var(--ice-silver-border);
-      border-radius: var(--radius-lg);
-      padding: 34px;
-      box-shadow: 0 15px 35px var(--aubergine-shadow);
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
 
-    .timeline-item {
+    @media (max-width: 960px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gallery-item {
       position: relative;
-      padding-left: 30px;
-      padding-bottom: 30px;
-      border-left: 2px solid var(--ice-silver-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--aubergine-card);
+      border: 1.5px solid var(--ice-silver-border);
+      aspect-ratio: 16 / 10;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      box-shadow: 0 10px 25px var(--aubergine-shadow);
     }
 
-    .timeline-item:last-child {
-      padding-bottom: 0;
-      border-left: 2px solid transparent;
+    .gallery-item:hover {
+      border-color: var(--neon-rose);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 35px var(--aubergine-shadow);
     }
 
-    .timeline-dot {
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      display: block;
+    }
+
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
       position: absolute;
-      left: -8px;
-      top: 0;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--ice-silver-base);
-      box-shadow: 0 0 14px var(--ice-silver-base);
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(10, 10, 10, 0.95) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+      transition: var(--transition-fast);
     }
 
-    .timeline-period {
-      font-size: 12px;
+    .gallery-item:hover .gallery-overlay {
+      background: linear-gradient(180deg, rgba(0, 123, 167, 0.25) 0%, rgba(10, 10, 10, 0.98) 100%);
+    }
+
+    .gallery-tag {
+      font-size: 10px;
       font-weight: 800;
-      color: var(--ice-silver-base);
-      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--neon-rose);
       margin-bottom: 4px;
-      letter-spacing: 0.5px;
     }
 
-    .timeline-role {
-      font-size: 19px;
-      font-weight: 800;
+    .gallery-title {
+      font-size: 14px;
+      font-weight: 700;
       color: var(--ice-silver-pure);
-      margin-bottom: 3px;
-    }
-
-    .timeline-org {
-      font-size: 14px;
-      color: var(--ice-silver-muted);
-      margin-bottom: 10px;
-    }
-
-    .timeline-desc {
-      font-size: 14px;
-      color: var(--ice-silver-body);
-      line-height: 1.6;
+      line-height: 1.35;
     }
 
     /* ==========================================================================
@@ -817,7 +793,6 @@
       font-size: 15px;
       border-radius: var(--radius-full);
       text-decoration: none;
-      box-shadow: 0 4px 28px var(--ice-silver-glow);
       transition: var(--transition-fast);
       border: none;
       cursor: pointer;
@@ -826,8 +801,7 @@
     .btn-talk:hover {
       background: var(--ice-silver-pure);
       color: var(--aubergine-canvas);
-      transform: scale(1.04);
-      box-shadow: 0 8px 36px var(--ice-silver-glow);
+      transform: translateY(-2px);
     }
 
     /* ==========================================================================
@@ -836,7 +810,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(58, 15, 52, 0.92);
+      background: rgba(10, 10, 10, 0.94);
       backdrop-filter: blur(14px);
       z-index: 1000;
       display: none;
@@ -939,10 +913,6 @@
 </head>
 <body>
 
-  <!-- Ambient Glow Backgrounds -->
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
-
   <!-- Main Split-Screen Container -->
   <div class="app-container">
 
@@ -951,16 +921,11 @@
          ==================================================================== -->
     <aside class="profile-sidebar">
       <div class="avatar-wrapper">
-        <img class="avatar-img" src="./Pics/My%20Pic.jpeg" alt="Ishu Nani" />
+        <img class="avatar-img" src="./Pics/My%20Pic_2.jpeg" alt="Ishu Nani" />
       </div>
 
       <h1 class="profile-name">Ishu Nani</h1>
-      <div class="profile-role">Indie Game Dev & Technologist</div>
-
-      <div class="status-badge">
-        <span class="pulse-dot"></span>
-        Available for Collaborations
-      </div>
+      <div class="profile-role">Game Programmer | Unity</div>
 
       <div class="info-list">
         <div class="info-item">
@@ -983,8 +948,8 @@
         <a href="https://itch.io" target="_blank" class="social-btn" title="Itch.io">IT</a>
       </div>
 
-      <a href="#resume" class="btn-resume" onclick="switchTab('resume')">
-        📄 View Full Resume
+      <a href="#gallery" class="btn-resume" onclick="switchTab('gallery')">
+        🖼️ View Media Gallery
       </a>
     </aside>
 
@@ -997,7 +962,7 @@
       <nav class="top-nav">
         <button class="nav-pill active" onclick="switchTab('about')">About</button>
         <button class="nav-pill" onclick="switchTab('projects')">Projects</button>
-        <button class="nav-pill" onclick="switchTab('resume')">Journey</button>
+        <button class="nav-pill" onclick="switchTab('gallery')">Gallery</button>
         <button class="nav-pill" onclick="switchTab('contact')">Contact</button>
       </nav>
 
@@ -1037,7 +1002,7 @@
               <h2>Featured Works</h2>
               <p>Hand-crafted gameplay prototypes and commercial releases.</p>
             </div>
-            <button class="filter-btn active" onclick="switchTab('projects')">Explore All 6+ Projects →</button>
+            <button class="filter-btn active" onclick="switchTab('projects')">Explore All Projects →</button>
           </div>
           
           <div class="projects-grid" id="featuredProjectsContainer">
@@ -1082,6 +1047,7 @@
             <button class="filter-btn active" onclick="filterProjects('All')">All</button>
             <button class="filter-btn" onclick="filterProjects('Physics Games')">Physics Games</button>
             <button class="filter-btn" onclick="filterProjects('FPS & Combat')">FPS & Combat</button>
+            <button class="filter-btn" onclick="filterProjects('Arcade & Speed')">Arcade & Speed</button>
           </div>
         </div>
 
@@ -1090,35 +1056,17 @@
         </div>
       </section>
 
-      <!-- TAB 3: RESUME / JOURNEY VIEW -->
-      <section id="tab-resume" class="tab-section">
+      <!-- TAB 3: GALLERY VIEW -->
+      <section id="tab-gallery" class="tab-section">
         <div class="section-header">
           <div class="section-title-wrap">
-            <h2>Experience & Milestones</h2>
-            <p>My technical journey through game development and engineering.</p>
+            <h2>Gameplay & Media Gallery</h2>
+            <p>Visual snapshots, mechanic simulations, and 3D level environments across projects.</p>
           </div>
         </div>
 
-        <div class="timeline-card">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-period">2023 - PRESENT</div>
-            <div class="timeline-role">Lead Indie Game Developer</div>
-            <div class="timeline-org">Independent Production</div>
-            <p class="timeline-desc">
-              Directing original interactive prototypes, architecting C# gameplay systems, procedural environment shaders, and publishing WebGL demos.
-            </p>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-period">2021 - 2023</div>
-            <div class="timeline-role">Gameplay Programmer & Technical Artist</div>
-            <div class="timeline-org">Freelance & Game Jams</div>
-            <p class="timeline-desc">
-              Engineered mechanics for 12+ rapid prototypes in Unity. Implemented custom character controllers, dynamic cameras, audio-reactive shaders, and UI state machines.
-            </p>
-          </div>
+        <div class="gallery-grid" id="galleryContainer">
+          <!-- Dynamically populated -->
         </div>
       </section>
 
@@ -1187,6 +1135,67 @@
         fullDesc: "A 3D first-person shooter focused on building a satisfying and responsive shooting experience. The core goal is to refine combat feel by emphasizing impact feedback, weapon responsiveness, and fluid player control.\n\nThe shooting system is implemented using raycast-based hit detection, ensuring precise and immediate shot registration. Visual feedback is reinforced through particle effects and hit responses, creating a strong sense of impact with each successful shot. A reload system is integrated to support pacing and engagement during combat sequences.\n\nEnemy encounters feature zombie-style swarm behavior, encouraging spatial awareness and sustained shooting flow. Player movement is currently built around clean and responsive WASD controls, prioritizing stability and consistency to support the core shooting mechanics.\n\nThis project focuses on system clarity, combat feedback loops, and scalable architecture that can later expand into more advanced mechanics, enemy behaviors, and level design.",
         image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
         featured: true
+      },
+      {
+        id: "bubble-rush",
+        title: "Bubble Rush",
+        category: "Arcade & Speed",
+        timeline: "2024",
+        tags: ["Physics", "Arcade", "Particle VFX", "Unity", "C#"],
+        shortDesc: "High-octane physics arcade game focused on rapid bubble chain reactions, dynamic velocity management, and escalating speed loops.",
+        fullDesc: "Bubble Rush is an energetic physics-driven arcade game challenging player reflexes through rapid motion and explosive chain reactions.\n\nPlayers navigate through intense, escalating bubble fields where bouncing, bursting, and combining specialized elements grants exponential speed multipliers and energy surges. The core mechanics prioritize momentum preservation, split-second trajectory calculations, and satisfying tactile feedback.\n\nBuilt in Unity with custom C# physics loops, Bubble Rush incorporates reactive particle VFX systems, dynamic audio-visual hit feedback, and responsive arcade controls designed for addictive replayability.",
+        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+        featured: true
+      },
+      {
+        id: "no-time-rush",
+        title: "No Time Rush",
+        category: "Arcade & Speed",
+        timeline: "2024",
+        tags: ["3D", "Time Attack", "Parkour", "Unity", "C#"],
+        shortDesc: "Adrenaline-fueled 3D time-attack platformer where time is the player's health, ammunition, and most dangerous obstacle.",
+        fullDesc: "No Time Rush is a precision 3D time-attack runner where the clock is your only currency and your most lethal adversary.\n\nPlayers sprint, vault, slide, and wall-run across intricate sci-fi obstacle corridors. Every millisecond counts as time steadily drains; collecting chronos-shards and hitting precision parkour checkpoints replenishes vital seconds while penalizing miscalculations.\n\nEngineered in Unity using kinematic velocity math, custom character controllers, dynamic checkpoint respawns, and tight collision tuning optimized for competitive speedrunning and flow-state movement.",
+        image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80",
+        featured: true
+      }
+    ];
+
+    const GALLERY = [
+      {
+        id: "gal-1",
+        title: "Magnet Maniac - Polarity Field Simulation",
+        tag: "Physics Engine",
+        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: "gal-2",
+        title: "FPS Combat - Raycast Gunplay & Recoil",
+        tag: "Combat Mechanics",
+        image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: "gal-3",
+        title: "Bubble Rush - Particle Burst FX & Chain Reactions",
+        tag: "Arcade Systems",
+        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: "gal-4",
+        title: "No Time Rush - 3D Cyber Parkour Obstacle Track",
+        tag: "Time Attack",
+        image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: "gal-5",
+        title: "Zombie Swarm AI - NavMesh State Flow",
+        tag: "AI Systems",
+        image: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: "gal-6",
+        title: "Custom Shaders & Dynamic Impact VFX",
+        tag: "Tech Art",
+        image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80"
       }
     ];
 
@@ -1225,7 +1234,7 @@
       const target = document.getElementById('tab-' + tabId);
       if (target) target.classList.add('active');
 
-      const pillBtn = Array.from(document.querySelectorAll('.nav-pill')).find(p => p.textContent.toLowerCase().includes(tabId));
+      const pillBtn = Array.from(document.querySelectorAll('.nav-pill')).find(p => p.getAttribute('onclick')?.includes(tabId));
       if (pillBtn) pillBtn.classList.add('active');
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1270,9 +1279,35 @@
     // Filter Projects
     function filterProjects(cat) {
       document.querySelectorAll('.filter-pills .filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.startsWith(cat));
+        btn.classList.toggle('active', btn.textContent.trim() === cat);
       });
       renderAllProjects(cat);
+    }
+
+    // Render Gallery Grid
+    function renderGallery() {
+      const container = document.getElementById('galleryContainer');
+      if (!container) return;
+      container.innerHTML = GALLERY.map(item => `
+        <div class="gallery-item" onclick="openGalleryImage('${item.image}', '${item.title}', '${item.tag}')">
+          <img class="gallery-img" src="${item.image}" alt="${item.title}" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">${item.tag}</span>
+            <div class="gallery-title">${item.title}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openGalleryImage(imgSrc, title, tag) {
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('modalCat').textContent = tag;
+      document.getElementById('modalTimeline').textContent = "Visual Showcase";
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = "Full-resolution media preview and technical system showcase from game development archives.";
+      document.getElementById('modalTags').innerHTML = `<span class="tag-badge" style="color: var(--neon-rose); border-color: var(--neon-rose);">${tag}</span>`;
+      document.getElementById('projectModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
 
     // Render Arsenal
@@ -1318,6 +1353,7 @@
     // Initialize
     renderFeatured();
     renderAllProjects();
+    renderGallery();
     renderArsenal();
   </script>
 </body>

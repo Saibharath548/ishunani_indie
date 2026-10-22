@@ -1,32 +1,49 @@
 /**
  * STRICT 2-COLOR PALETTE SYSTEM
  * Only these 2 hex codes are used:
- * - Dark Aubergine: #3AOF34
- * - Ice Silver: #DDE3E8
+ * - Jet Black: #0A0A0A
+ * - Cerulean Blue: #007BA7
  */
 
 export const THEME = {
   colors: {
-    // 1. Dark Aubergine (#3AOF34)
-    aubergine: '#3AOF34',
-    aubergineDark: '#3AOF34',
-    aubergineBase: '#3AOF34',
-    aubergineSurface: '#3AOF34',
-    aubergineElevated: '#3AOF34',
-    aubergineBorder: '#DDE3E8',
-    aubergineShadow: 'rgba(58, 15, 52, 0.85)',
+    // 1. Jet Black (#0A0A0A)
+    jetBlack: '#0A0A0A',
+    blackSurface: '#0A0A0A',
+    blackCard: '#0A0A0A',
+    blackElevated: '#0A0A0A',
+    blackShadow: 'rgba(0, 0, 0, 0.95)',
     
-    // 2. Ice Silver (#DDE3E8)
-    iceSilver: '#DDE3E8',
-    iceSilverPure: '#DDE3E8',
-    iceSilverBase: '#DDE3E8',
-    iceSilverHeading: '#DDE3E8',
-    iceSilverBody: '#DDE3E8',
-    iceSilverMuted: '#DDE3E8',
-    iceSilverBorder: '#DDE3E8',
-    iceSilverBorderHover: '#DDE3E8',
-    iceSilverGlow: 'rgba(221, 227, 232, 0.45)',
-    iceSilverSoft: 'rgba(221, 227, 232, 0.12)'
+    // 2. Cerulean Blue (#007BA7)
+    ceruleanBlue: '#007BA7',
+    ceruleanPrimary: '#007BA7',
+    ceruleanBorder: 'rgba(0, 123, 167, 0.4)',
+    ceruleanBorderHover: '#007BA7',
+    ceruleanGlow: 'rgba(0, 123, 167, 0.45)',
+    ceruleanSoft: 'rgba(0, 123, 167, 0.15)',
+
+    // 3. Neon Rose (#FF007F) - Highlights & Micro Details
+    neonRose: '#FF007F',
+    neonRoseGlow: 'rgba(255, 0, 127, 0.5)',
+    neonRoseSoft: 'rgba(255, 0, 127, 0.15)',
+
+    // Backward-compatible aliases
+    aubergineDark: '#0A0A0A',
+    aubergineBase: '#0A0A0A',
+    aubergineSurface: '#0A0A0A',
+    aubergineElevated: '#0A0A0A',
+    aubergineBorder: '#007BA7',
+    aubergineShadow: 'rgba(0, 0, 0, 0.95)',
+
+    iceSilverPure: '#007BA7',
+    iceSilverBase: '#007BA7',
+    iceSilverHeading: '#007BA7',
+    iceSilverBody: '#007BA7',
+    iceSilverMuted: '#007BA7',
+    iceSilverBorder: '#007BA7',
+    iceSilverBorderHover: '#007BA7',
+    iceSilverGlow: 'rgba(0, 123, 167, 0.45)',
+    iceSilverSoft: 'rgba(0, 123, 167, 0.15)'
   },
   
   fonts: {

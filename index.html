@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishu Nani | Indie Game Developer & Creative Technologist</title>
+  <meta name="description" content="Portfolio of Ishu Nani - Game Developer, Creative Technologist, and Gameplay Programmer." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS - Deep Aubergine, Ice Silver, Marigold
+       ========================================================================== */
+    :root {
+      --bg-aubergine-dark: #130722;
+      --bg-aubergine-surface: #1A0B2E;
+      --bg-aubergine-card: #200E38;
+      --bg-aubergine-elevated: #281347;
+      
+      --text-ice-pure: #FFFFFF;
+      --text-ice-heading: #F8FAFC;
+      --text-ice-body: #E2E8F0;
+      --text-ice-muted: #94A3B8;
+      
+      --border-ice: rgba(226, 232, 240, 0.12);
+      --border-ice-hover: rgba(226, 232, 240, 0.28);
+      
+      --marigold-primary: #FFB300;
+      --marigold-warm: #F59E0B;
+      --marigold-glow: rgba(245, 158, 11, 0.4);
+      --marigold-soft: rgba(255, 179, 0, 0.12);
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      
+      --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-aubergine-dark);
+      color: var(--text-ice-body);
+      font-family: var(--font-main);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 179, 0, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(40, 19, 71, 0.8) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* Ambient Background Glows */
+    .ambient-glow-1 {
+      position: fixed;
+      top: -150px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 179, 0, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient-glow-2 {
+      position: fixed;
+      bottom: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ==========================================================================
+       MAIN LAYOUT CONTAINER (Split-Screen Bento)
+       ========================================================================== */
+    .app-container {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 1080px) {
+      .app-container {
+        grid-template-columns: 1fr;
+        padding: 20px 16px;
+        gap: 24px;
+      }
+    }
+
+    /* ==========================================================================
+       LEFT SIDEBAR (Fixed / Sticky Profile Card)
+       ========================================================================== */
+    .profile-sidebar {
+      position: sticky;
+      top: 40px;
+      background: var(--bg-aubergine-surface);
+      border: 1px solid var(--border-ice);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      transition: var(--transition-smooth);
+    }
+
+    .profile-sidebar:hover {
+      border-color: var(--border-ice-hover);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 179, 0, 0.05);
+    }
+
+    /* Avatar with Marigold Glow Ring */
+    .avatar-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin-bottom: 20px;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--marigold-primary);
+      box-shadow: 0 0 25px var(--marigold-glow);
+    }
+
+    .avatar-ring-pulse {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 179, 0, 0.4);
+      animation: rotateRing 20s linear infinite;
+    }
+
+    @keyframes rotateRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .profile-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-ice-pure);
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .profile-role {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--marigold-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    /* Status Badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--marigold-soft);
+      border: 1px solid rgba(255, 179, 0, 0.3);
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--marigold-primary);
+      margin-bottom: 24px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--marigold-primary);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--marigold-primary);
+      animation: pulseAnimation 2s infinite;
+    }
+
+    @keyframes pulseAnimation {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 179, 0, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 179, 0, 0); }
+    }
+
+    /* Profile Info List */
+    .info-list {
+      width: 100%;
+      border-top: 1px solid var(--border-ice);
+      border-bottom: 1px solid var(--border-ice);
+      padding: 16px 0;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+
+    .info-label {
+      color: var(--text-ice-muted);
+    }
+
+    .info-val {
+      color: var(--text-ice-heading);
+      font-weight: 600;
+    }
+
+    /* Social Icons */
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-aubergine-card);
+      border: 1px solid var(--border-ice);
+      color: var(--text-ice-body);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: var(--transition-fast);
+    }
+
+    .social-btn:hover {
+      background: var(--marigold-primary);
+      color: var(--bg-aubergine-dark);
+      border-color: var(--marigold-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px var(--marigold-glow);
+    }
+
+    /* Resume CTA Button */
+    .btn-resume {
+      width: 100%;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      background: transparent;
+      border: 1.5px solid var(--marigold-primary);
+      color: var(--marigold-primary);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+
+    .btn-resume:hover {
+      background: var(--marigold-primary);
+      color: var(--bg-aubergine-dark);
+      box-shadow: 0 0 20px var(--marigold-glow);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       RIGHT DASHBOARD CONTENT
+       ========================================================================== */
+    .dashboard-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Top Floating Navigation Bar */
+    .top-nav {
+      align-self: flex-end;
+      display: flex;
+      gap: 6px;
+      background: var(--bg-aubergine-surface);
+      border: 1px solid var(--border-ice);
+      padding: 6px 8px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-pill {
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      background: transparent;
+      border: none;
+      color: var(--text-ice-muted);
+      font-family: var(--font-main);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .nav-pill:hover {
+      color: var(--text-ice-pure);
+    }
+
+    .nav-pill.active {
+      background: var(--marigold-primary);
+      color: var(--bg-aubergine-dark);
+      box-shadow: 0 2px 10px var(--marigold-glow);
+    }
+
+    /* Section Views */
+    .tab-section {
+      display: none;
+      flex-direction: column;
+      gap: 32px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .tab-section.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       HERO & IMPACT METRICS
+       ========================================================================== */
+    .hero-card {
+      background: var(--bg-aubergine-surface);
+      border: 1px solid var(--border-ice);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--marigold-primary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-ice-pure);
+      line-height: 1.25;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-title span {
+      color: var(--marigold-primary);
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-ice-muted);
+      line-height: 1.6;
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+
+    /* 3-Impact Stat Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 650px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-box {
+      background: var(--bg-aubergine-card);
+      border: 1px solid var(--border-ice);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      transition: var(--transition-fast);
+    }
+
+    .stat-box:hover {
+      border-color: var(--marigold-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-num {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--marigold-primary);
+      line-height: 1;
+      margin-bottom: 6px;
+      font-family: var(--font-mono);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-ice-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ==========================================================================
+       BENTO PROJECTS GRID & FILTER PILLS
+       ========================================================================== */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .section-title-wrap h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-ice-pure);
+      letter-spacing: -0.5px;
+    }
+
+    .section-title-wrap p {
+      font-size: 14px;
+      color: var(--text-ice-muted);
+    }
+
+    /* Project Filter Bar */
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      background: var(--bg-aubergine-surface);
+      border: 1px solid var(--border-ice);
+      color: var(--text-ice-body);
+      font-family: var(--font-main);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--marigold-primary);
+      color: var(--marigold-primary);
+    }
+
+    .filter-btn.active {
+      background: var(--marigold-primary);
+      color: var(--bg-aubergine-dark);
+      border-color: var(--marigold-primary);
+      box-shadow: 0 2px 10px var(--marigold-glow);
+    }
+
+    /* 2-Column Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-card {
+      background: var(--bg-aubergine-surface);
+      border: 1px solid var(--border-ice);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .project-card:hover {
+      border-color: var(--marigold-primary);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(255, 179, 0, 0.15);
+    }
+
+    .card-thumb-wrap {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: var(--bg-aubergine-card);
+    }
+
+    .card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .project-card:hover .card-thumb {
+      transform: scale(1.06);
+    }
+
+    .card-platform-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(19, 7, 34, 0.85);
+      border: 1px solid var(--border-ice);
+      border-radius: var(--radius-sm);
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--marigold-primary);
+      backdrop-filter: blur(8px);
+    }
+
+    .card-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .card-category {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--marigold-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-timeline {
+      font-size: 12px;
+      color: var(--text-ice-muted);
+      font-family: var(--font-mono);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-ice-pure);
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-ice-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag-badge {
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--bg-aubergine-card);
+      border: 1px solid var(--border-ice);
+      font-size: 11px;
+      color: var(--text-ice-muted);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       CORE ARSENAL & CAPABILITIES (4 Bento Cards)
+       ========================================================================== */
+    .arsenal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .arsenal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .arsenal-card {
+      background: var(--bg-aubergine-surface);
+      border: 1px solid var(--border-ice);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      transition: var(--transition-fast);
+    }
+
+    .arsenal-card:hover {
+      border-color: var(--border-ice-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .arsenal-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--marigold-soft);
+      border: 1px solid rgba(255, 179, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--marigold-primary);
+      margin-bottom: 16px;
+    }
+
+    .arsenal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-ice-heading);
+      margin-bottom: 8px;
+    }
+
+    .arsenal-desc {
+      font-size: 14px;
+      color: var(--text-ice-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .arsenal-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* ==========================================================================
+       EXPERIENCE / JOURNEY TIMELINE
+       ========================================================================== */
+    .timeline-card {
+      background: var(--bg-aubergine-surface);
+      border: 1px solid var(--border-ice);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 28px;
+      padding-bottom: 28px;
+      border-left: 2px solid var(--border-ice);
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+      border-left: 2px solid transparent;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -7px;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--marigold-primary);
+      box-shadow: 0 0 10px var(--marigold-primary);
+    }
+
+    .timeline-period {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--marigold-primary);
+      font-family: var(--font-mono);
+      margin-bottom: 4px;
+    }
+
+    .timeline-role {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-ice-heading);
+      margin-bottom: 2px;
+    }
+
+    .timeline-org {
+      font-size: 14px;
+      color: var(--text-ice-muted);
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--text-ice-body);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       CONTACT & COLLABORATION CTA
+       ========================================================================== */
+    .contact-card {
+      background: linear-gradient(135deg, var(--bg-aubergine-surface) 0%, var(--bg-aubergine-card) 100%);
+      border: 1px solid var(--border-ice);
+      border-radius: var(--radius-lg);
+      padding: 44px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--marigold-primary), transparent);
+    }
+
+    .contact-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-ice-pure);
+      margin-bottom: 12px;
+    }
+
+    .contact-sub {
+      font-size: 16px;
+      color: var(--text-ice-muted);
+      max-width: 550px;
+      margin: 0 auto 30px auto;
+    }
+
+    .btn-talk {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--marigold-primary);
+      color: var(--bg-aubergine-dark);
+      font-weight: 800;
+      font-size: 15px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      box-shadow: 0 4px 25px var(--marigold-glow);
+      transition: var(--transition-fast);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-talk:hover {
+      background: #ffc233;
+      transform: scale(1.04);
+      box-shadow: 0 8px 35px var(--marigold-glow);
+    }
+
+    /* ==========================================================================
+       PROJECT DETAIL MODAL (Deep Dive Pop-Up)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 3, 18, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+      animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-window {
+      background: var(--bg-aubergine-surface);
+      border: 1px solid var(--border-ice-hover);
+      border-radius: var(--radius-lg);
+      max-width: 780px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--border-ice);
+      color: var(--text-ice-heading);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      z-index: 10;
+      transition: var(--transition-fast);
+    }
+
+    .modal-close-btn:hover {
+      background: var(--marigold-primary);
+      color: var(--bg-aubergine-dark);
+    }
+
+    .modal-img-banner {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .modal-body {
+      padding: 32px;
+    }
+
+    .modal-header-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-ice-pure);
+      margin-bottom: 16px;
+    }
+
+    .modal-desc {
+      font-size: 15px;
+      color: var(--text-ice-body);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Backgrounds -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Main Split-Screen Container -->
+  <div class="app-container">
+
+    <!-- ====================================================================
+         LEFT STICKY PROFILE SIDEBAR
+         ==================================================================== -->
+    <aside class="profile-sidebar">
+      <div class="avatar-wrapper">
+        <div class="avatar-ring-pulse"></div>
+        <img class="avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Ishu Nani" />
+      </div>
+
+      <h1 class="profile-name">Ishu Nani</h1>
+      <div class="profile-role">Indie Game Dev & Technologist</div>
+
+      <div class="status-badge">
+        <span class="pulse-dot"></span>
+        Available for Collaborations
+      </div>
+
+      <div class="info-list">
+        <div class="info-item">
+          <span class="info-label">Specialty</span>
+          <span class="info-val">Unity, C#, Gameplay</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Location</span>
+          <span class="info-val">India</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Contact</span>
+          <span class="info-val">hello@ishunani.dev</span>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="https://github.com/Saibharath548" target="_blank" class="social-btn" title="GitHub">GH</a>
+        <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn">IN</a>
+        <a href="https://itch.io" target="_blank" class="social-btn" title="Itch.io">IT</a>
+      </div>
+
+      <a href="#resume" class="btn-resume" onclick="switchTab('resume')">
+        📄 View Full Resume
+      </a>
+    </aside>
+
+    <!-- ====================================================================
+         RIGHT DASHBOARD CONTENT
+         ==================================================================== -->
+    <main class="dashboard-content">
+
+      <!-- Top Nav Pills -->
+      <nav class="top-nav">
+        <button class="nav-pill active" onclick="switchTab('about')">About</button>
+        <button class="nav-pill" onclick="switchTab('projects')">Projects</button>
+        <button class="nav-pill" onclick="switchTab('resume')">Journey</button>
+        <button class="nav-pill" onclick="switchTab('contact')">Contact</button>
+      </nav>
+
+      <!-- TAB 1: ABOUT / HOME VIEW -->
+      <section id="tab-about" class="tab-section active">
+        <!-- Hero Card -->
+        <div class="hero-card">
+          <div class="hero-eyebrow">Indie Developer • Creative Systems</div>
+          <h2 class="hero-title">
+            Transforming creative visions into <span>playable, polished</span> interactive worlds.
+          </h2>
+          <p class="hero-desc">
+            Passionate game programmer specializing in responsive physics, custom shaders, and cross-platform architecture across PC, Mobile, and WebGL.
+          </p>
+
+          <!-- 3-Impact Stat Grid -->
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="stat-num">15+</div>
+              <div class="stat-label">Published & Portfolio Works</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">4+</div>
+              <div class="stat-label">Years Game Dev Experience</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Indie Passion & Precision</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Projects Preview -->
+        <div>
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <h2>Featured Works</h2>
+              <p>Hand-crafted gameplay prototypes and commercial releases.</p>
+            </div>
+            <button class="filter-btn active" onclick="switchTab('projects')">Explore All 6+ Projects →</button>
+          </div>
+          
+          <div class="projects-grid" id="featuredProjectsContainer">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Core Arsenal Suite -->
+        <div>
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <h2>Core Arsenal & Capabilities</h2>
+              <p>What I bring to your team or production pipeline.</p>
+            </div>
+          </div>
+          <div class="arsenal-grid" id="arsenalContainer">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Call to Action Banner -->
+        <div class="contact-card">
+          <h2 class="contact-title">Have a project in mind?</h2>
+          <p class="contact-sub">
+            Let's build something extraordinary together. Available for contract work, technical consulting, and studio roles.
+          </p>
+          <button class="btn-talk" onclick="switchTab('contact')">
+            ⚡ Let's Connect
+          </button>
+        </div>
+      </section>
+
+      <!-- TAB 2: PROJECTS VIEW -->
+      <section id="tab-projects" class="tab-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Portfolio Archive</h2>
+            <p>Filter by platform and development discipline.</p>
+          </div>
+
+          <div class="filter-pills">
+            <button class="filter-btn active" onclick="filterProjects('All')">All (6)</button>
+            <button class="filter-btn" onclick="filterProjects('Games')">Games (3)</button>
+            <button class="filter-btn" onclick="filterProjects('3D & VR')">3D & VR (2)</button>
+            <button class="filter-btn" onclick="filterProjects('Web & Interactive')">Web (1)</button>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="allProjectsContainer">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- TAB 3: RESUME / JOURNEY VIEW -->
+      <section id="tab-resume" class="tab-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Experience & Milestones</h2>
+            <p>My technical journey through game development and engineering.</p>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">2023 - PRESENT</div>
+            <div class="timeline-role">Lead Indie Game Developer</div>
+            <div class="timeline-org">Independent Production</div>
+            <p class="timeline-desc">
+              Directing original interactive prototypes, architecting C# gameplay systems, procedural environment shaders, and publishing WebGL demos.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">2021 - 2023</div>
+            <div class="timeline-role">Gameplay Programmer & Technical Artist</div>
+            <div class="timeline-org">Freelance & Game Jams</div>
+            <p class="timeline-desc">
+              Engineered mechanics for 12+ rapid prototypes in Unity. Implemented custom character controllers, dynamic cameras, audio-reactive shaders, and UI state machines.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: CONTACT VIEW -->
+      <section id="tab-contact" class="tab-section">
+        <div class="contact-card">
+          <div class="hero-eyebrow">Get In Touch</div>
+          <h2 class="contact-title">Let's Discuss Your Next Title</h2>
+          <p class="contact-sub">
+            Whether you need a full gameplay prototype, custom shader development, or game architecture consulting, send a direct message.
+          </p>
+
+          <a href="mailto:hello@ishunani.dev" class="btn-talk" style="text-decoration:none;">
+            ✉️ Email: hello@ishunani.dev
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ====================================================================
+       PROJECT DETAIL POPUP MODAL
+       ==================================================================== -->
+  <div class="modal-backdrop" id="projectModal" onclick="closeModal(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      <img id="modalImg" class="modal-img-banner" src="" alt="Project Preview" />
+      <div class="modal-body">
+        <div class="modal-header-meta">
+          <span id="modalCat" class="card-category"></span>
+          <span id="modalTimeline" class="card-timeline"></span>
+        </div>
+        <h2 id="modalTitle" class="modal-title"></h2>
+        <p id="modalDesc" class="modal-desc"></p>
+        <div id="modalTags" class="modal-tags"></div>
+        <div class="modal-actions">
+          <a id="modalAction" href="#" target="_blank" class="btn-talk" style="padding:10px 24px; font-size:13px;">Play / View Demo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Project Dataset
+    const PROJECTS = [
+      {
+        id: "proj-1",
+        title: "Celestial Odyssey",
+        category: "Games",
+        timeline: "2024",
+        tags: ["3D", "Action", "Unity", "C#"],
+        shortDesc: "A high-octane 3D sci-fi adventure featuring dynamic gravity shifts and fluid combat mechanics.",
+        fullDesc: "An immersive space expedition game built with Unity URP, featuring procedural environment destruction, custom volumetric lighting, and precise physics-driven character controller.",
+        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+        featured: true
+      },
+      {
+        id: "proj-2",
+        title: "Rhythm Pulse Neo",
+        category: "Games",
+        timeline: "2024",
+        tags: ["2D", "Rhythm", "Synthwave"],
+        shortDesc: "Fast-paced synthwave rhythm survival game with beat-synced particle systems and audio-reactive shaders.",
+        fullDesc: "Designed with responsive input timing down to the millisecond, featuring custom spectral audio analysis and neon glassmorphism aesthetics.",
+        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+        featured: true
+      },
+      {
+        id: "proj-3",
+        title: "Aubergine Realm",
+        category: "3D & VR",
+        timeline: "2023 - 2024",
+        tags: ["XR", "Atmospheric", "WebGL"],
+        shortDesc: "Interactive surreal realm exploration prototype featuring volumetric fog and ambient audio design.",
+        fullDesc: "WebGL interactive experience created to demonstrate dynamic shadow cascades, post-processing blooms, and atmospheric soundscapes in real time.",
+        image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+        featured: true
+      },
+      {
+        id: "proj-4",
+        title: "Pixel Rogue Tactics",
+        category: "Games",
+        timeline: "2023",
+        tags: ["2D", "Tactics", "Roguelike"],
+        shortDesc: "Turn-based tactical dungeon crawler with procedurally generated levels and modular ability trees.",
+        fullDesc: "Employs an A* pathfinding grid, deterministic state machine combat, and custom pixel-art animation state machine.",
+        image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
+        featured: false
+      },
+      {
+        id: "proj-5",
+        title: "Aetherial Canvas",
+        category: "Web & Interactive",
+        timeline: "2023",
+        tags: ["WebGL", "Shaders", "JavaScript"],
+        shortDesc: "Experimental WebGL fluid simulation allowing real-time color field interaction in the browser.",
+        fullDesc: "Utilizes custom GLSL fragment shaders simulating Navier-Stokes equations for real-time interactive fluid dynamics.",
+        image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
+        featured: false
+      },
+      {
+        id: "proj-6",
+        title: "Solaris Engine Tools",
+        category: "3D & VR",
+        timeline: "2022 - 2023",
+        tags: ["Tooling", "Editor", "C#"],
+        shortDesc: "A modular suite of editor extensions accelerating level design and node-based dialogue trees in Unity.",
+        fullDesc: "Custom Unity editor windows with visual graph editing, automated asset pipeline baking, and JSON localization export.",
+        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+        featured: false
+      }
+    ];
+
+    const ARSENAL = [
+      {
+        icon: "⚔️",
+        title: "Gameplay Architecture",
+        desc: "Robust, decoupled systems using state machines, event buses, and modular ScriptableObjects.",
+        skills: ["C# / Unity", "Game Loops", "Physics Systems"]
+      },
+      {
+        icon: "🎨",
+        title: "Technical Art & Shaders",
+        desc: "Stylized visual identities, post-processing pipelines, custom GLSL/HLSL shaders, and particle FX.",
+        skills: ["Shader Graph", "VFX Graph", "URP / HDRP"]
+      },
+      {
+        icon: "⚡",
+        title: "Cross-Platform & WebGL",
+        desc: "Optimizing memory footprints, draw calls, and assets for silky 60fps performance across Web, PC, and Mobile.",
+        skills: ["WebGL Optimization", "Mobile Performance", "Asset Bundles"]
+      },
+      {
+        icon: "🛠️",
+        title: "Tools & Rapid Prototyping",
+        desc: "Custom in-editor tooling, procedural generation algorithms, and fast game-jam turnaround workflows.",
+        skills: ["Custom Inspectors", "Level Tooling", "Git Workflows"]
+      }
+    ];
+
+    // Tab Navigation
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-pill').forEach(pill => pill.classList.remove('active'));
+
+      const target = document.getElementById('tab-' + tabId);
+      if (target) target.classList.add('active');
+
+      const pillBtn = Array.from(document.querySelectorAll('.nav-pill')).find(p => p.textContent.toLowerCase().includes(tabId));
+      if (pillBtn) pillBtn.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Render Project Card Helper
+    function createProjectCardHtml(p) {
+      const tagsHtml = p.tags.map(t => `<span class="tag-badge">${t}</span>`).join('');
+      return `
+        <div class="project-card" onclick="openModal('${p.id}')">
+          <div class="card-thumb-wrap">
+            <span class="card-platform-badge">${p.category}</span>
+            <img class="card-thumb" src="${p.image}" alt="${p.title}" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-category">${p.category}</span>
+              <span class="card-timeline">${p.timeline}</span>
+            </div>
+            <h3 class="card-title">${p.title}</h3>
+            <p class="card-desc">${p.shortDesc}</p>
+            <div class="card-tags">${tagsHtml}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Render Featured Projects
+    function renderFeatured() {
+      const container = document.getElementById('featuredProjectsContainer');
+      const featured = PROJECTS.filter(p => p.featured);
+      container.innerHTML = featured.map(createProjectCardHtml).join('');
+    }
+
+    // Render All Projects
+    function renderAllProjects(filter = 'All') {
+      const container = document.getElementById('allProjectsContainer');
+      const list = filter === 'All' ? PROJECTS : PROJECTS.filter(p => p.category === filter);
+      container.innerHTML = list.map(createProjectCardHtml).join('');
+    }
+
+    // Filter Projects
+    function filterProjects(cat) {
+      document.querySelectorAll('.filter-pills .filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.startsWith(cat));
+      });
+      renderAllProjects(cat);
+    }
+
+    // Render Arsenal
+    function renderArsenal() {
+      const container = document.getElementById('arsenalContainer');
+      container.innerHTML = ARSENAL.map(item => `
+        <div class="arsenal-card">
+          <div class="arsenal-icon">${item.icon}</div>
+          <h3 class="arsenal-title">${item.title}</h3>
+          <p class="arsenal-desc">${item.desc}</p>
+          <div class="arsenal-skills">
+            ${item.skills.map(s => `<span class="tag-badge" style="color: var(--marigold-primary); border-color: rgba(255,179,0,0.2);">${s}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Modal Control
+    function openModal(projId) {
+      const proj = PROJECTS.find(p => p.id === projId);
+      if (!proj) return;
+
+      document.getElementById('modalImg').src = proj.image;
+      document.getElementById('modalCat').textContent = proj.category;
+      document.getElementById('modalTimeline').textContent = proj.timeline;
+      document.getElementById('modalTitle').textContent = proj.title;
+      document.getElementById('modalDesc').textContent = proj.fullDesc;
+      document.getElementById('modalTags').innerHTML = proj.tags.map(t => `<span class="tag-badge" style="color: var(--marigold-primary); border-color: rgba(255,179,0,0.3);">${t}</span>`).join('');
+
+      document.getElementById('projectModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Initialize
+    renderFeatured();
+    renderAllProjects();
+    renderArsenal();
+  </script>
+</body>
+</html>

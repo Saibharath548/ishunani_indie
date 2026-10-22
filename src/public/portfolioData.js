@@ -1,132 +1,81 @@
 /**
  * Central Portfolio Data Store
- * Controls content for Profile, Hero, Bento Projects, Services & Resume.
+ * Sourced directly from your actual projects and background.
  */
 
 export const PROFILE_DATA = {
   name: "Ishu Nani",
-  role: "Indie Game Developer & Creative Technologist",
+  role: "Indie Game Developer & Gameplay Programmer",
   statusBadge: "Available for Collaborations",
   location: "India",
-  headline: "Crafting immersive, highly responsive games & interactive digital experiences.",
-  subheadline: "Specializing in gameplay programming, technical art, custom physics, and modern web integrations using Unity, C#, and JavaScript.",
+  headline: "Crafting physics-driven, responsive games & immersive 3D mechanics.",
+  subheadline: "Specializing in Rigidbody physics systems, combat feel, custom gameplay loops, and scalable architecture using Unity & C#.",
   stats: [
-    { value: "15+", label: "Completed Projects" },
-    { value: "4+", label: "Years Experience" },
+    { value: "3D", label: "Physics & Combat Systems" },
+    { value: "Unity", label: "C# Core Architecture" },
     { value: "100%", label: "Indie Craftsmanship" }
   ],
   socials: [
     { name: "GitHub", url: "https://github.com/Saibharath548" },
-    { name: "LinkedIn", url: "https://linkedin.com" },
-    { name: "Itch.io", url: "https://itch.io" }
+    { name: "Email", url: "mailto:hello@ishunani.dev" }
   ]
 };
 
-export const PROJECT_CATEGORIES = ["All", "Games", "3D & VR", "Web & Interactive"];
+export const PROJECT_CATEGORIES = ["All", "Physics Games", "FPS & Combat", "Prototypes"];
 
 export const PROJECTS_DATA = [
   {
-    id: "proj-1",
-    title: "Celestial Odyssey",
-    category: "Games",
+    id: "magnet-maniac",
+    title: "Magnet Maniac",
+    category: "Physics Games",
     timeline: "2024",
-    tags: ["3D", "Action", "Unity", "C#"],
-    shortDesc: "A high-octane 3D sci-fi adventure featuring dynamic gravity shifts and fluid combat mechanics.",
-    fullDesc: "An immersive space expedition game built with Unity URP, featuring procedural environment destruction, custom volumetric lighting, and precise physics-driven character controller.",
+    tags: ["3D", "Physics", "Platformer", "Unity", "C#"],
+    shortDesc: "Polarity-based physics game centered on attraction and repulsion mechanics, where players strategically switch magnetic forces.",
+    fullDesc: "Magnet Maniac is a 3D sci-fi platformer built around a polarity-switching magnetic sphere, combining physics-driven movement with environmental puzzle-solving.\n\nThe player controls a magnetic ball capable of switching between positive polarity, negative polarity, and a neutral state with no magnetic influence.\n\nCore gameplay revolves around manipulating attraction and repulsion forces to traverse levels and overcome obstacles. Magnetic objects within the environment are visually highlighted according to their polarity, providing immediate feedback and encouraging strategic decision-making. By switching polarity at the right moment, the player can pull toward surfaces, repel from hazards, or disable magnetic influence entirely to maintain control.\n\nThe movement system is fully Rigidbody-based, relying on physics forces rather than scripted motion. This creates dynamic, emergent interactions where momentum, timing, and spatial awareness play a key role in both platforming and puzzle-solving challenges.",
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
     featured: true
   },
   {
-    id: "proj-2",
-    title: "Rhythm Pulse Neo",
-    category: "Games",
+    id: "fps-combat",
+    title: "FPS Combat Mechanics",
+    category: "FPS & Combat",
     timeline: "2024",
-    tags: ["2D", "Rhythm", "Synthwave"],
-    shortDesc: "Fast-paced synthwave rhythm survival game with beat-synced particle systems and audio-reactive shaders.",
-    fullDesc: "Designed with responsive input timing down to the millisecond, featuring custom spectral audio analysis and neon glassmorphism aesthetics.",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
-    featured: true
-  },
-  {
-    id: "proj-3",
-    title: "Aubergine Realm",
-    category: "3D & VR",
-    timeline: "2023 - 2024",
-    tags: ["XR", "Atmospheric", "WebGL"],
-    shortDesc: "Interactive surreal realm exploration prototype featuring volumetric fog and ambient audio design.",
-    fullDesc: "WebGL interactive experience created to demonstrate dynamic shadow cascades, post-processing blooms, and atmospheric soundscapes in real time.",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
-    featured: true
-  },
-  {
-    id: "proj-4",
-    title: "Pixel Rogue Tactics",
-    category: "Games",
-    timeline: "2023",
-    tags: ["2D", "Tactics", "Roguelike"],
-    shortDesc: "Turn-based tactical dungeon crawler with procedurally generated levels and modular ability trees.",
-    fullDesc: "Employs an A* pathfinding grid, deterministic state machine combat, and custom pixel-art animation state machine.",
+    tags: ["3D", "FPS", "Raycast", "AI", "Unity", "C#"],
+    shortDesc: "First-person mechanics prototype focused on movement, shooting systems, combat loops, and core FPS fundamentals.",
+    fullDesc: "A 3D first-person shooter focused on building a satisfying and responsive shooting experience. The core goal is to refine combat feel by emphasizing impact feedback, weapon responsiveness, and fluid player control.\n\nThe shooting system is implemented using raycast-based hit detection, ensuring precise and immediate shot registration. Visual feedback is reinforced through particle effects and hit responses, creating a strong sense of impact with each successful shot. A reload system is integrated to support pacing and engagement during combat sequences.\n\nEnemy encounters feature zombie-style swarm behavior, encouraging spatial awareness and sustained shooting flow. Player movement is currently built around clean and responsive WASD controls, prioritizing stability and consistency to support the core shooting mechanics.\n\nThis project focuses on system clarity, combat feedback loops, and scalable architecture that can later expand into more advanced mechanics, enemy behaviors, and level design.",
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
-    featured: false
-  },
-  {
-    id: "proj-5",
-    title: "Aetherial Canvas",
-    category: "Web & Interactive",
-    timeline: "2023",
-    tags: ["WebGL", "Shaders", "JavaScript"],
-    shortDesc: "Experimental WebGL fluid simulation allowing real-time color field interaction in the browser.",
-    fullDesc: "Utilizes custom GLSL fragment shaders simulating Navier-Stokes equations for real-time interactive fluid dynamics.",
-    image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
-    featured: false
-  },
-  {
-    id: "proj-6",
-    title: "Solaris Engine Tools",
-    category: "3D & VR",
-    timeline: "2022 - 2023",
-    tags: ["Tooling", "Editor", "C#"],
-    shortDesc: "A modular suite of editor extensions accelerating level design and node-based dialogue trees in Unity.",
-    fullDesc: "Custom Unity editor windows with visual graph editing, automated asset pipeline baking, and JSON localization export.",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
-    featured: false
+    featured: true
   }
 ];
 
 export const CORE_ARSENAL = [
   {
-    title: "Gameplay Architecture",
-    desc: "Robust, decoupled systems using state machines, event buses, and modular ScriptableObjects.",
-    skills: ["C# / Unity", "Game Loops", "Physics Systems"]
+    title: "Rigidbody Physics & Movement",
+    desc: "Crafting non-scripted, emergent physics movement, dynamic forces, and gravity/polarity mechanics.",
+    skills: ["Rigidbody Physics", "Polarity Mechanics", "Momentum Systems"]
   },
   {
-    title: "Technical Art & Shaders",
-    desc: "Crafting stylized visual identities, post-processing pipelines, custom GLSL/HLSL shaders, and particle FX.",
-    skills: ["Shader Graph", "VFX Graph", "URP / HDRP"]
+    title: "FPS Combat & Gunplay Loops",
+    desc: "Raycast hit detection, particle impact effects, reload cycles, and responsive player controllers.",
+    skills: ["Raycast Shooting", "Weapon Feedback", "Combat Pacing"]
   },
   {
-    title: "Cross-Platform & WebGL",
-    desc: "Optimizing memory footprints, draw calls, and assets for silky 60fps performance across Web, PC, and Mobile.",
-    skills: ["WebGL Optimization", "Mobile Performance", "Asset Bundles"]
+    title: "AI & Swarm Behaviors",
+    desc: "Designing spatial-aware swarm encounters, state machines, and dynamic enemy pressure loops.",
+    skills: ["Swarm AI", "State Machines", "Spatial Nav"]
   },
   {
-    title: "Tools & Rapid Prototyping",
-    desc: "Building custom in-editor tools, procedural generation algorithms, and fast game-jam turnaround workflows.",
-    skills: ["Custom Inspectors", "Level Tooling", "Git Workflows"]
+    title: "Core C# & Unity Architecture",
+    desc: "Decoupled, modular code architecture ready for scalable features and level expansions.",
+    skills: ["C# Architecture", "Modular Systems", "Performance"]
   }
 ];
 
 export const EXPERIENCE_JOURNEY = [
   {
-    period: "2023 - Present",
-    role: "Lead Indie Game Developer",
-    org: "Independent Studio",
-    details: "Architecting original titles, managing gameplay systems, asset pipelines, and cross-platform publishing."
-  },
-  {
-    period: "2021 - 2023",
-    role: "Game Programmer & Technical Artist",
-    org: "Freelance & Game Jams",
-    details: "Delivered 12+ commissioned interactive prototypes, custom gameplay mechanics, and UI animations."
+    period: "2024 - Present",
+    role: "Indie Game Developer",
+    org: "Independent Game Studio",
+    details: "Developing physics-driven and shooter mechanics prototypes in Unity, refining player feel, combat feedback, and modular gameplay systems."
   }
 ];

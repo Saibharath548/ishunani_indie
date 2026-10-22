@@ -13,31 +13,28 @@
 
   <style>
     /* ==========================================================================
-       STRICT 3-COLOR THEME: Deep Aubergine, Ice Silver, Marigold ONLY
+       STRICT 2-COLOR DUAL-TONE: Deep Aubergine (#3A0F34) & Ice Silver (#DDE3E8)
        ========================================================================== */
     :root {
-      /* 1. Deep Aubergine Spectrum (Rich purple-plum tones, never black) */
-      --aubergine-canvas: #22063B;
-      --aubergine-surface: #320B57;
-      --aubergine-card: #410E70;
-      --aubergine-elevated: #4E1385;
-      --aubergine-border: #6A1EB5;
-      --aubergine-shadow: rgba(26, 3, 48, 0.75);
+      /* 1. Deep Aubergine Spectrum (#3A0F34) */
+      --aubergine-canvas: #260A22;
+      --aubergine-base: #3A0F34;
+      --aubergine-surface: #44133D;
+      --aubergine-card: #52174A;
+      --aubergine-elevated: #5E1B55;
+      --aubergine-border: #73226D;
+      --aubergine-shadow: rgba(38, 10, 34, 0.8);
 
-      /* 2. Ice Silver Spectrum (Frosty metallic icy silver tones, never generic gray/white) */
-      --ice-silver-pure: #E6F2FD;
-      --ice-silver-heading: #CFE4F9;
-      --ice-silver-body: #BFDAF2;
-      --ice-silver-muted: #9AC1E5;
-      --ice-silver-border: rgba(230, 242, 253, 0.32);
-      --ice-silver-border-hover: rgba(230, 242, 253, 0.75);
-      --ice-silver-surface: rgba(230, 242, 253, 0.08);
-
-      /* 3. Marigold Spectrum (Golden amber floral flame) */
-      --marigold-primary: #FFB300;
-      --marigold-warm: #FFA000;
-      --marigold-glow: rgba(255, 179, 0, 0.55);
-      --marigold-soft: rgba(255, 179, 0, 0.2);
+      /* 2. Ice Silver Spectrum (#DDE3E8) */
+      --ice-silver-pure: #F0F4F8;
+      --ice-silver-base: #DDE3E8;
+      --ice-silver-heading: #DDE3E8;
+      --ice-silver-body: #C4D0DB;
+      --ice-silver-muted: #9DB0C2;
+      --ice-silver-border: rgba(221, 227, 232, 0.35);
+      --ice-silver-border-hover: rgba(221, 227, 232, 0.8);
+      --ice-silver-glow: rgba(221, 227, 232, 0.45);
+      --ice-silver-soft: rgba(221, 227, 232, 0.15);
 
       --radius-sm: 8px;
       --radius-md: 14px;
@@ -60,9 +57,9 @@
     body {
       background-color: var(--aubergine-canvas);
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(255, 179, 0, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(106, 30, 181, 0.45) 0%, transparent 50%),
-        linear-gradient(135deg, #1A0330 0%, #2A0849 50%, #3B0E63 100%);
+        radial-gradient(circle at 15% 15%, rgba(221, 227, 232, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(94, 27, 85, 0.5) 0%, transparent 50%),
+        linear-gradient(135deg, #260A22 0%, #3A0F34 50%, #4D1445 100%);
       background-attachment: fixed;
       color: var(--ice-silver-body);
       font-family: var(--font-main);
@@ -79,7 +76,7 @@
       left: -150px;
       width: 550px;
       height: 550px;
-      background: radial-gradient(circle, rgba(255, 179, 0, 0.16) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(221, 227, 232, 0.14) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -90,7 +87,7 @@
       right: -200px;
       width: 650px;
       height: 650px;
-      background: radial-gradient(circle, rgba(106, 30, 181, 0.4) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(115, 34, 109, 0.45) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -128,7 +125,7 @@
       border: 1.5px solid var(--ice-silver-border);
       border-radius: var(--radius-lg);
       padding: 32px 28px;
-      box-shadow: 0 20px 40px var(--aubergine-shadow), 0 0 30px rgba(255, 179, 0, 0.1);
+      box-shadow: 0 20px 40px var(--aubergine-shadow), 0 0 30px var(--ice-silver-soft);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -139,10 +136,10 @@
 
     .profile-sidebar:hover {
       border-color: var(--ice-silver-border-hover);
-      box-shadow: 0 24px 50px var(--aubergine-shadow), 0 0 35px var(--marigold-glow);
+      box-shadow: 0 24px 50px var(--aubergine-shadow), 0 0 35px var(--ice-silver-glow);
     }
 
-    /* Avatar with Marigold Glow Ring */
+    /* Avatar with Ice Silver Glow Ring */
     .avatar-wrapper {
       position: relative;
       width: 140px;
@@ -155,15 +152,15 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 3.5px solid var(--marigold-primary);
-      box-shadow: 0 0 28px var(--marigold-glow);
+      border: 3.5px solid var(--ice-silver-base);
+      box-shadow: 0 0 28px var(--ice-silver-glow);
     }
 
     .avatar-ring-pulse {
       position: absolute;
       inset: -6px;
       border-radius: 50%;
-      border: 2px dashed rgba(255, 179, 0, 0.6);
+      border: 2px dashed rgba(221, 227, 232, 0.55);
       animation: rotateRing 20s linear infinite;
     }
 
@@ -178,13 +175,13 @@
       color: var(--ice-silver-pure);
       margin-bottom: 4px;
       letter-spacing: -0.5px;
-      text-shadow: 0 2px 10px rgba(230, 242, 253, 0.2);
+      text-shadow: 0 2px 10px var(--ice-silver-glow);
     }
 
     .profile-role {
       font-size: 13px;
       font-weight: 700;
-      color: var(--marigold-primary);
+      color: var(--ice-silver-base);
       text-transform: uppercase;
       letter-spacing: 1.2px;
       margin-bottom: 16px;
@@ -196,29 +193,29 @@
       align-items: center;
       gap: 8px;
       padding: 7px 16px;
-      background: var(--marigold-soft);
-      border: 1.5px solid var(--marigold-primary);
+      background: var(--ice-silver-soft);
+      border: 1.5px solid var(--ice-silver-base);
       border-radius: var(--radius-full);
       font-size: 12px;
       font-weight: 700;
-      color: var(--marigold-primary);
+      color: var(--ice-silver-pure);
       margin-bottom: 24px;
-      box-shadow: 0 0 15px rgba(255, 179, 0, 0.25);
+      box-shadow: 0 0 18px var(--ice-silver-soft);
     }
 
     .pulse-dot {
       width: 9px;
       height: 9px;
-      background: var(--marigold-primary);
+      background: var(--ice-silver-base);
       border-radius: 50%;
-      box-shadow: 0 0 12px var(--marigold-primary);
+      box-shadow: 0 0 12px var(--ice-silver-pure);
       animation: pulseAnimation 2s infinite;
     }
 
     @keyframes pulseAnimation {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.8); }
-      70% { transform: scale(1); box-shadow: 0 0 0 9px rgba(255, 179, 0, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 179, 0, 0); }
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(221, 227, 232, 0.8); }
+      70% { transform: scale(1); box-shadow: 0 0 0 9px rgba(221, 227, 232, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(221, 227, 232, 0); }
     }
 
     /* Profile Info List */
@@ -245,7 +242,7 @@
     }
 
     .info-val {
-      color: var(--ice-silver-heading);
+      color: var(--ice-silver-pure);
       font-weight: 600;
     }
 
@@ -273,11 +270,11 @@
     }
 
     .social-btn:hover {
-      background: var(--marigold-primary);
-      color: var(--aubergine-canvas);
-      border-color: var(--marigold-primary);
+      background: var(--ice-silver-base);
+      color: var(--aubergine-base);
+      border-color: var(--ice-silver-base);
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px var(--marigold-glow);
+      box-shadow: 0 6px 18px var(--ice-silver-glow);
     }
 
     /* Resume CTA Button */
@@ -285,9 +282,8 @@
       width: 100%;
       padding: 13px 20px;
       border-radius: var(--radius-md);
-      background: var(--marigold-soft);
-      border: 2px solid var(--marigold-primary);
-      color: var(--marigold-primary);
+      background: var(--ice-silver-base);
+      color: var(--aubergine-base);
       font-weight: 800;
       font-size: 14px;
       cursor: pointer;
@@ -297,13 +293,14 @@
       gap: 8px;
       text-decoration: none;
       transition: var(--transition-fast);
-      box-shadow: 0 0 15px rgba(255, 179, 0, 0.2);
+      box-shadow: 0 4px 20px var(--ice-silver-glow);
+      border: none;
     }
 
     .btn-resume:hover {
-      background: var(--marigold-primary);
+      background: var(--ice-silver-pure);
       color: var(--aubergine-canvas);
-      box-shadow: 0 0 25px var(--marigold-glow);
+      box-shadow: 0 8px 30px var(--ice-silver-glow);
       transform: translateY(-2px);
     }
 
@@ -346,9 +343,10 @@
     }
 
     .nav-pill.active {
-      background: var(--marigold-primary);
-      color: var(--aubergine-canvas);
-      box-shadow: 0 2px 14px var(--marigold-glow);
+      background: var(--ice-silver-base);
+      color: var(--aubergine-base);
+      font-weight: 800;
+      box-shadow: 0 2px 14px var(--ice-silver-glow);
     }
 
     /* Section Views */
@@ -384,7 +382,7 @@
     .hero-eyebrow {
       font-size: 13px;
       font-weight: 800;
-      color: var(--marigold-primary);
+      color: var(--ice-silver-base);
       text-transform: uppercase;
       letter-spacing: 1.5px;
       margin-bottom: 12px;
@@ -397,12 +395,13 @@
       line-height: 1.25;
       margin-bottom: 16px;
       letter-spacing: -0.5px;
-      text-shadow: 0 2px 12px rgba(230, 242, 253, 0.25);
+      text-shadow: 0 2px 14px var(--ice-silver-glow);
     }
 
     .hero-title span {
-      color: var(--marigold-primary);
-      text-shadow: 0 0 15px var(--marigold-glow);
+      color: var(--ice-silver-base);
+      text-decoration: underline;
+      text-decoration-color: rgba(221, 227, 232, 0.45);
     }
 
     .hero-desc {
@@ -432,29 +431,29 @@
       border-radius: var(--radius-md);
       padding: 20px;
       transition: var(--transition-fast);
-      box-shadow: inset 0 0 20px rgba(106, 30, 181, 0.2);
+      box-shadow: inset 0 0 20px rgba(94, 27, 85, 0.3);
     }
 
     .stat-box:hover {
-      border-color: var(--marigold-primary);
+      border-color: var(--ice-silver-base);
       transform: translateY(-3px);
-      box-shadow: 0 8px 22px var(--aubergine-shadow), 0 0 15px rgba(255, 179, 0, 0.25);
+      box-shadow: 0 8px 22px var(--aubergine-shadow), 0 0 20px var(--ice-silver-glow);
     }
 
     .stat-num {
       font-size: 36px;
       font-weight: 900;
-      color: var(--marigold-primary);
+      color: var(--ice-silver-pure);
       line-height: 1;
       margin-bottom: 6px;
       font-family: var(--font-mono);
-      text-shadow: 0 0 12px var(--marigold-glow);
+      text-shadow: 0 0 16px var(--ice-silver-glow);
     }
 
     .stat-label {
       font-size: 13px;
       font-weight: 700;
-      color: var(--ice-silver-heading);
+      color: var(--ice-silver-base);
       text-transform: uppercase;
       letter-spacing: 0.6px;
     }
@@ -476,7 +475,7 @@
       font-weight: 800;
       color: var(--ice-silver-pure);
       letter-spacing: -0.5px;
-      text-shadow: 0 2px 10px rgba(230, 242, 253, 0.2);
+      text-shadow: 0 2px 10px var(--ice-silver-glow);
     }
 
     .section-title-wrap p {
@@ -505,15 +504,16 @@
     }
 
     .filter-btn:hover {
-      border-color: var(--marigold-primary);
-      color: var(--marigold-primary);
+      border-color: var(--ice-silver-base);
+      color: var(--ice-silver-pure);
     }
 
     .filter-btn.active {
-      background: var(--marigold-primary);
-      color: var(--aubergine-canvas);
-      border-color: var(--marigold-primary);
-      box-shadow: 0 2px 14px var(--marigold-glow);
+      background: var(--ice-silver-base);
+      color: var(--aubergine-base);
+      border-color: var(--ice-silver-base);
+      font-weight: 800;
+      box-shadow: 0 2px 14px var(--ice-silver-glow);
     }
 
     /* 2-Column Projects Grid */
@@ -543,9 +543,9 @@
     }
 
     .project-card:hover {
-      border-color: var(--marigold-primary);
+      border-color: var(--ice-silver-base);
       transform: translateY(-5px);
-      box-shadow: 0 22px 45px var(--aubergine-shadow), 0 0 30px var(--marigold-glow);
+      box-shadow: 0 22px 45px var(--aubergine-shadow), 0 0 30px var(--ice-silver-glow);
     }
 
     .card-thumb-wrap {
@@ -572,13 +572,13 @@
       top: 12px;
       right: 12px;
       background: var(--aubergine-canvas);
-      border: 1.5px solid var(--marigold-primary);
+      border: 1.5px solid var(--ice-silver-base);
       border-radius: var(--radius-sm);
       padding: 5px 12px;
       font-size: 11px;
       font-weight: 800;
-      color: var(--marigold-primary);
-      box-shadow: 0 0 12px var(--marigold-glow);
+      color: var(--ice-silver-pure);
+      box-shadow: 0 0 12px var(--ice-silver-glow);
     }
 
     .card-body {
@@ -598,7 +598,7 @@
     .card-category {
       font-size: 12px;
       font-weight: 800;
-      color: var(--marigold-primary);
+      color: var(--ice-silver-base);
       text-transform: uppercase;
       letter-spacing: 0.8px;
     }
@@ -669,22 +669,22 @@
     .arsenal-card:hover {
       border-color: var(--ice-silver-border-hover);
       transform: translateY(-3px);
-      box-shadow: 0 16px 35px var(--aubergine-shadow), 0 0 20px rgba(106, 30, 181, 0.4);
+      box-shadow: 0 16px 35px var(--aubergine-shadow), 0 0 20px var(--ice-silver-glow);
     }
 
     .arsenal-icon {
       width: 48px;
       height: 48px;
       border-radius: var(--radius-md);
-      background: var(--marigold-soft);
-      border: 1.5px solid var(--marigold-primary);
+      background: var(--ice-silver-soft);
+      border: 1.5px solid var(--ice-silver-base);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 22px;
-      color: var(--marigold-primary);
+      color: var(--ice-silver-pure);
       margin-bottom: 16px;
-      box-shadow: 0 0 15px rgba(255, 179, 0, 0.25);
+      box-shadow: 0 0 15px var(--ice-silver-glow);
     }
 
     .arsenal-title {
@@ -737,14 +737,14 @@
       width: 14px;
       height: 14px;
       border-radius: 50%;
-      background: var(--marigold-primary);
-      box-shadow: 0 0 14px var(--marigold-primary);
+      background: var(--ice-silver-base);
+      box-shadow: 0 0 14px var(--ice-silver-base);
     }
 
     .timeline-period {
       font-size: 12px;
       font-weight: 800;
-      color: var(--marigold-primary);
+      color: var(--ice-silver-base);
       font-family: var(--font-mono);
       margin-bottom: 4px;
       letter-spacing: 0.5px;
@@ -791,7 +791,7 @@
       transform: translateX(-50%);
       width: 240px;
       height: 2px;
-      background: linear-gradient(90deg, transparent, var(--marigold-primary), transparent);
+      background: linear-gradient(90deg, transparent, var(--ice-silver-base), transparent);
     }
 
     .contact-title {
@@ -813,22 +813,23 @@
       align-items: center;
       gap: 10px;
       padding: 16px 38px;
-      background: var(--marigold-primary);
-      color: var(--aubergine-canvas);
+      background: var(--ice-silver-base);
+      color: var(--aubergine-base);
       font-weight: 800;
       font-size: 15px;
       border-radius: var(--radius-full);
       text-decoration: none;
-      box-shadow: 0 4px 28px var(--marigold-glow);
+      box-shadow: 0 4px 28px var(--ice-silver-glow);
       transition: var(--transition-fast);
       border: none;
       cursor: pointer;
     }
 
     .btn-talk:hover {
-      background: var(--marigold-warm);
+      background: var(--ice-silver-pure);
+      color: var(--aubergine-canvas);
       transform: scale(1.04);
-      box-shadow: 0 8px 36px var(--marigold-glow);
+      box-shadow: 0 8px 36px var(--ice-silver-glow);
     }
 
     /* ==========================================================================
@@ -837,7 +838,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(34, 6, 59, 0.88);
+      background: rgba(38, 10, 34, 0.9);
       backdrop-filter: blur(14px);
       z-index: 1000;
       display: none;
@@ -888,9 +889,9 @@
     }
 
     .modal-close-btn:hover {
-      background: var(--marigold-primary);
-      color: var(--aubergine-canvas);
-      border-color: var(--marigold-primary);
+      background: var(--ice-silver-base);
+      color: var(--aubergine-base);
+      border-color: var(--ice-silver-base);
     }
 
     .modal-img-banner {
@@ -1286,7 +1287,7 @@
           <h3 class="arsenal-title">${item.title}</h3>
           <p class="arsenal-desc">${item.desc}</p>
           <div class="arsenal-skills">
-            ${item.skills.map(s => `<span class="tag-badge" style="color: var(--marigold-primary); border-color: rgba(255,179,0,0.2);">${s}</span>`).join('')}
+            ${item.skills.map(s => `<span class="tag-badge" style="color: var(--ice-silver-base); border-color: var(--ice-silver-border);">${s}</span>`).join('')}
           </div>
         </div>
       `).join('');
@@ -1302,7 +1303,7 @@
       document.getElementById('modalTimeline').textContent = proj.timeline;
       document.getElementById('modalTitle').textContent = proj.title;
       document.getElementById('modalDesc').textContent = proj.fullDesc;
-      document.getElementById('modalTags').innerHTML = proj.tags.map(t => `<span class="tag-badge" style="color: var(--marigold-primary); border-color: rgba(255,179,0,0.3);">${t}</span>`).join('');
+      document.getElementById('modalTags').innerHTML = proj.tags.map(t => `<span class="tag-badge" style="color: var(--ice-silver-base); border-color: var(--ice-silver-border);">${t}</span>`).join('');
 
       document.getElementById('projectModal').classList.add('active');
       document.body.style.overflow = 'hidden';

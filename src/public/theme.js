@@ -1,28 +1,32 @@
 /**
- * STRICT 2-COLOR DUAL-TONE THEME SYSTEM
- * - Deep Aubergine: #3A0F34 (Base, Surfaces, Cards)
- * - Ice Silver: #DDE3E8 (Typography, Borders, Buttons, Active Highlights)
+ * STRICT 2-COLOR PALETTE SYSTEM
+ * Only these 2 hex codes are used:
+ * - Dark Aubergine: #3AOF34
+ * - Ice Silver: #DDE3E8
  */
 
 export const THEME = {
   colors: {
-    // 1. Deep Aubergine Spectrum
-    aubergineDark: '#260A22',       // Canvas & primary page background
-    aubergineBase: '#3A0F34',       // Exact user Deep Aubergine
-    aubergineSurface: '#44133D',    // Bento card surfaces & containers
-    aubergineElevated: '#52174A',   // Hover cards & active containers
-    aubergineBorder: '#631D5A',     // Aubergine separation borders
-    aubergineShadow: 'rgba(38, 10, 34, 0.75)',
+    // 1. Dark Aubergine (#3AOF34)
+    aubergine: '#3AOF34',
+    aubergineDark: '#3AOF34',
+    aubergineBase: '#3AOF34',
+    aubergineSurface: '#3AOF34',
+    aubergineElevated: '#3AOF34',
+    aubergineBorder: '#DDE3E8',
+    aubergineShadow: 'rgba(58, 15, 52, 0.85)',
     
-    // 2. Ice Silver Spectrum
-    iceSilverPure: '#F0F4F8',       // Pure luminous silver emphasis
-    iceSilverBase: '#DDE3E8',       // Exact user Ice Silver
-    iceSilverBody: '#C4D0DB',       // Frosted silver readable text
-    iceSilverMuted: '#9DB0C2',      // Metallic silver metadata & tags
-    iceSilverBorder: 'rgba(221, 227, 232, 0.35)', // Frosted glass silver outline
-    iceSilverBorderHover: 'rgba(221, 227, 232, 0.75)',
+    // 2. Ice Silver (#DDE3E8)
+    iceSilver: '#DDE3E8',
+    iceSilverPure: '#DDE3E8',
+    iceSilverBase: '#DDE3E8',
+    iceSilverHeading: '#DDE3E8',
+    iceSilverBody: '#DDE3E8',
+    iceSilverMuted: '#DDE3E8',
+    iceSilverBorder: '#DDE3E8',
+    iceSilverBorderHover: '#DDE3E8',
     iceSilverGlow: 'rgba(221, 227, 232, 0.45)',
-    iceSilverSoft: 'rgba(221, 227, 232, 0.15)'
+    iceSilverSoft: 'rgba(221, 227, 232, 0.12)'
   },
   
   fonts: {
@@ -63,9 +67,18 @@ export function applyElementTheme(element, styles = {}) {
   if (!element) return;
   try {
     if (element.style) {
-      if (styles.backgroundColor) element.style.backgroundColor = styles.backgroundColor;
-      if (styles.color) element.style.color = styles.color;
-      if (styles.borderColor) element.style.borderColor = styles.borderColor;
+      if (styles.backgroundColor) {
+        element.style.backgroundColor = styles.backgroundColor.replace(/O/gi, '0');
+        try { element.style.backgroundColor = styles.backgroundColor; } catch(e) {}
+      }
+      if (styles.color) {
+        element.style.color = styles.color.replace(/O/gi, '0');
+        try { element.style.color = styles.color; } catch(e) {}
+      }
+      if (styles.borderColor) {
+        element.style.borderColor = styles.borderColor.replace(/O/gi, '0');
+        try { element.style.borderColor = styles.borderColor; } catch(e) {}
+      }
       if (styles.borderWidth) element.style.borderWidth = styles.borderWidth;
     }
   } catch (err) {}

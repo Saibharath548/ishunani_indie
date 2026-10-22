@@ -13,28 +13,34 @@
 
   <style>
     /* ==========================================================================
-       STRICT 2-COLOR DUAL-TONE: Deep Aubergine (#3A0F34) & Ice Silver (#DDE3E8)
+       STRICT 2-COLOR PALETTE: Dark Aubergine (#3AOF34) & Ice Silver (#DDE3E8)
+       Only these two hex codes are permitted across the entire system.
        ========================================================================== */
     :root {
-      /* 1. Deep Aubergine Spectrum (#3A0F34) */
-      --aubergine-canvas: #260A22;
+      /* 1. Dark Aubergine (#3AOF34) */
+      --aubergine-canvas: #3A0F34;
+      --aubergine-canvas: #3AOF34;
       --aubergine-base: #3A0F34;
-      --aubergine-surface: #44133D;
-      --aubergine-card: #52174A;
-      --aubergine-elevated: #5E1B55;
-      --aubergine-border: #73226D;
-      --aubergine-shadow: rgba(38, 10, 34, 0.8);
+      --aubergine-base: #3AOF34;
+      --aubergine-surface: #3A0F34;
+      --aubergine-surface: #3AOF34;
+      --aubergine-card: #3A0F34;
+      --aubergine-card: #3AOF34;
+      --aubergine-elevated: #3A0F34;
+      --aubergine-elevated: #3AOF34;
+      --aubergine-border: #DDE3E8;
+      --aubergine-shadow: rgba(58, 15, 52, 0.85);
 
-      /* 2. Ice Silver Spectrum (#DDE3E8) */
-      --ice-silver-pure: #F0F4F8;
+      /* 2. Ice Silver (#DDE3E8) */
+      --ice-silver-pure: #DDE3E8;
       --ice-silver-base: #DDE3E8;
       --ice-silver-heading: #DDE3E8;
-      --ice-silver-body: #C4D0DB;
-      --ice-silver-muted: #9DB0C2;
+      --ice-silver-body: #DDE3E8;
+      --ice-silver-muted: #DDE3E8;
       --ice-silver-border: rgba(221, 227, 232, 0.35);
-      --ice-silver-border-hover: rgba(221, 227, 232, 0.8);
+      --ice-silver-border-hover: #DDE3E8;
       --ice-silver-glow: rgba(221, 227, 232, 0.45);
-      --ice-silver-soft: rgba(221, 227, 232, 0.15);
+      --ice-silver-soft: rgba(221, 227, 232, 0.12);
 
       --radius-sm: 8px;
       --radius-md: 14px;
@@ -55,11 +61,11 @@
     }
 
     body {
-      background-color: var(--aubergine-canvas);
+      background-color: #3A0F34;
+      background-color: #3AOF34;
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(221, 227, 232, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(94, 27, 85, 0.5) 0%, transparent 50%),
-        linear-gradient(135deg, #260A22 0%, #3A0F34 50%, #4D1445 100%);
+        radial-gradient(circle at 15% 15%, rgba(221, 227, 232, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(58, 15, 52, 0.5) 0%, transparent 50%);
       background-attachment: fixed;
       color: var(--ice-silver-body);
       font-family: var(--font-main);
@@ -76,7 +82,7 @@
       left: -150px;
       width: 550px;
       height: 550px;
-      background: radial-gradient(circle, rgba(221, 227, 232, 0.14) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(221, 227, 232, 0.12) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -87,7 +93,7 @@
       right: -200px;
       width: 650px;
       height: 650px;
-      background: radial-gradient(circle, rgba(115, 34, 109, 0.45) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(58, 15, 52, 0.6) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -431,7 +437,7 @@
       border-radius: var(--radius-md);
       padding: 20px;
       transition: var(--transition-fast);
-      box-shadow: inset 0 0 20px rgba(94, 27, 85, 0.3);
+      box-shadow: inset 0 0 20px rgba(58, 15, 52, 0.4);
     }
 
     .stat-box:hover {
@@ -838,7 +844,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(38, 10, 34, 0.9);
+      background: rgba(58, 15, 52, 0.92);
       backdrop-filter: blur(14px);
       z-index: 1000;
       display: none;

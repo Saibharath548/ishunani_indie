@@ -1,47 +1,47 @@
 /**
- * Theme & Color System for Portfolio
- * Palette:
- * - Deep Aubergine (Primary Dark / Surface)
- * - Ice Silver (Typography / Structure / Frosted Borders)
- * - Marigold (Radiant Glow / Active Indicators / CTA Highlights)
+ * STRICT 3-COLOR THEME SYSTEM
+ * - Deep Aubergine (Primary Dark Plum Canvas & Card Surfaces)
+ * - Ice Silver (Frosty Metallic Typography & Glass Borders)
+ * - Marigold (Radiant Golden Accents, Buttons & Focal Highlights)
  */
 
 export const THEME = {
   colors: {
-    // Deep Aubergine spectrum
-    aubergineDark: '#130722',       // Canvas & primary page background
-    aubergineSurface: '#1A0B2E',    // Bento card surfaces & containers
-    aubergineElevated: '#24123E',   // Hover cards & active containers
-    aubergineBorder: '#351B5A',     // Card separation borders
+    // 1. Deep Aubergine (Rich purple-plum tones, never black)
+    aubergineDark: '#20063B',       // Canvas & primary page background
+    aubergineSurface: '#2D0B52',    // Bento card surfaces & containers
+    aubergineElevated: '#3A1068',   // Hover cards & active containers
+    aubergineBorder: '#5C1FA2',     // Aubergine separation borders
+    aubergineShadow: 'rgba(32, 6, 59, 0.7)',
     
-    // Ice Silver spectrum
-    iceSilverPure: '#FFFFFF',       // Top-level emphasis
-    iceSilverHeading: '#F8FAFC',    // Main titles & headers
-    iceSilverBody: '#E2E8F0',       // Standard readable text
-    iceSilverMuted: '#94A3B8',      // Metadata, timelines, tags
-    iceSilverBorder: 'rgba(226, 232, 240, 0.12)', // Subtle frosted glass outline
+    // 2. Ice Silver (Frosty metallic icy silver tones, never generic gray or white)
+    iceSilverPure: '#E8F2FC',       // Pure icy silver emphasis
+    iceSilverHeading: '#CFE2F4',    // Main headings & titles
+    iceSilverBody: '#B0CCE5',       // Cool frosted silver body text
+    iceSilverMuted: '#88A9C8',      // Metallic icy silver metadata & tags
+    iceSilverBorder: 'rgba(207, 226, 244, 0.3)', // Frosted glass silver outline
+    iceSilverBorderGlow: 'rgba(207, 226, 244, 0.6)',
     
-    // Marigold spectrum
-    marigoldPrimary: '#FFB300',     // Vibrant golden accent
-    marigoldWarm: '#F59E0B',        // Deep marigold for buttons/pills
-    marigoldGlow: '#FBBF24',        // High-contrast highlights
-    marigoldShadow: 'rgba(245, 158, 11, 0.35)', // Ambient neon glow
-    marigoldSoft: 'rgba(255, 179, 0, 0.15)'     // Subtle tint for badge backgrounds
+    // 3. Marigold (Golden amber flower bloom)
+    marigoldPrimary: '#FFB300',     // Vibrant golden marigold
+    marigoldWarm: '#FFA000',        // Deep marigold for buttons/pills
+    marigoldGlow: 'rgba(255, 179, 0, 0.5)',
+    marigoldSoft: 'rgba(255, 179, 0, 0.18)'
   },
   
   fonts: {
     heading: "'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
     body: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-    mono: "'Fira Code', 'JetBrains Mono', monospace"
+    mono: "'JetBrains Mono', monospace"
   }
 };
 
 /**
- * Generates HTML text styled with the theme colors for $w.Text elements (.html property)
+ * Generates HTML text styled strictly with Deep Aubergine, Ice Silver, and Marigold
  */
 export function formatHtmlHeading(text, level = 2, highlightText = '', highlightColor = THEME.colors.marigoldPrimary) {
   const content = highlightText && text.includes(highlightText)
-    ? text.replace(highlightText, `<span style="color: ${highlightColor}; font-weight: 700;">${highlightText}</span>`)
+    ? text.replace(highlightText, `<span style="color: ${highlightColor}; font-weight: 800;">${highlightText}</span>`)
     : text;
 
   const fontSizes = {
@@ -60,16 +60,13 @@ export function formatHtmlParagraph(text, isMuted = false) {
 }
 
 export function formatHtmlBadge(label, isMarigold = false) {
-  const bg = isMarigold ? THEME.colors.marigoldSoft : 'rgba(255, 255, 255, 0.06)';
-  const color = isMarigold ? THEME.colors.marigoldPrimary : THEME.colors.iceSilverMuted;
+  const bg = isMarigold ? THEME.colors.marigoldSoft : 'rgba(207, 226, 244, 0.1)';
+  const color = isMarigold ? THEME.colors.marigoldPrimary : THEME.colors.iceSilverHeading;
   const border = isMarigold ? `1px solid ${THEME.colors.marigoldPrimary}` : `1px solid ${THEME.colors.iceSilverBorder}`;
   
   return `<span style="display: inline-block; padding: 4px 10px; border-radius: 9999px; background: ${bg}; border: ${border}; color: ${color}; font-size: 12px; font-weight: 600; font-family: ${THEME.fonts.heading}; letter-spacing: 0.5px;">${label}</span>`;
 }
 
-/**
- * Safely applies style properties if the Wix Element supports .style API
- */
 export function applyElementTheme(element, styles = {}) {
   if (!element) return;
   try {
@@ -79,7 +76,5 @@ export function applyElementTheme(element, styles = {}) {
       if (styles.borderColor) element.style.borderColor = styles.borderColor;
       if (styles.borderWidth) element.style.borderWidth = styles.borderWidth;
     }
-  } catch (err) {
-    // Fallback gracefully on Wix elements with read-only styles
-  }
+  } catch (err) {}
 }

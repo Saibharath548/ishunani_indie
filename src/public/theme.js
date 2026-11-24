@@ -1,24 +1,24 @@
 /**
- * Strict two-color theme: Pale Sage Ivory and Muted Forest Sage.
+ * Strict two-color theme: Midnight Black and Frost White.
  * Every theme color resolves to one of these two values.
  */
-const IVORY = '#E5E8CE';
-const SAGE = '#789575';
+const BLACK = '#050606';
+const WHITE = '#F5FeEF';
 
 export const THEME = {
   colors: {
-    ivory: IVORY, sage: SAGE, background: IVORY, surface: IVORY, card: IVORY,
-    elevated: IVORY, text: SAGE, heading: SAGE, body: SAGE, muted: SAGE,
-    border: SAGE, accent: SAGE, shadow: SAGE, soft: IVORY, marigoldPrimary: SAGE,
-    jetBlack: IVORY, blackSurface: IVORY, blackCard: IVORY, blackElevated: IVORY,
-    blackShadow: SAGE, ceruleanBlue: SAGE, ceruleanPrimary: SAGE,
-    ceruleanBorder: SAGE, ceruleanBorderHover: SAGE, ceruleanGlow: SAGE,
-    ceruleanSoft: IVORY, neonRose: SAGE, neonRoseGlow: SAGE, neonRoseSoft: IVORY,
-    aubergineDark: IVORY, aubergineBase: IVORY, aubergineSurface: IVORY,
-    aubergineElevated: IVORY, aubergineBorder: SAGE, aubergineShadow: SAGE,
-    iceSilverPure: SAGE, iceSilverBase: SAGE, iceSilverHeading: SAGE,
-    iceSilverBody: SAGE, iceSilverMuted: SAGE, iceSilverBorder: SAGE,
-    iceSilverBorderHover: SAGE, iceSilverGlow: SAGE, iceSilverSoft: IVORY
+    ivory: BLACK, sage: WHITE, background: BLACK, surface: BLACK, card: BLACK,
+    elevated: BLACK, text: WHITE, heading: WHITE, body: WHITE, muted: WHITE,
+    border: WHITE, accent: WHITE, shadow: WHITE, soft: BLACK, marigoldPrimary: WHITE,
+    jetBlack: BLACK, blackSurface: BLACK, blackCard: BLACK, blackElevated: BLACK,
+    blackShadow: WHITE, ceruleanBlue: WHITE, ceruleanPrimary: WHITE,
+    ceruleanBorder: WHITE, ceruleanBorderHover: WHITE, ceruleanGlow: WHITE,
+    ceruleanSoft: BLACK, neonRose: WHITE, neonRoseGlow: WHITE, neonRoseSoft: BLACK,
+    aubergineDark: BLACK, aubergineBase: BLACK, aubergineSurface: BLACK,
+    aubergineElevated: BLACK, aubergineBorder: WHITE, aubergineShadow: WHITE,
+    iceSilverPure: WHITE, iceSilverBase: WHITE, iceSilverHeading: WHITE,
+    iceSilverBody: WHITE, iceSilverMuted: WHITE, iceSilverBorder: WHITE,
+    iceSilverBorderHover: WHITE, iceSilverGlow: WHITE, iceSilverSoft: BLACK
   },
   fonts: {
     heading: "'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif",

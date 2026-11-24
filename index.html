@@ -1962,7 +1962,8 @@
     // Render Featured Projects
     function renderFeatured() {
       const container = document.getElementById('featuredProjectsContainer');
-      const featured = PROJECTS.filter(p => p.featured);
+      // Keep the About page concise; the Projects tab contains the full collection.
+      const featured = PROJECTS.filter(p => p.featured).slice(0, 3);
       container.innerHTML = featured.map(createProjectCardHtml).join('');
     }
 

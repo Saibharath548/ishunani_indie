@@ -1487,24 +1487,33 @@
       height: 20px;
       display: block;
     }
-    /* Embedded resume viewer */
+    /* Resume pages render in the normal document flow so the website scrolls. */
     .resume-viewer {
       width: 100%;
-      height: min(1100px, 78vh);
-      min-height: 650px;
-      overflow: hidden;
-      background: #050606;
-      border: 1px solid rgba(245, 254, 239, 0.28);
+      height: auto;
+      min-height: 0;
+      overflow: visible;
+      background: transparent;
+      border: 0;
     }
-    .resume-viewer iframe {
+    #resumePages {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      width: 100%;
+    }
+    #resumePages canvas {
       display: block;
       width: 100%;
-      height: 100%;
-      border: 0;
-      background: #050606;
+      height: auto;
+      background: #F5FeEF;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
     }
-    @media (max-width: 650px) {
-      .resume-viewer { height: 75vh; min-height: 520px; }
+    #resumePages .resume-loading {
+      padding: 24px;
+      text-align: center;
+      color: #F5FeEF;
     }
 
     
@@ -1775,11 +1784,9 @@
           </div>
         </div>
         <div class="resume-viewer">
-          <iframe
-            src="resume.pdf#toolbar=0&navpanes=0&scrollbar=0"
-            title="Venkat Sai Bharath Resume"
-            loading="lazy">
-          </iframe>
+          <div id="resumePages" aria-label="Resume document">
+            <p class="resume-loading">Loading resume…</p>
+          </div>
         </div>
       </section>    </main>
   </div>
@@ -1807,6 +1814,43 @@
   </div>
 
   <!-- JavaScript Logic -->
+  <script type="module">
+    import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+
+    const resumeContainer = document.getElementById("resumePages");
+    if (resumeContainer) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
+
+      pdfjsLib.getDocument("resume.pdf").promise.then(async (pdf) => {
+        resumeContainer.innerHTML = "";
+        const renderWidth = Math.max(320, resumeContainer.clientWidth);
+
+        for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+          const page = await pdf.getPage(pageNumber);
+          const baseViewport = page.getViewport({ scale: 1 });
+          const viewport = page.getViewport({ scale: renderWidth / baseViewport.width });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          const pixelRatio = window.devicePixelRatio || 1;
+
+          canvas.width = Math.floor(viewport.width * pixelRatio);
+          canvas.height = Math.floor(viewport.height * pixelRatio);
+          canvas.style.width = "100%";
+          canvas.style.height = "auto";
+          context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+          resumeContainer.appendChild(canvas);
+
+          await page.render({ canvasContext: context, viewport }).promise;
+        }
+      }).catch((error) => {
+        console.error("Resume could not be rendered:", error);
+        resumeContainer.innerHTML =
+          '<p class="resume-loading">Unable to display the resume. Please refresh the page.</p>';
+      });
+    }
+  </script>
+
   <script>
     // Project Dataset
     const PROJECTS = [

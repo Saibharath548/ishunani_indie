@@ -921,6 +921,10 @@
       object-fit: cover;
     }
 
+    .modal-screenshots { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 0 32px 28px; }
+    .modal-screenshots img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border: 1px solid var(--ice-silver-border); border-radius: var(--radius-md); }
+    .modal-screenshots:empty { display: none; }
+
     .modal-body {
       padding: 32px;
     }
@@ -1804,6 +1808,7 @@
           <a id="modalAction" href="#" target="_blank" class="btn-talk" style="padding:10px 24px; font-size:13px;">Play / View Demo →</a>
         </div>
       </div>
+      <div id="modalScreenshots" class="modal-screenshots"></div>
     </div>
   </div>
 
@@ -1819,7 +1824,8 @@
         tags: ["Unity", "C#", "Rigidbody Physics", "Interfaces", "C# Events", "PC"],
         shortDesc: "A 3D physics-driven puzzle platformer built around a magnetic player, polarity switching, and distance-based attraction and repulsion.",
         fullDesc: "Magnet Maniac is an ongoing personal project developed in Unity for PC. I engineered a custom inverse-square magnetic force system to simulate stable, distance-based attraction and repulsion. The player uses Rigidbody-based movement integrated with polarity switching. Force interactions are structured with interfaces and C# events to keep player logic separate from magnetic objects.\n\nThe project is focused on building readable, responsive physics gameplay and puzzle-platforming interactions.",
-        image: "",
+        image: "Pics/Temp%20Pics/Magnet%20Maniac/Main.png",
+        screenshots: ["Pics/Temp%20Pics/Magnet%20Maniac/Game 1.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 2.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 3.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 4.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 5.png"],
         link: "https://saibharath2006.itch.io/magnet-maniac",
         linkLabel: "Play the demo",
         featured: true
@@ -1832,7 +1838,8 @@
         tags: ["Unity", "C#", "PC", "Android", "2-Member Team", "Object Pooling", "Coroutines"],
         shortDesc: "A game jam project built in a two-member team, where I handled player movement, core mechanics, abilities, and UI systems.",
         fullDesc: "Bubble Rush was developed during Global Game Jam 2025 as part of a two-member team. My role was Gameplay Programmer. Within the 48-hour development cycle, I implemented player movement, core mechanics, abilities, and UI systems. I also integrated physics-driven interactions and object pooling for runtime instantiation, and used coroutines to manage timed power-ups, fuel consumption, and temporary ability states. The project targeted PC and Android.",
-        image: "",
+        image: "Pics/Temp%20Pics/Bubble%20Rush/main.png",
+        screenshots: ["Pics/Temp%20Pics/Bubble%20Rush/Game 1.png", "Pics/Temp%20Pics/Bubble%20Rush/Game 2.png"],
         link: "",
         linkLabel: "",
         featured: true
@@ -1845,7 +1852,8 @@
         tags: ["Unity", "C#", "CharacterController", "Raycasting", "Reload System", "Animator"],
         shortDesc: "A first-person gameplay prototype featuring CharacterController movement, raycast shooting, reload and magazine management, and combat feedback.",
         fullDesc: "An ongoing personal PC prototype. I implemented a first-person controller using Unity's CharacterController with custom camera rotation handling. The shooting system uses raycasting and includes reload mechanics and magazine management. I also integrated particle-based bullet collision effects, camera shake, and Animator transitions to improve combat feedback.",
-        image: "",
+        image: "Pics/Temp%20Pics/FPS%20Shooter/Main.png",
+        screenshots: [],
         link: "",
         linkLabel: "",
         featured: true
@@ -1858,7 +1866,8 @@
         tags: ["2D Platformer", "Level Design", "Pixel Art", "Aseprite", "Tile Placement"],
         shortDesc: "A 2D platformer where you place tiles to build a path, collect keys, and reach the exit before the platforms disappear.",
         fullDesc: "Build Your Way is a solo-developed 2D platformer. I handled gameplay programming, level design, pixel art, and Aseprite animations. Players place tiles with mouse clicks to create a route, but the tiles disappear after a limited time. The challenge is to collect the key and reach the exit before the path collapses.",
-        image: "",
+        image: "Pics/Temp%20Pics/Build%20Your%20Way/Main.png",
+        screenshots: [],
         link: "",
         linkLabel: "",
         featured: true
@@ -1871,7 +1880,8 @@
         tags: ["Unity", "NavMesh", "Touch Input", "Line Renderer", "Destination Movement"],
         shortDesc: "A mobile stealth-action prototype inspired by Ruby Games' Hunter Assassin, featuring NavMesh controls and touch-to-move navigation.",
         fullDesc: "An in-progress clone of Hunter Assassin by Ruby Games. Current work includes NavMesh-based player controls, a Line Renderer path indicator, and touch input that moves the player toward the selected destination. Development is ongoing.",
-        image: "",
+        image: "Pics/Temp%20Pics/Hunter%20Assassin/Main.png",
+        screenshots: [],
         link: "",
         linkLabel: "",
         featured: true
@@ -1884,7 +1894,8 @@
         tags: ["Arcade", "Fruit Slicing", "Game Jam", "Egg Mechanic"],
         shortDesc: "A fruit-slicing arcade game inspired by Fruit Ninja, with eggs taking the place of bombs.",
         fullDesc: "Fruity Cutty Cut Cut is a fruit-slicing arcade game made for Mini Jame Gam #47. It takes inspiration from Fruit Ninja and replaces the familiar bomb hazard with eggs.",
-        image: "",
+        image: "Pics/Temp%20Pics/Fruity%20Cutty%20Cut%20Cut/Main.png",
+        screenshots: ["Pics/Temp%20Pics/Fruity%20Cutty%20Cut%20Cut/Game 1.png"],
         link: "",
         linkLabel: "",
         featured: true
@@ -1982,16 +1993,17 @@
       renderAllProjects(cat);
     }
 
-    // Render Gallery Grid
+    // Render Gallery Grid from original project screenshots
     function renderGallery() {
       const container = document.getElementById('galleryContainer');
       if (!container) return;
-      container.innerHTML = `
-        <div class="gallery-empty">
-          <strong>Project captures coming soon</strong>
-          <p>I’m preparing original screenshots and gameplay footage. Until then, this section won't use unrelated stock images as project media.</p>
+      const items = PROJECTS.flatMap(project => (project.screenshots || []).map((src, index) => ({ project, src, index })));
+      container.innerHTML = items.map(({ project, src, index }) => `
+        <div class="gallery-item" onclick="openGalleryImage('${src}', '${project.title}', '${project.category}')">
+          <img class="gallery-img" src="${src}" alt="${project.title} screenshot ${index + 1}" loading="lazy" />
+          <div class="gallery-overlay"><span class="gallery-tag">${project.category}</span><span class="gallery-title">${project.title}</span></div>
         </div>
-      `;
+      `).join('');
     }
 
     function openGalleryImage(imgSrc, title, tag) {
@@ -2027,6 +2039,7 @@
       if (!proj) return;
 
       document.getElementById('modalImg').src = proj.image;
+      document.getElementById('modalScreenshots').innerHTML = (proj.screenshots || []).map(src => `<img src="${src}" alt="${proj.title} gameplay screenshot" loading="lazy" />`).join('');
       document.getElementById('modalCat').textContent = proj.category;
       document.getElementById('modalTimeline').textContent = proj.timeline;
       document.getElementById('modalTitle').textContent = proj.title;
@@ -2048,6 +2061,7 @@
 
     function closeModal() {
       document.getElementById('projectModal').classList.remove('active');
+      document.getElementById('modalScreenshots').innerHTML = '';
       document.body.style.overflow = 'auto';
     }
 

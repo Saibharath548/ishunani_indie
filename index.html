@@ -1204,8 +1204,8 @@
           <!-- 3-Impact Stat Grid -->
           <div class="stats-grid">
             <div class="stat-box">
-              <div class="stat-num">3</div>
-              <div class="stat-label">Featured Projects</div>
+              <div class="stat-num">Hands-on</div>
+              <div class="stat-label">Programmer Experience</div>
             </div>
             <div class="stat-box">
               <div class="stat-num">2027</div>
@@ -1218,50 +1218,19 @@
           </div>
         </div>
 
-        <!-- Programmer Experience -->
-        <section class="programmer-experience">
+        <!-- Featured Projects Preview -->
+        <div>
           <div class="section-header">
             <div class="section-title-wrap">
-              <div class="hero-eyebrow">HANDS-ON DEVELOPMENT</div>
-              <h2>Programmer Experience</h2>
-              <p>Practical game programming through independent development, game jams, and collaborative work.</p>
+              <h2>Featured Works</h2>
+              <p>Personal projects, game jam work, and gameplay prototypes.</p>
             </div>
-            <button class="filter-btn active" onclick="switchTab('projects')">Explore Projects →</button>
+            <button class="filter-btn active" onclick="switchTab('projects')">Explore All Projects →</button>
           </div>
-
-          <div class="experience-list">
-            <article class="programmer-exp-card">
-              <div class="programmer-exp-marker">01</div>
-              <div class="programmer-exp-content">
-                <div class="programmer-exp-meta"><span>INDEPENDENT DEVELOPMENT</span><span>ONGOING</span></div>
-                <h3>Unity Gameplay Programmer</h3>
-                <p class="programmer-exp-projects">Magnet Maniac · FPS Prototype</p>
-                <p>Building gameplay systems independently in Unity and C#. Work includes Rigidbody-based movement, custom magnetic attraction and repulsion, polarity switching, interfaces and C# events, plus first-person movement, raycast shooting, reload logic and combat feedback.</p>
-                <div class="programmer-exp-tags"><span>Unity</span><span>C#</span><span>Physics</span><span>Gameplay Systems</span></div>
-              </div>
-            </article>
-
-            <article class="programmer-exp-card">
-              <div class="programmer-exp-marker">02</div>
-              <div class="programmer-exp-content">
-                <div class="programmer-exp-meta"><span>GAME JAM · TEAM OF TWO</span><span>GLOBAL GAME JAM 2025</span></div>
-                <h3>Gameplay Programmer — Bubble Rush</h3>
-                <p>Implemented player movement, core gameplay mechanics, abilities and UI systems during a 48-hour game jam. Also worked with physics-driven interactions, object pooling and coroutines for timed power-ups and temporary gameplay states. Target platforms: PC and Android.</p>
-                <div class="programmer-exp-tags"><span>Team Collaboration</span><span>Object Pooling</span><span>Coroutines</span><span>PC / Android</span></div>
-              </div>
-            </article>
-
-            <article class="programmer-exp-card">
-              <div class="programmer-exp-marker">03</div>
-              <div class="programmer-exp-content">
-                <div class="programmer-exp-meta"><span>GAME JAM PROTOTYPE</span><span>MINI JAME GAM #47</span></div>
-                <h3>Gameplay Development — Frutty Cutty</h3>
-                <p>Created a fruit-slicing game prototype with a playful twist: an egg takes the place of the traditional bomb hazard.</p>
-                <div class="programmer-exp-tags"><span>Unity</span><span>Gameplay Prototyping</span><span>Game Jam</span></div>
-              </div>
-            </article>
+          <div class="projects-grid" id="featuredProjectsContainer">
+            <!-- Dynamically populated -->
           </div>
-        </section>
+        </div>
 
         <!-- Core Arsenal Suite -->
         <div>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ishu Nani | Indie Game Developer & Creative Technologist</title>
-  <meta name="description" content="Portfolio of Ishu Nani - Game Developer, Creative Technologist, and Gameplay Programmer." />
+  <title>Venkat Sai Bharath Katta | Unity Gameplay Programmer</title>
+  <meta name="description" content="Portfolio of Venkat Sai Bharath Katta — entry-level Gameplay Programmer specializing in Unity and C#." />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -661,6 +661,55 @@
       gap: 6px;
     }
 
+    .project-visual-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 8px;
+      padding: 24px;
+      background: #050606;
+      color: #F5FeEF;
+      border-bottom: 1px solid #F5FeEF;
+    }
+    .project-visual-placeholder span,
+    .project-visual-placeholder small {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: #F5FeEF;
+    }
+    .project-visual-placeholder strong {
+      font-size: 28px;
+      line-height: 1.15;
+    }
+    .gallery-empty, .credentials-card {
+      background: #050606;
+      border: 1.5px solid #F5FeEF;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      color: #F5FeEF;
+    }
+    .gallery-empty strong { font-size: 20px; }
+    .gallery-empty p, .credentials-card li, .credentials-date {
+      color: #F5FeEF;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 20px;
+    }
+    .credentials-org { font-weight: 700; margin-bottom: 4px; }
+    .credentials-date { opacity: 0.85; margin-bottom: 14px; }
+    .credentials-card ul { padding-left: 20px; }
+    @media (max-width: 768px) {
+      .credentials-grid { grid-template-columns: 1fr; }
+    }
+
     /* ==========================================================================
        GAMEPLAY & MEDIA GALLERY
        ========================================================================== */
@@ -1007,8 +1056,9 @@
         <img class="avatar-img" src="./Pics/My%20Pic_2.jpeg" alt="Ishu Nani" />
       </div>
 
-      <h1 class="profile-name">Ishu Nani</h1>
-      <div class="profile-role">Game Programmer | Unity</div>
+      <div class="hero-eyebrow" style="margin-bottom:6px;">ISHU NANI · CREATIVE IDENTITY</div>
+      <h1 class="profile-name">Venkat Sai Bharath Katta</h1>
+      <div class="profile-role">Gameplay Programmer · Unity & C#</div>
 
       <div class="info-list">
         <div class="info-item">
@@ -1021,19 +1071,16 @@
         </div>
         <div class="info-item">
           <span class="info-label">Contact</span>
-          <span class="info-val">hello@ishunani.dev</span>
+          <a class="info-val" href="mailto:kattavsbharath2004@gmail.com">kattavsbharath2004@gmail.com</a>
         </div>
       </div>
 
       <div class="social-links">
         <a href="https://github.com/Saibharath548" target="_blank" class="social-btn" title="GitHub">GH</a>
-        <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn">IN</a>
-        <a href="https://itch.io" target="_blank" class="social-btn" title="Itch.io">IT</a>
+        <a href="https://saibharath2006.itch.io/magnet-maniac" target="_blank" rel="noopener" class="social-btn" title="Magnet Maniac on itch.io">IT</a>
       </div>
 
-      <a href="#gallery" class="btn-resume" onclick="switchTab('gallery')">
-        🖼️ View Media Gallery
-      </a>
+      <a href="mailto:kattavsbharath2004@gmail.com" class="btn-resume">✉️ Contact Me</a>
     </aside>
 
     <!-- ====================================================================
@@ -1053,27 +1100,27 @@
       <section id="tab-about" class="tab-section active">
         <!-- Hero Card -->
         <div class="hero-card">
-          <div class="hero-eyebrow">Indie Developer • Creative Systems</div>
+          <div class="hero-eyebrow">Unity Gameplay Programmer · Independent Developer</div>
           <h2 class="hero-title">
-            Transforming creative visions into <span>playable, polished</span> interactive worlds.
+            Building <span>responsive gameplay systems</span> with Unity and C#.
           </h2>
           <p class="hero-desc">
-            Passionate game programmer specializing in responsive physics, custom shaders, and cross-platform architecture across PC, Mobile, and WebGL.
+            Entry-level Gameplay Programmer specializing in Unity and C#. I build gameplay mechanics, Rigidbody-based movement, physics-driven interactions, first-person shooting systems, and UI interactions through personal projects and internship experience.
           </p>
 
           <!-- 3-Impact Stat Grid -->
           <div class="stats-grid">
             <div class="stat-box">
-              <div class="stat-num">15+</div>
-              <div class="stat-label">Published & Portfolio Works</div>
+              <div class="stat-num">3</div>
+              <div class="stat-label">Featured Projects</div>
             </div>
             <div class="stat-box">
-              <div class="stat-num">4+</div>
-              <div class="stat-label">Years Game Dev Experience</div>
+              <div class="stat-num">2027</div>
+              <div class="stat-label">Expected Graduation</div>
             </div>
             <div class="stat-box">
-              <div class="stat-num">100%</div>
-              <div class="stat-label">Indie Passion & Precision</div>
+              <div class="stat-num">Unity</div>
+              <div class="stat-label">Primary Game Engine</div>
             </div>
           </div>
         </div>
@@ -1083,7 +1130,7 @@
           <div class="section-header">
             <div class="section-title-wrap">
               <h2>Featured Works</h2>
-              <p>Hand-crafted gameplay prototypes and commercial releases.</p>
+              <p>Personal projects, game jam work, and gameplay prototypes.</p>
             </div>
             <button class="filter-btn active" onclick="switchTab('projects')">Explore All Projects →</button>
           </div>
@@ -1097,13 +1144,34 @@
         <div>
           <div class="section-header">
             <div class="section-title-wrap">
-              <h2>Core Arsenal & Capabilities</h2>
-              <p>What I bring to your team or production pipeline.</p>
+              <h2>Technical Skills</h2>
+              <p>Tools and systems I have worked with in Unity projects.</p>
             </div>
           </div>
           <div class="arsenal-grid" id="arsenalContainer">
             <!-- Dynamically populated -->
           </div>
+        </div>
+
+        <!-- Verified Experience & Education -->
+        <div class="credentials-grid">
+          <section class="credentials-card">
+            <div class="hero-eyebrow">Professional Experience</div>
+            <h2 class="arsenal-title">Unity Developer Intern</h2>
+            <p class="credentials-org">SR Edu Technologies Pvt. Ltd.</p>
+            <p class="credentials-date">30 March 2026 – 31 May 2026 · 2-month internship</p>
+            <ul>
+              <li>Developed interactive educational games focused on UI-based learning experiences using Unity.</li>
+              <li>Implemented interactive UI elements for learning activities.</li>
+              <li>Created basic UI animations to improve game interactions.</li>
+            </ul>
+          </section>
+          <section class="credentials-card">
+            <div class="hero-eyebrow">Education</div>
+            <h2 class="arsenal-title">Bachelor’s in Game Development</h2>
+            <p class="credentials-org">BackstagePass Institute of Gaming and Technology</p>
+            <p class="credentials-date">Expected graduation: 2027</p>
+          </section>
         </div>
 
         <!-- Call to Action Banner -->
@@ -1123,7 +1191,7 @@
         <div class="section-header">
           <div class="section-title-wrap">
             <h2>Portfolio Archive</h2>
-            <p>Filter by platform and development discipline.</p>
+            <p>Selected personal and game jam projects.</p>
           </div>
 
           <div class="filter-pills">
@@ -1143,8 +1211,8 @@
       <section id="tab-gallery" class="tab-section">
         <div class="section-header">
           <div class="section-title-wrap">
-            <h2>Gameplay & Media Gallery</h2>
-            <p>Visual snapshots, mechanic simulations, and 3D level environments across projects.</p>
+            <h2>Project Media</h2>
+            <p>Project screenshots and gameplay captures will be added as they are prepared. No unrelated stock imagery is used here.</p>
           </div>
         </div>
 
@@ -1157,13 +1225,13 @@
       <section id="tab-contact" class="tab-section">
         <div class="contact-card">
           <div class="hero-eyebrow">Get In Touch</div>
-          <h2 class="contact-title">Let's Discuss Your Next Title</h2>
+          <h2 class="contact-title">Let's Build Something Together</h2>
           <p class="contact-sub">
-            Whether you need a full gameplay prototype, custom shader development, or game architecture consulting, send a direct message.
+            I’m looking for an opportunity to contribute to a game development team, learn from different creative perspectives, and build original gameplay experiences. Remote-friendly opportunities are welcome.
           </p>
 
-          <a href="mailto:hello@ishunani.dev" class="btn-talk" style="text-decoration:none;">
-            ✉️ Email: hello@ishunani.dev
+          <a href="mailto:kattavsbharath2004@gmail.com" class="btn-talk" style="text-decoration:none;">
+            ✉️ kattavsbharath2004@gmail.com
           </a>
         </div>
       </section>
@@ -1201,111 +1269,69 @@
         id: "magnet-maniac",
         title: "Magnet Maniac",
         category: "Physics Games",
-        timeline: "2024",
-        tags: ["3D", "Physics", "Platformer", "Unity", "C#"],
-        shortDesc: "Polarity-based physics game centered on attraction and repulsion mechanics, where players strategically switch magnetic forces to navigate movement challenges.",
-        fullDesc: "Magnet Maniac is a 3D sci-fi platformer built around a polarity-switching magnetic sphere, combining physics-driven movement with environmental puzzle-solving.\n\nThe player controls a magnetic ball capable of switching between positive polarity, negative polarity, and a neutral state with no magnetic influence.\n\nCore gameplay revolves around manipulating attraction and repulsion forces to traverse levels and overcome obstacles. Magnetic objects within the environment are visually highlighted according to their polarity, providing immediate feedback and encouraging strategic decision-making. By switching polarity at the right moment, the player can pull toward surfaces, repel from hazards, or disable magnetic influence entirely to maintain control.\n\nThe movement system is fully Rigidbody-based, relying on physics forces rather than scripted motion. This creates dynamic, emergent interactions where momentum, timing, and spatial awareness play a key role in both platforming and puzzle-solving challenges.",
-        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
-        featured: true
-      },
-      {
-        id: "fps-combat",
-        title: "FPS Combat Mechanics",
-        category: "FPS & Combat",
-        timeline: "2024",
-        tags: ["3D", "FPS", "Raycast", "AI", "Unity", "C#"],
-        shortDesc: "First-person mechanics prototype focused on movement, shooting systems, combat loops, and core FPS fundamentals.",
-        fullDesc: "A 3D first-person shooter focused on building a satisfying and responsive shooting experience. The core goal is to refine combat feel by emphasizing impact feedback, weapon responsiveness, and fluid player control.\n\nThe shooting system is implemented using raycast-based hit detection, ensuring precise and immediate shot registration. Visual feedback is reinforced through particle effects and hit responses, creating a strong sense of impact with each successful shot. A reload system is integrated to support pacing and engagement during combat sequences.\n\nEnemy encounters feature zombie-style swarm behavior, encouraging spatial awareness and sustained shooting flow. Player movement is currently built around clean and responsive WASD controls, prioritizing stability and consistency to support the core shooting mechanics.\n\nThis project focuses on system clarity, combat feedback loops, and scalable architecture that can later expand into more advanced mechanics, enemy behaviors, and level design.",
-        image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
+        timeline: "Ongoing · Personal Project",
+        tags: ["Unity", "C#", "Rigidbody Physics", "Interfaces", "C# Events", "PC"],
+        shortDesc: "A 3D physics-driven puzzle platformer built around a magnetic player, polarity switching, and distance-based attraction and repulsion.",
+        fullDesc: "Magnet Maniac is an ongoing personal project developed in Unity for PC. I engineered a custom inverse-square magnetic force system to simulate stable, distance-based attraction and repulsion. The player uses Rigidbody-based movement integrated with polarity switching. Force interactions are structured with interfaces and C# events to keep player logic separate from magnetic objects.\n\nThe project is focused on building readable, responsive physics gameplay and puzzle-platforming interactions.",
+        image: "",
+        link: "https://saibharath2006.itch.io/magnet-maniac",
+        linkLabel: "Play the demo",
         featured: true
       },
       {
         id: "bubble-rush",
         title: "Bubble Rush",
-        category: "Arcade & Speed",
-        timeline: "2024",
-        tags: ["Physics", "Arcade", "Particle VFX", "Unity", "C#"],
-        shortDesc: "High-octane physics arcade game focused on rapid bubble chain reactions, dynamic velocity management, and escalating speed loops.",
-        fullDesc: "Bubble Rush is an energetic physics-driven arcade game challenging player reflexes through rapid motion and explosive chain reactions.\n\nPlayers navigate through intense, escalating bubble fields where bouncing, bursting, and combining specialized elements grants exponential speed multipliers and energy surges. The core mechanics prioritize momentum preservation, split-second trajectory calculations, and satisfying tactile feedback.\n\nBuilt in Unity with custom C# physics loops, Bubble Rush incorporates reactive particle VFX systems, dynamic audio-visual hit feedback, and responsive arcade controls designed for addictive replayability.",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+        category: "Game Jam",
+        timeline: "Global Game Jam 2025",
+        tags: ["Unity", "C#", "PC", "Android", "2-Member Team", "Object Pooling", "Coroutines"],
+        shortDesc: "A game jam project built in a two-member team, where I handled player movement, core mechanics, abilities, and UI systems.",
+        fullDesc: "Bubble Rush was developed during Global Game Jam 2025 as part of a two-member team. My role was Gameplay Programmer. Within the 48-hour development cycle, I implemented player movement, core mechanics, abilities, and UI systems. I also integrated physics-driven interactions and object pooling for runtime instantiation, and used coroutines to manage timed power-ups, fuel consumption, and temporary ability states. The project targeted PC and Android.",
+        image: "",
+        link: "",
+        linkLabel: "",
         featured: true
       },
       {
-        id: "no-time-rush",
-        title: "No Time Rush",
-        category: "Arcade & Speed",
-        timeline: "2024",
-        tags: ["3D", "Time Attack", "Parkour", "Unity", "C#"],
-        shortDesc: "Adrenaline-fueled 3D time-attack platformer where time is the player's health, ammunition, and most dangerous obstacle.",
-        fullDesc: "No Time Rush is a precision 3D time-attack runner where the clock is your only currency and your most lethal adversary.\n\nPlayers sprint, vault, slide, and wall-run across intricate sci-fi obstacle corridors. Every millisecond counts as time steadily drains; collecting chronos-shards and hitting precision parkour checkpoints replenishes vital seconds while penalizing miscalculations.\n\nEngineered in Unity using kinematic velocity math, custom character controllers, dynamic checkpoint respawns, and tight collision tuning optimized for competitive speedrunning and flow-state movement.",
-        image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80",
+        id: "fps-prototype",
+        title: "FPS Prototype",
+        category: "FPS & Combat",
+        timeline: "Ongoing · Personal Project",
+        tags: ["Unity", "C#", "CharacterController", "Raycasting", "Reload System", "Animator"],
+        shortDesc: "A first-person gameplay prototype featuring CharacterController movement, raycast shooting, reload and magazine management, and combat feedback.",
+        fullDesc: "An ongoing personal PC prototype. I implemented a first-person controller using Unity's CharacterController with custom camera rotation handling. The shooting system uses raycasting and includes reload mechanics and magazine management. I also integrated particle-based bullet collision effects, camera shake, and Animator transitions to improve combat feedback.",
+        image: "",
+        link: "",
+        linkLabel: "",
         featured: true
       }
     ];
 
-    const GALLERY = [
-      {
-        id: "gal-1",
-        title: "Magnet Maniac - Polarity Field Simulation",
-        tag: "Physics Engine",
-        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"
-      },
-      {
-        id: "gal-2",
-        title: "FPS Combat - Raycast Gunplay & Recoil",
-        tag: "Combat Mechanics",
-        image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
-      },
-      {
-        id: "gal-3",
-        title: "Bubble Rush - Particle Burst FX & Chain Reactions",
-        tag: "Arcade Systems",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
-      },
-      {
-        id: "gal-4",
-        title: "No Time Rush - 3D Cyber Parkour Obstacle Track",
-        tag: "Time Attack",
-        image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80"
-      },
-      {
-        id: "gal-5",
-        title: "Zombie Swarm AI - NavMesh State Flow",
-        tag: "AI Systems",
-        image: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=800&q=80"
-      },
-      {
-        id: "gal-6",
-        title: "Custom Shaders & Dynamic Impact VFX",
-        tag: "Tech Art",
-        image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80"
-      }
-    ];
+    const GALLERY = [];
 
     const ARSENAL = [
       {
         icon: "🧲",
-        title: "Rigidbody Physics & Movement",
-        desc: "Crafting non-scripted, emergent physics movement, dynamic forces, and gravity/polarity mechanics.",
-        skills: ["Rigidbody Physics", "Polarity Mechanics", "Momentum Systems"]
-      },
-      {
-        icon: "🎯",
-        title: "FPS Combat & Gunplay Loops",
-        desc: "Raycast hit detection, particle impact effects, reload cycles, and responsive player controllers.",
-        skills: ["Raycast Shooting", "Weapon Feedback", "Combat Pacing"]
-      },
-      {
-        icon: "🧟",
-        title: "AI & Swarm Behaviors",
-        desc: "Designing spatial-aware swarm encounters, state machines, and dynamic enemy pressure loops.",
-        skills: ["Swarm AI", "State Machines", "Spatial Nav"]
+        title: "Physics & Player Movement",
+        desc: "Building Rigidbody-based movement and physics-driven interactions, including custom attraction and repulsion mechanics.",
+        skills: ["Rigidbody Physics", "CharacterController", "Physics-Based Mechanics", "Raycasting"]
       },
       {
         icon: "⚙️",
-        title: "Core C# & Unity Architecture",
-        desc: "Decoupled, modular code architecture ready for scalable features and level expansions.",
-        skills: ["C# Architecture", "Modular Systems", "Performance"]
+        title: "Gameplay Systems & Architecture",
+        desc: "Structuring gameplay logic with reusable systems and clear separation of responsibilities.",
+        skills: ["Finite State Machine", "Singleton", "Interfaces", "C# Events", "Event Systems"]
+      },
+      {
+        icon: "⏱️",
+        title: "Runtime & Interaction Systems",
+        desc: "Implementing timed gameplay states, efficient object reuse, and interactive game UI.",
+        skills: ["Object Pooling", "Coroutines", "Scriptable Objects", "UI Interaction", "Animator Controller"]
+      },
+      {
+        icon: "🛠️",
+        title: "Tools & Workflow",
+        desc: "Working with common development tools and AI-assisted coding workflows while maintaining control over implementation.",
+        skills: ["Unity 2D/3D", "C#", "C++", "GitHub", "VS Code", "AI-Assisted IDEs"]
       }
     ];
 
@@ -1326,11 +1352,14 @@
     // Render Project Card Helper
     function createProjectCardHtml(p) {
       const tagsHtml = p.tags.map(t => `<span class="tag-badge">${t}</span>`).join('');
+      const visual = p.image
+        ? `<img class="card-thumb" src="${p.image}" alt="${p.title}" loading="lazy" />`
+        : `<div class="project-visual-placeholder"><span>PROJECT / ${p.category.toUpperCase()}</span><strong>${p.title}</strong><small>Gameplay project · Unity</small></div>`;
       return `
         <div class="project-card" onclick="openModal('${p.id}')">
           <div class="card-thumb-wrap">
             <span class="card-platform-badge">${p.category}</span>
-            <img class="card-thumb" src="${p.image}" alt="${p.title}" loading="lazy" />
+            ${visual}
           </div>
           <div class="card-body">
             <div class="card-meta">
@@ -1371,15 +1400,12 @@
     function renderGallery() {
       const container = document.getElementById('galleryContainer');
       if (!container) return;
-      container.innerHTML = GALLERY.map(item => `
-        <div class="gallery-item" onclick="openGalleryImage('${item.image}', '${item.title}', '${item.tag}')">
-          <img class="gallery-img" src="${item.image}" alt="${item.title}" loading="lazy" />
-          <div class="gallery-overlay">
-            <span class="gallery-tag">${item.tag}</span>
-            <div class="gallery-title">${item.title}</div>
-          </div>
+      container.innerHTML = `
+        <div class="gallery-empty">
+          <strong>Project captures coming soon</strong>
+          <p>I’m preparing original screenshots and gameplay footage. Until then, this section won't use unrelated stock images as project media.</p>
         </div>
-      `).join('');
+      `;
     }
 
     function openGalleryImage(imgSrc, title, tag) {
@@ -1389,6 +1415,7 @@
       document.getElementById('modalTitle').textContent = title;
       document.getElementById('modalDesc').textContent = "Full-resolution media preview and technical system showcase from game development archives.";
       document.getElementById('modalTags').innerHTML = `<span class="tag-badge" style="color: var(--neon-rose); border-color: var(--neon-rose);">${tag}</span>`;
+      document.getElementById('modalAction').style.display = 'none';
       document.getElementById('projectModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -1419,6 +1446,15 @@
       document.getElementById('modalTitle').textContent = proj.title;
       document.getElementById('modalDesc').textContent = proj.fullDesc;
       document.getElementById('modalTags').innerHTML = proj.tags.map(t => `<span class="tag-badge" style="color: var(--ice-silver-base); border-color: var(--ice-silver-border);">${t}</span>`).join('');
+      const action = document.getElementById('modalAction');
+      if (proj.link) {
+        action.href = proj.link;
+        action.textContent = proj.linkLabel || 'View Project →';
+        action.style.display = 'inline-flex';
+      } else {
+        action.removeAttribute('href');
+        action.style.display = 'none';
+      }
 
       document.getElementById('projectModal').classList.add('active');
       document.body.style.overflow = 'hidden';

@@ -1487,6 +1487,26 @@
       height: 20px;
       display: block;
     }
+    /* Embedded resume viewer */
+    .resume-viewer {
+      width: 100%;
+      height: min(1100px, 78vh);
+      min-height: 650px;
+      overflow: hidden;
+      background: #050606;
+      border: 1px solid rgba(245, 254, 239, 0.28);
+    }
+    .resume-viewer iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #050606;
+    }
+    @media (max-width: 650px) {
+      .resume-viewer { height: 75vh; min-height: 520px; }
+    }
+
 </style>
 </head>
 <body>
@@ -1543,7 +1563,7 @@
         <button class="nav-pill active" onclick="switchTab('about')">About</button>
         <button class="nav-pill" onclick="switchTab('projects')">Projects</button>
         <button class="nav-pill" onclick="switchTab('gallery')">Gallery</button>
-        <button class="nav-pill" onclick="switchTab('contact')">Contact</button>
+        <button class="nav-pill" onclick="switchTab('resume')">Resume</button>
       </nav>
 
       <!-- TAB 1: ABOUT / HOME VIEW -->
@@ -1670,22 +1690,23 @@
         </div>
       </section>
 
-      <!-- TAB 4: CONTACT VIEW -->
-      <section id="tab-contact" class="tab-section">
-        <div class="contact-card">
-          <div class="hero-eyebrow">Get In Touch</div>
-          <h2 class="contact-title">Let's Build Something Together</h2>
-          <p class="contact-sub">
-            I’m looking for an opportunity to contribute to a game development team, learn from different creative perspectives, and build original gameplay experiences. Remote-friendly opportunities are welcome.
-          </p>
-
-          <a href="mailto:kattavsbharath2004@gmail.com" class="btn-talk" style="text-decoration:none;">
-            ✉️ kattavsbharath2004@gmail.com
-          </a>
+        <!-- TAB 4: RESUME VIEW -->
+      <section id="tab-resume" class="tab-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Resume</h2>
+            <p>Experience, projects, skills, and education.</p>
+          </div>
+          <a href="https://github.com/Saibharath548/Resume/blob/main/Venkat%20Sai%20Bharath%20Resume.pdf" class="btn-talk" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Open PDF ↗</a>
         </div>
-      </section>
-
-    </main>
+        <div class="resume-viewer">
+          <iframe
+            src="https://docs.google.com/gview?embedded=1&amp;url=https%3A%2F%2Fraw.githubusercontent.com%2FSaibharath548%2FResume%2Fmain%2FVenkat%2520Sai%2520Bharath%2520Resume.pdf"
+            title="Venkat Sai Bharath Resume"
+            loading="lazy">
+          </iframe>
+        </div>
+      </section>    </main>
   </div>
 
   <!-- ====================================================================

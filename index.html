@@ -1736,7 +1736,21 @@
     .project-page-fact { padding:14px 0; border-bottom:1px solid rgba(245,254,239,.5); }
     .project-page-fact-label { display:block; margin-bottom:7px; font:600 10px var(--font-mono); letter-spacing:1.5px; text-transform:uppercase; }
     .project-page-fact-value { font-size:14px; line-height:1.5; }
-    .project-page-tech { padding:54px 0; border-bottom:1px solid rgba(245,254,239,.5); }
+    .project-page-development { margin-top:0; border-bottom:1px solid rgba(245,254,239,.5); }
+    .project-page-development summary { list-style:none; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:28px 0; cursor:pointer; font-size:clamp(24px,3vw,34px); font-weight:800; }
+    .project-page-development summary::-webkit-details-marker { display:none; }
+    .project-page-development summary::after { content:"+"; flex:0 0 auto; width:36px; height:36px; display:grid; place-items:center; border:1px solid #F5FeEF; font:400 24px var(--font-mono); transition:transform .2s ease; }
+    .project-page-development[open] summary::after { content:"−"; }
+    .project-page-development summary:focus-visible { outline:2px solid #F5FeEF; outline-offset:6px; }
+    .project-page-development-panel { padding:0 0 42px; }
+    .project-page-dev-intro { max-width:820px; margin:0 0 30px; font-size:15px; line-height:1.8; }
+    .project-page-dev-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px 34px; }
+    .project-page-dev-block h3 { margin:0 0 10px; font-size:17px; }
+    .project-page-dev-block p { margin:0 0 10px; font-size:14px; line-height:1.8; }
+    .project-page-dev-block ul { margin:0; padding-left:18px; }
+    .project-page-dev-block li { margin:0 0 7px; font-size:13px; line-height:1.7; }
+    .project-page-dev-stack { margin-top:34px; padding-top:22px; border-top:1px solid rgba(245,254,239,.45); }
+    .project-page-dev-stack h3 { margin:0 0 14px; font-size:15px; }
     .project-page-tags { display:flex; flex-wrap:wrap; gap:9px; }
     .project-page-tags span { border:1px solid #F5FeEF; padding:9px 12px; font:600 11px var(--font-mono); }
     .project-page-gallery { padding:58px 0 0; }
@@ -1759,7 +1773,7 @@
       .project-page-content { padding:42px 20px 64px; }
       .project-page-overview { grid-template-columns:1fr; gap:30px; padding-bottom:38px; }
       .project-page-description { font-size:14px; }
-      .project-page-tech { padding:38px 0; }
+      .project-page-dev-grid { grid-template-columns:1fr; gap:22px; }
       .project-page-gallery { padding-top:38px; }
       .project-page-gallery-grid { grid-template-columns:1fr; gap:12px; }
       .project-page-shot:first-child:nth-last-child(odd) { grid-column:auto; }
@@ -1989,11 +2003,17 @@
         <div><p class="project-page-eyebrow">01 / Overview</p><h2 class="project-page-heading">About the project</h2><p class="project-page-description" id="projectPageDescription"></p></div>
         <aside class="project-page-facts">
           <div class="project-page-fact"><span class="project-page-fact-label">Project type</span><span class="project-page-fact-value" id="projectPageType"></span></div>
-          <div class="project-page-fact"><span class="project-page-fact-label">Development</span><span class="project-page-fact-value" id="projectPageDevelopment"></span></div>
+          <div class="project-page-fact"><span class="project-page-fact-label">Project status</span><span class="project-page-fact-value" id="projectPageDevelopment"></span></div>
           <div class="project-page-fact"><span class="project-page-fact-label">Media</span><span class="project-page-fact-value" id="projectPageMedia"></span></div>
         </aside>
       </section>
-      <section class="project-page-tech"><p class="project-page-eyebrow">02 / Tools & Focus</p><h2 class="project-page-heading">Built with</h2><div class="project-page-tags" id="projectPageTags"></div></section>
+      <details class="project-page-development" id="projectPageDevelopmentDetails">
+        <summary><span><span class="project-page-eyebrow">02 / Technical Case Study</span><br />Development</span></summary>
+        <div class="project-page-development-panel">
+          <div id="projectPageDevelopmentContent"></div>
+          <div class="project-page-dev-stack"><h3>Tools & Technologies</h3><div class="project-page-tags" id="projectPageTags"></div></div>
+        </div>
+      </details>
       <section class="project-page-gallery" id="projectPageGallerySection" hidden><p class="project-page-eyebrow">03 / Visual Showcase</p><h2 class="project-page-heading">Screenshots & Gameplay</h2><div class="project-page-gallery-grid" id="projectPageGallery"></div></section>
       <footer class="project-page-footer"><a class="project-page-cta" id="projectPageAction" href="" target="_blank" rel="noopener noreferrer" hidden></a><div class="project-page-more"><span>Explore another project</span><span>↗</span></div></footer>
     </main>
@@ -2030,10 +2050,11 @@
         id: "magnet-maniac",
         title: "Magnet Maniac",
         category: "Physics Games",
-        timeline: "Ongoing · Personal Project",
-        tags: ["Unity", "C#", "Rigidbody Physics", "Interfaces", "C# Events", "PC"],
+        timeline: "Playable Prototype · Demo Available · Development On Hold",
+        tags: ["Unity 6","C#","URP 17","HLSL","Rigidbody Physics","Finite State Machine","C# Events","Interfaces","Cinemachine 2","RenderGraph","Depth Reconstruction","Shader Programming","Physics Queries"],
         shortDesc: "A 3D physics-driven puzzle platformer built around a magnetic player, polarity switching, and distance-based attraction and repulsion.",
-        fullDesc: "Magnet Maniac is an ongoing personal project developed in Unity for PC. I engineered a custom inverse-square magnetic force system to simulate stable, distance-based attraction and repulsion. The player uses Rigidbody-based movement integrated with polarity switching. Force interactions are structured with interfaces and C# events to keep player logic separate from magnetic objects.\n\nThe project is focused on building readable, responsive physics gameplay and puzzle-platforming interactions.",
+        fullDesc: "Magnet Maniac is a 3D physics-driven puzzle-platformer prototype built in Unity. You control a rolling magnetic core and switch between North, South, and Neutral states to attract, repel, and navigate an industrial facility. The playable demo explores momentum-based traversal, environmental puzzles, and a custom world-space scanning system.",
+        development: [{"title":"Player controller & movement","body":"The player is a Rigidbody-driven rolling character. Movement input is converted into camera-relative directions and applied as acceleration, while horizontal speed is capped to keep traversal controllable. A sphere cast checks grounded state, jumping uses an impulse, and velocity damping reduces drift when input is released. The controller also adjusts gravity and camera orbit settings while travelling through pipes."},{"title":"Polarity & magnetic force system","body":"A dedicated PlayerStateMachine manages three player states: North, South, and Plastic (Neutral). Number keys 1, 2, and 3 switch states, and an OnStateChanged C# event broadcasts state changes. Environment objects use PolarityObjects to define a fixed North or South polarity and their attraction/repulsion strengths. Opposite polarities attract; matching polarities repel; Plastic disables the magnetic interaction.","points":["Magnetic forces are applied to the player Rigidbody through the IForces contract.","Attraction and repulsion use the closest point on an object's collider, so force direction responds to the object's actual bounds.","Force magnitude follows an inverse-square distance relationship, with a lower-distance clamp to avoid an unbounded force near the target.","Some objects can override the repulsion direction using a dedicated transform, allowing authored launch directions."]},{"title":"World-space magnetic scanner","body":"The scanner is a custom URP rendering feature rather than a collection of per-object scan effects. Pressing E triggers a cooldown-limited expanding pulse. At activation, a Physics.OverlapSphere query gathers nearby magnetic objects and objective components. The scanner calculates each magnetic object's distance, angular position, and influence radius, then sends the resulting arc data to the shader through global parameters. Object arc positions are recalculated as the player moves during the pulse."},{"title":"Shader & rendering pipeline","body":"The MagneticScanRenderFeature injects a full-screen procedural triangle pass after transparent rendering and requests the camera depth texture. The HLSL shader reconstructs world positions from depth, then combines radial wave lines with elevation-based topographic contours. Magnetic objects imprint localized North/South colour arcs only within their calculated angular and distance ranges. The renderer includes a Unity 6 RenderGraph path as well as a compatibility execution path."},{"title":"Objective reveal & puzzle interactions","body":"ObjectiveObject creates secondary renderer overlays for supported mesh, skinned-mesh, and sprite targets. When the scan reaches an objective, the outline fades in, remains visible for a configured duration, and fades out; completed objectives are excluded from future reveals. The prototype also contains scripted environmental interactions such as reconnecting a severed electrical wire through player contact and triggering a pillar-fall sequence through room-flow events."},{"title":"Scope & current state","body":"This is a playable prototype with a public demo, not a finished commercial release. The current project build includes the introductory flow, calibration/tutorial content, a hub corridor, and an initial puzzle-room setup. Further development is currently on hold."}],
         image: "Pics/Temp%20Pics/Magnet%20Maniac/Main.png",
         screenshots: ["Pics/Temp%20Pics/Magnet%20Maniac/Game 1.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 2.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 3.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 4.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 5.png"],
         link: "https://saibharath2006.itch.io/magnet-maniac",
@@ -2048,6 +2069,7 @@
         tags: ["Unity", "C#", "PC", "Android", "2-Member Team", "Object Pooling", "Coroutines"],
         shortDesc: "A game jam project built in a two-member team, where I handled player movement, core mechanics, abilities, and UI systems.",
         fullDesc: "Bubble Rush was developed during Global Game Jam 2025 as part of a two-member team. My role was Gameplay Programmer. Within the 48-hour development cycle, I implemented player movement, core mechanics, abilities, and UI systems. I also integrated physics-driven interactions and object pooling for runtime instantiation, and used coroutines to manage timed power-ups, fuel consumption, and temporary ability states. The project targeted PC and Android.",
+        development: [{"title":"Gameplay implementation","body":"Developed during Global Game Jam 2025 in a two-person team, with responsibility for gameplay programming. Implemented player movement, the core gameplay loop, abilities, and UI systems within the 48-hour jam."},{"title":"Runtime systems","body":"Used object pooling for repeated runtime object creation and coroutines for time-based gameplay behaviour, including temporary power-ups, fuel consumption, and ability durations. Physics-driven interactions support the moment-to-moment gameplay."},{"title":"Platforms & scope","body":"The project targeted both PC and Android. The work focused on getting the core experience playable within the game-jam time limit rather than building a large reusable framework."}],
         image: "Pics/Temp%20Pics/Bubble%20Rush/main.png",
         screenshots: ["Pics/Temp%20Pics/Bubble%20Rush/Game 1.png", "Pics/Temp%20Pics/Bubble%20Rush/Game 2.png"],
         link: "",
@@ -2062,6 +2084,7 @@
         tags: ["Unity", "C#", "CharacterController", "Raycasting", "Reload System", "Animator"],
         shortDesc: "A first-person gameplay prototype featuring CharacterController movement, raycast shooting, reload and magazine management, and combat feedback.",
         fullDesc: "An ongoing personal PC prototype. I implemented a first-person controller using Unity's CharacterController with custom camera rotation handling. The shooting system uses raycasting and includes reload mechanics and magazine management. I also integrated particle-based bullet collision effects, camera shake, and Animator transitions to improve combat feedback.",
+        development: [{"title":"Character movement","body":"Built a first-person controller around Unity's CharacterController, with custom camera rotation handling for looking around independently of the player body."},{"title":"Shooting & ammunition","body":"Implemented raycast-based shooting and a reload flow with magazine management. Raycasts provide immediate hit detection without relying on physical projectile objects."},{"title":"Combat feedback","body":"Added particle effects at bullet collision points, camera shake, and Animator transitions to make weapon interactions and player feedback more readable. This remains a personal PC prototype."}],
         image: "Pics/Temp%20Pics/FPS%20Shooter/Main.png",
         screenshots: [],
         link: "",
@@ -2076,6 +2099,7 @@
         tags: ["2D Platformer", "Level Design", "Pixel Art", "Aseprite", "Tile Placement"],
         shortDesc: "A 2D platformer where you place tiles to build a path, collect keys, and reach the exit before the platforms disappear.",
         fullDesc: "Build Your Way is a solo-developed 2D platformer. I handled gameplay programming, level design, pixel art, and Aseprite animations. Players place tiles with mouse clicks to create a route, but the tiles disappear after a limited time. The challenge is to collect the key and reach the exit before the path collapses.",
+        development: [{"title":"Core gameplay loop","body":"Designed and programmed a solo 2D platformer built around temporary player-placed platforms. The player places tiles with mouse input to create a route, then has to move quickly before those tiles disappear."},{"title":"Level design & art","body":"Handled gameplay programming, level design, pixel art, and Aseprite animation. The level challenge combines route planning, key collection, and reaching the exit while the created path is under a time limit."}],
         image: "Pics/Temp%20Pics/Build%20Your%20Way/Main.png",
         screenshots: [],
         link: "",
@@ -2090,6 +2114,7 @@
         tags: ["Unity", "NavMesh", "Touch Input", "Line Renderer", "Destination Movement"],
         shortDesc: "A mobile stealth-action prototype inspired by Ruby Games' Hunter Assassin, featuring NavMesh controls and touch-to-move navigation.",
         fullDesc: "An in-progress clone of Hunter Assassin by Ruby Games. Current work includes NavMesh-based player controls, a Line Renderer path indicator, and touch input that moves the player toward the selected destination. Development is ongoing.",
+        development: [{"title":"Click-to-move navigation","body":"Built a mobile stealth-action prototype inspired by Hunter Assassin. Touch input selects a destination, and Unity NavMesh-based movement handles navigation toward the selected point."},{"title":"Path feedback","body":"Added a Line Renderer path indicator to communicate the selected route to the player. The current work is a prototype of the navigation and input loop, not a claim of a complete clone."}],
         image: "Pics/Temp%20Pics/Hunter%20Assassin/Main.png",
         screenshots: [],
         link: "",
@@ -2104,6 +2129,7 @@
         tags: ["Arcade", "Fruit Slicing", "Game Jam", "Egg Mechanic"],
         shortDesc: "A fruit-slicing arcade game inspired by Fruit Ninja, with eggs taking the place of bombs.",
         fullDesc: "Fruity Cutty Cut Cut is a fruit-slicing arcade game made for Mini Jame Gam #47. It takes inspiration from Fruit Ninja and replaces the familiar bomb hazard with eggs.",
+        development: [{"title":"Game-jam concept","body":"Created for Mini Jame Gam #47, this arcade fruit-slicing game takes the familiar swipe-to-slice premise and changes the hazard language: eggs replace the bomb-style hazard."},{"title":"Gameplay focus","body":"The project is a compact game-jam experiment centred on quick recognition, slicing interaction, and the risk of hitting the egg hazard. The portfolio description is limited to the mechanics currently documented for the project."}],
         image: "Pics/Temp%20Pics/Fruity%20Cutty%20Cut%20Cut/Main.png",
         screenshots: ["Pics/Temp%20Pics/Fruity%20Cutty%20Cut%20Cut/Game 1.png"],
         link: "",
@@ -2270,6 +2296,20 @@
       document.getElementById('projectPageDevelopment').textContent = proj.timeline;
       document.getElementById('projectPageMedia').textContent = (proj.screenshots || []).length ? (proj.screenshots.length + ' screenshots') : 'Cover artwork';
       document.getElementById('projectPageTags').innerHTML = proj.tags.map(tag => `<span>${tag}</span>`).join('');
+      const devContent = document.getElementById('projectPageDevelopmentContent');
+      const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+      const development = proj.development || [{title:'Implementation notes',body:proj.fullDesc}];
+      devContent.innerHTML = `
+        <div class="project-page-dev-grid">
+          ${development.map(section => `
+            <section class="project-page-dev-block">
+              <h3>${escapeHtml(section.title)}</h3>
+              <p>${escapeHtml(section.body)}</p>
+              ${section.points?.length ? `<ul>${section.points.map(point => `<li>${escapeHtml(point)}</li>`).join('')}</ul>` : ''}
+            </section>
+          `).join('')}
+        </div>`;
+      document.getElementById('projectPageDevelopmentDetails').open = false;
 
       const gallerySection = document.getElementById('projectPageGallerySection');
       const gallery = document.getElementById('projectPageGallery');

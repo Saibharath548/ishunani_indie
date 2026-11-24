@@ -1736,6 +1736,15 @@
     .project-page-fact { padding:14px 0; border-bottom:1px solid rgba(245,254,239,.5); }
     .project-page-fact-label { display:block; margin-bottom:7px; font:600 10px var(--font-mono); letter-spacing:1.5px; text-transform:uppercase; }
     .project-page-fact-value { font-size:14px; line-height:1.5; }
+    .project-page-team { padding:34px 0 48px; border-bottom:1px solid rgba(245,254,239,.5); }
+    .project-page-team-heading { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:22px; }
+    .project-page-team-heading .project-page-heading { margin-bottom:0; }
+    .project-page-team-count { font:600 11px var(--font-mono); letter-spacing:1px; text-transform:uppercase; }
+    .project-page-team-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .project-page-team-card { padding:20px; border:1px solid rgba(245,254,239,.5); }
+    .project-page-team-card h3 { margin:0 0 8px; font-size:17px; }
+    .project-page-team-card p { margin:0 0 12px; font-size:13px; line-height:1.6; }
+    .project-page-team-card a { color:inherit; font:600 11px var(--font-mono); text-decoration:underline; text-underline-offset:4px; }
     .project-page-development { margin-top:0; border-bottom:1px solid rgba(245,254,239,.5); }
     .project-page-development summary { list-style:none; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:28px 0; cursor:pointer; font-size:clamp(24px,3vw,34px); font-weight:800; }
     .project-page-development summary::-webkit-details-marker { display:none; }
@@ -2007,6 +2016,10 @@
           
         </aside>
       </section>
+      <section class="project-page-team" id="projectPageTeamSection" hidden>
+        <div class="project-page-team-heading"><div><p class="project-page-eyebrow">02 / Team</p><h2 class="project-page-heading">People behind the project</h2></div><span class="project-page-team-count" id="projectPageTeamCount"></span></div>
+        <div class="project-page-team-grid" id="projectPageTeam"></div>
+      </section>
       <details class="project-page-development" id="projectPageDevelopmentDetails">
         <summary><span><span class="project-page-eyebrow">02 / Technical Case Study</span><br />Development</span></summary>
         <div class="project-page-development-panel">
@@ -2054,6 +2067,7 @@
         tags: ["Unity 6","C#","URP 17","HLSL","Rigidbody Physics","Finite State Machine","C# Events","Interfaces","Cinemachine 2","RenderGraph","Depth Reconstruction","Shader Programming","Physics Queries"],
         shortDesc: "A 3D physics-driven puzzle platformer built around a magnetic player, polarity switching, and distance-based attraction and repulsion.",
         fullDesc: "Magnet Maniac is a 3D sci-fi puzzle-platformer set inside an industrial facility powered by a massive magnetic Core. After the Core is shattered, you take control of its central component and begin exploring the facility, setting out to understand what happened and find a way to restore it.\n\nThe prototype introduces the world and its central mechanic: switching between North, South, and Neutral polarity to attract toward magnetic surfaces, repel away from matching-polarity objects, and control your movement. A calibration tutorial gives you your first introduction to these abilities and the way magnetism shapes the experience.\n\nThe current build includes the opening story sequence, main menu, tutorial, and a hub corridor. It establishes the setting and gameplay direction, but the main puzzle-room experience and the wider journey to restore the Core have not yet been implemented.",
+        team: [{name:"Venkat Sai Bharath",role:"Gameplay & Systems Programmer"},{name:"Ranjith",role:"3D Modelling & Texturing Artist · Co-designer",linkedin:"https://www.linkedin.com/in/ranjith-mohan-1ba52b329/"}],
         development: [{"title":"Player controller & movement","body":"The player is a Rigidbody-driven rolling character. Movement input is converted into camera-relative directions and applied as acceleration, while horizontal speed is capped to keep traversal controllable. A sphere cast checks grounded state, jumping uses an impulse, and velocity damping reduces drift when input is released. The controller also adjusts gravity and camera orbit settings while travelling through pipes."},{"title":"Polarity & magnetic force system","body":"A dedicated PlayerStateMachine manages three player states: North, South, and Plastic (Neutral). Number keys 1, 2, and 3 switch states, and an OnStateChanged C# event broadcasts state changes. Environment objects use PolarityObjects to define a fixed North or South polarity and their attraction/repulsion strengths. Opposite polarities attract; matching polarities repel; Plastic disables the magnetic interaction.","points":["Magnetic forces are applied to the player Rigidbody through the IForces contract.","Attraction and repulsion use the closest point on an object's collider, so force direction responds to the object's actual bounds.","Force magnitude follows an inverse-square distance relationship, with a lower-distance clamp to avoid an unbounded force near the target.","Some objects can override the repulsion direction using a dedicated transform, allowing authored launch directions."]},{"title":"World-space magnetic scanner","body":"The scanner is a custom URP rendering feature rather than a collection of per-object scan effects. Pressing E triggers a cooldown-limited expanding pulse. At activation, a Physics.OverlapSphere query gathers nearby magnetic objects and objective components. The scanner calculates each magnetic object's distance, angular position, and influence radius, then sends the resulting arc data to the shader through global parameters. Object arc positions are recalculated as the player moves during the pulse."},{"title":"Shader & rendering pipeline","body":"The MagneticScanRenderFeature injects a full-screen procedural triangle pass after transparent rendering and requests the camera depth texture. The HLSL shader reconstructs world positions from depth, then combines radial wave lines with elevation-based topographic contours. Magnetic objects imprint localized North/South colour arcs only within their calculated angular and distance ranges. The renderer includes a Unity 6 RenderGraph path as well as a compatibility execution path."},{"title":"Objective reveal & puzzle interactions","body":"ObjectiveObject creates secondary renderer overlays for supported mesh, skinned-mesh, and sprite targets. When the scan reaches an objective, the outline fades in, remains visible for a configured duration, and fades out; completed objectives are excluded from future reveals. The prototype also contains scripted environmental interactions such as reconnecting a severed electrical wire through player contact and triggering a pillar-fall sequence through room-flow events."},{"title":"Scope & current state","body":"This is a playable prototype with a public demo, not a finished commercial release. The current project build includes the introductory flow, calibration/tutorial content, a hub corridor, and an initial puzzle-room setup. Further development is currently on hold."}],
         image: "Pics/Temp%20Pics/Magnet%20Maniac/Main.png",
         screenshots: ["Pics/Temp%20Pics/Magnet%20Maniac/Game 1.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 2.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 3.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 4.png", "Pics/Temp%20Pics/Magnet%20Maniac/Game 5.png"],
@@ -2294,6 +2308,17 @@
       document.getElementById('projectPageDescription').textContent = proj.fullDesc;
       document.getElementById('projectPageType').textContent = proj.category;
       document.getElementById('projectPageDevelopment').textContent = proj.timeline;
+      const teamSection = document.getElementById('projectPageTeamSection');
+      const teamMembers = proj.team || [];
+      teamSection.hidden = teamMembers.length === 0;
+      document.getElementById('projectPageTeamCount').textContent = teamMembers.length ? teamMembers.length + (teamMembers.length === 1 ? ' contributor' : ' contributors') : '';
+      document.getElementById('projectPageTeam').innerHTML = teamMembers.map(member => `
+        <article class="project-page-team-card">
+          <h3>${escapeHtml(member.name)}</h3>
+          <p>${escapeHtml(member.role)}</p>
+          ${member.linkedin ? `<a href="${escapeHtml(member.linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>` : ''}
+        </article>
+      `).join('');
       document.getElementById('projectPageTags').innerHTML = proj.tags.map(tag => `<span>${tag}</span>`).join('');
       const devContent = document.getElementById('projectPageDevelopmentContent');
       const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));

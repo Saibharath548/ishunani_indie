@@ -13,34 +13,34 @@
 
   <style>
     /* ==========================================================================
-       STRICT 2-COLOR DUAL-TONE: Jet Black (#0A0A0A) & Cerulean Blue (#007BA7)
+       STRICT 2-COLOR DUAL-TONE: Jet Black (#E5E8CE) & Cerulean Blue (#789575)
        Only these two hex codes are permitted across the entire system.
        ========================================================================== */
     :root {
       /* 1. Jet Black & Obsidian Grid Foundation */
-      --aubergine-canvas: #06090E;
-      --aubergine-base: #06090E;
-      --aubergine-surface: rgba(10, 14, 20, 0.88);
-      --aubergine-card: rgba(14, 18, 26, 0.82);
-      --aubergine-elevated: rgba(18, 24, 34, 0.9);
-      --aubergine-border: rgba(0, 123, 167, 0.35);
-      --aubergine-shadow: rgba(0, 0, 0, 0.9);
+      --aubergine-canvas: #E5E8CE;
+      --aubergine-base: #E5E8CE;
+      --aubergine-surface: #E5E8CE;
+      --aubergine-card: #E5E8CE;
+      --aubergine-elevated: #E5E8CE;
+      --aubergine-border: #789575;
+      --aubergine-shadow: #789575;
 
-      /* 2. Cerulean Blue (#007BA7) */
-      --ice-silver-pure: #007BA7;
-      --ice-silver-base: #007BA7;
-      --ice-silver-heading: #007BA7;
-      --ice-silver-body: #007BA7;
-      --ice-silver-muted: #007BA7;
-      --ice-silver-border: rgba(0, 123, 167, 0.4);
-      --ice-silver-border-hover: #007BA7;
+      /* 2. Cerulean Blue (#789575) */
+      --ice-silver-pure: #789575;
+      --ice-silver-base: #789575;
+      --ice-silver-heading: #789575;
+      --ice-silver-body: #789575;
+      --ice-silver-muted: #789575;
+      --ice-silver-border: #789575;
+      --ice-silver-border-hover: #789575;
       --ice-silver-glow: transparent;
-      --ice-silver-soft: rgba(0, 123, 167, 0.12);
+      --ice-silver-soft: #789575;
 
-      /* 3. Neon Rose (#FF007F) - Highlights & Micro Details */
-      --neon-rose: #FF007F;
+      /* 3. Neon Rose (#789575) - Highlights & Micro Details */
+      --neon-rose: #789575;
       --neon-rose-glow: transparent;
-      --neon-rose-soft: rgba(255, 0, 127, 0.12);
+      --neon-rose-soft: #789575;
 
       --radius-sm: 8px;
       --radius-md: 14px;
@@ -61,16 +61,16 @@
     }
 
     body {
-      background-color: #06090E;
+      background-color: #E5E8CE;
       background-image: 
         /* Intersection Points on Major Grid */
-        radial-gradient(circle at 0px 0px, rgba(0, 123, 167, 0.6) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 0px 0px, #789575 1.5px, transparent 1.5px),
         /* Major Grid Lines */
-        linear-gradient(to right, rgba(0, 123, 167, 0.22) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 123, 167, 0.22) 1px, transparent 1px),
+        linear-gradient(to right, #789575 1px, transparent 1px),
+        linear-gradient(to bottom, #789575 1px, transparent 1px),
         /* Minor Subdivided Grid Lines */
-        linear-gradient(to right, rgba(0, 123, 167, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 123, 167, 0.08) 1px, transparent 1px);
+        linear-gradient(to right, #789575 1px, transparent 1px),
+        linear-gradient(to bottom, #789575 1px, transparent 1px);
       background-size: 
         60px 60px,
         60px 60px,
@@ -715,7 +715,7 @@
     .gallery-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 35%, rgba(10, 10, 10, 0.95) 100%);
+      background: linear-gradient(180deg, transparent 35%, #E5E8CE 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -724,7 +724,7 @@
     }
 
     .gallery-item:hover .gallery-overlay {
-      background: linear-gradient(180deg, rgba(0, 123, 167, 0.25) 0%, rgba(10, 10, 10, 0.98) 100%);
+      background: linear-gradient(180deg, #789575 0%, #E5E8CE 100%);
     }
 
     .gallery-tag {
@@ -810,7 +810,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(10, 10, 10, 0.94);
+      background: #E5E8CE;
       backdrop-filter: blur(14px);
       z-index: 1000;
       display: none;

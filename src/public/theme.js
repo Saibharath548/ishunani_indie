@@ -1,51 +1,25 @@
 /**
- * STRICT 2-COLOR PALETTE SYSTEM
- * Only these 2 hex codes are used:
- * - Jet Black: #0A0A0A
- * - Cerulean Blue: #007BA7
+ * Strict two-color theme: Pale Sage Ivory and Muted Forest Sage.
+ * Every theme color resolves to one of these two values.
  */
+const IVORY = '#E5E8CE';
+const SAGE = '#789575';
 
 export const THEME = {
   colors: {
-    // 1. Jet Black (#0A0A0A)
-    jetBlack: '#0A0A0A',
-    blackSurface: '#0A0A0A',
-    blackCard: '#0A0A0A',
-    blackElevated: '#0A0A0A',
-    blackShadow: 'rgba(0, 0, 0, 0.95)',
-    
-    // 2. Cerulean Blue (#007BA7)
-    ceruleanBlue: '#007BA7',
-    ceruleanPrimary: '#007BA7',
-    ceruleanBorder: 'rgba(0, 123, 167, 0.4)',
-    ceruleanBorderHover: '#007BA7',
-    ceruleanGlow: 'rgba(0, 123, 167, 0.45)',
-    ceruleanSoft: 'rgba(0, 123, 167, 0.15)',
-
-    // 3. Neon Rose (#FF007F) - Highlights & Micro Details
-    neonRose: '#FF007F',
-    neonRoseGlow: 'rgba(255, 0, 127, 0.5)',
-    neonRoseSoft: 'rgba(255, 0, 127, 0.15)',
-
-    // Backward-compatible aliases
-    aubergineDark: '#0A0A0A',
-    aubergineBase: '#0A0A0A',
-    aubergineSurface: '#0A0A0A',
-    aubergineElevated: '#0A0A0A',
-    aubergineBorder: '#007BA7',
-    aubergineShadow: 'rgba(0, 0, 0, 0.95)',
-
-    iceSilverPure: '#007BA7',
-    iceSilverBase: '#007BA7',
-    iceSilverHeading: '#007BA7',
-    iceSilverBody: '#007BA7',
-    iceSilverMuted: '#007BA7',
-    iceSilverBorder: '#007BA7',
-    iceSilverBorderHover: '#007BA7',
-    iceSilverGlow: 'rgba(0, 123, 167, 0.45)',
-    iceSilverSoft: 'rgba(0, 123, 167, 0.15)'
+    ivory: IVORY, sage: SAGE, background: IVORY, surface: IVORY, card: IVORY,
+    elevated: IVORY, text: SAGE, heading: SAGE, body: SAGE, muted: SAGE,
+    border: SAGE, accent: SAGE, shadow: SAGE, soft: IVORY, marigoldPrimary: SAGE,
+    jetBlack: IVORY, blackSurface: IVORY, blackCard: IVORY, blackElevated: IVORY,
+    blackShadow: SAGE, ceruleanBlue: SAGE, ceruleanPrimary: SAGE,
+    ceruleanBorder: SAGE, ceruleanBorderHover: SAGE, ceruleanGlow: SAGE,
+    ceruleanSoft: IVORY, neonRose: SAGE, neonRoseGlow: SAGE, neonRoseSoft: IVORY,
+    aubergineDark: IVORY, aubergineBase: IVORY, aubergineSurface: IVORY,
+    aubergineElevated: IVORY, aubergineBorder: SAGE, aubergineShadow: SAGE,
+    iceSilverPure: SAGE, iceSilverBase: SAGE, iceSilverHeading: SAGE,
+    iceSilverBody: SAGE, iceSilverMuted: SAGE, iceSilverBorder: SAGE,
+    iceSilverBorderHover: SAGE, iceSilverGlow: SAGE, iceSilverSoft: IVORY
   },
-  
   fonts: {
     heading: "'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
     body: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
@@ -53,21 +27,11 @@ export const THEME = {
   }
 };
 
-/**
- * Generates HTML text styled strictly with Deep Aubergine and Ice Silver
- */
 export function formatHtmlHeading(text, level = 2, highlightText = '', highlightColor = THEME.colors.iceSilverBase) {
   const content = highlightText && text.includes(highlightText)
-    ? text.replace(highlightText, `<span style="color: ${highlightColor}; font-weight: 800; text-shadow: 0 0 15px ${THEME.colors.iceSilverGlow};">${highlightText}</span>`)
+    ? text.replace(highlightText, `<span style="color: ${highlightColor}; font-weight: 800;">${highlightText}</span>`)
     : text;
-
-  const fontSizes = {
-    1: '38px',
-    2: '28px',
-    3: '22px',
-    4: '18px'
-  };
-
+  const fontSizes = { 1: '38px', 2: '28px', 3: '22px', 4: '18px' };
   return `<h${level} style="margin: 0; font-family: ${THEME.fonts.heading}; font-size: ${fontSizes[level] || '24px'}; color: ${THEME.colors.iceSilverBase}; font-weight: 700; line-height: 1.2;">${content}</h${level}>`;
 }
 
@@ -84,18 +48,9 @@ export function applyElementTheme(element, styles = {}) {
   if (!element) return;
   try {
     if (element.style) {
-      if (styles.backgroundColor) {
-        element.style.backgroundColor = styles.backgroundColor.replace(/O/gi, '0');
-        try { element.style.backgroundColor = styles.backgroundColor; } catch(e) {}
-      }
-      if (styles.color) {
-        element.style.color = styles.color.replace(/O/gi, '0');
-        try { element.style.color = styles.color; } catch(e) {}
-      }
-      if (styles.borderColor) {
-        element.style.borderColor = styles.borderColor.replace(/O/gi, '0');
-        try { element.style.borderColor = styles.borderColor; } catch(e) {}
-      }
+      if (styles.backgroundColor) element.style.backgroundColor = styles.backgroundColor;
+      if (styles.color) element.style.color = styles.color;
+      if (styles.borderColor) element.style.borderColor = styles.borderColor;
       if (styles.borderWidth) element.style.borderWidth = styles.borderWidth;
     }
   } catch (err) {}

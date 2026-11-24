@@ -1367,7 +1367,114 @@
       .arsenal-skills { padding-top: 3px; }
     }
 
-  </style>
+  
+    /* Calm monochrome pass: reduce glare and remove asymmetric accent borders. */
+    :root {
+      --neon-rose: rgba(245, 254, 239, 0.82);
+      --neon-rose-glow: transparent;
+      --neon-rose-soft: transparent;
+      --ice-silver-pure: rgba(245, 254, 239, 0.90);
+      --ice-silver-base: rgba(245, 254, 239, 0.86);
+      --ice-silver-heading: rgba(245, 254, 239, 0.90);
+      --ice-silver-body: rgba(245, 254, 239, 0.72);
+      --ice-silver-muted: rgba(245, 254, 239, 0.58);
+      --ice-silver-border: rgba(245, 254, 239, 0.22);
+      --ice-silver-border-hover: rgba(245, 254, 239, 0.38);
+    }
+
+    body {
+      background-image:
+        linear-gradient(to right, rgba(245, 254, 239, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(245, 254, 239, 0.07) 1px, transparent 1px) !important;
+    }
+
+    body, body * {
+      text-shadow: none !important;
+    }
+
+    /* Use a softer frost-white for text instead of full-strength white everywhere. */
+    body, p, li, .arsenal-desc, .card-desc, .modal-desc,
+    .credentials-desc, .profile-bio, .stat-label,
+    .programmer-exp-content p {
+      color: rgba(245, 254, 239, 0.72) !important;
+    }
+    h1, h2, h3, h4, strong, .hero-title, .section-title-wrap h2,
+    .arsenal-title, .card-title, .programmer-exp-content h3 {
+      color: rgba(245, 254, 239, 0.90) !important;
+    }
+
+    /* All structural panels use the same balanced outline; no one-sided borders. */
+    .profile-sidebar, .hero-card, .stat-box, .project-card,
+    .credentials-card, .gallery-empty, .contact-card,
+    .modal-window, .programmer-exp-card, .arsenal-card {
+      border: 1px solid rgba(245, 254, 239, 0.22) !important;
+      border-radius: 4px !important;
+      box-shadow: none !important;
+    }
+    .profile-sidebar, .hero-card, .stat-box, .contact-card,
+    .credentials-card, .programmer-exp-card, .arsenal-card {
+      border-left-width: 1px !important;
+      border-left-color: rgba(245, 254, 239, 0.22) !important;
+    }
+    .project-card:hover, .arsenal-card:hover {
+      border-color: rgba(245, 254, 239, 0.40) !important;
+      transform: translateY(-2px);
+    }
+
+    /* Keep controls dark; avoid large, glaring white-filled pills and buttons. */
+    .status-badge, .tag-badge, .card-platform-badge,
+    .gallery-tag, .filter-btn.active, .nav-pill.active,
+    .btn-resume, .social-btn:hover, .modal-close,
+    .btn-primary, .btn-secondary, .btn-talk {
+      background: #050606 !important;
+      color: rgba(245, 254, 239, 0.84) !important;
+      border: 1px solid rgba(245, 254, 239, 0.32) !important;
+    }
+    .nav-pill.active {
+      box-shadow: inset 0 -1px 0 rgba(245, 254, 239, 0.65) !important;
+    }
+    .btn-talk:hover, .btn-resume:hover,
+    .filter-btn.active:hover, .nav-pill.active:hover {
+      background: rgba(245, 254, 239, 0.10) !important;
+      color: rgba(245, 254, 239, 0.96) !important;
+    }
+
+    /* Remove the old cyan accent entirely; the palette stays black + frost white. */
+    .hero-eyebrow, .hero-title span, .profile-role,
+    .card-category, .card-timeline, .credentials-date,
+    .credentials-org, .programmer-exp-marker,
+    .programmer-exp-meta, .programmer-exp-meta span,
+    .programmer-exp-content .programmer-exp-projects,
+    .section-title-wrap h2, .stat-num {
+      color: rgba(245, 254, 239, 0.78) !important;
+      text-decoration-color: rgba(245, 254, 239, 0.50) !important;
+    }
+    .programmer-exp-tags span {
+      color: rgba(245, 254, 239, 0.76) !important;
+      border-color: rgba(245, 254, 239, 0.24) !important;
+    }
+    .arsenal-card {
+      background: #050606 !important;
+      border-color: rgba(245, 254, 239, 0.24) !important;
+    }
+    .arsenal-icon {
+      background: #050606 !important;
+      border: 1px solid rgba(245, 254, 239, 0.24) !important;
+    }
+    .arsenal-skills .tag-badge {
+      background: #050606 !important;
+      border-color: rgba(245, 254, 239, 0.22) !important;
+      color: rgba(245, 254, 239, 0.74) !important;
+    }
+    @media (max-width: 760px) {
+      .profile-sidebar, .hero-card, .stat-box, .project-card,
+      .credentials-card, .gallery-empty, .contact-card,
+      .modal-window, .programmer-exp-card, .arsenal-card {
+        border-left-width: 1px !important;
+      }
+    }
+
+</style>
 </head>
 <body>
 

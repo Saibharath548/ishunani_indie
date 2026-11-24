@@ -1710,6 +1710,62 @@
       .modal-screenshots { grid-template-columns: 1fr; }
     }
 
+    /* Full-page project case study */
+    .project-detail-page { display:none; min-height:100vh; background:#050606; color:#F5FeEF; }
+    .project-detail-page.active { display:block; animation:projectPageEnter 220ms ease-out; }
+    @keyframes projectPageEnter { from { opacity:0; } to { opacity:1; } }
+    body.project-page-open { overflow-x:hidden; }
+    body.project-page-open .app-container { display:none !important; }
+    .project-page-topbar { position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px clamp(18px,5vw,72px); background:rgba(5,6,6,.96); border-bottom:1px solid #F5FeEF; }
+    .project-page-back,.project-page-next { border:1px solid #F5FeEF; background:#050606; color:#F5FeEF; padding:10px 14px; font:600 11px var(--font-mono); letter-spacing:.5px; cursor:pointer; text-transform:uppercase; }
+    .project-page-back:hover,.project-page-next:hover { background:#F5FeEF; color:#050606; }
+    .project-page-kicker { font:600 10px var(--font-mono); letter-spacing:2px; text-align:center; }
+    .project-page-hero { min-height:min(72vh,720px); position:relative; display:flex; align-items:end; overflow:hidden; border-bottom:1px solid #F5FeEF; }
+    .project-page-hero-image { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.72; }
+    .project-page-hero::after { content:""; position:absolute; inset:0; background:linear-gradient(0deg,#050606 0%,rgba(5,6,6,.68) 34%,rgba(5,6,6,.04) 100%); }
+    .project-page-hero-content { position:relative; z-index:1; width:min(1120px,100%); margin:0 auto; padding:90px clamp(22px,6vw,88px) 58px; }
+    .project-page-meta { display:flex; flex-wrap:wrap; gap:10px 20px; margin-bottom:18px; font:600 11px var(--font-mono); letter-spacing:1.1px; text-transform:uppercase; }
+    .project-page-title { max-width:950px; margin:0 0 18px; font-size:clamp(42px,7vw,88px); line-height:.98; font-weight:900; letter-spacing:-2px; }
+    .project-page-lead { max-width:760px; margin:0; font-size:clamp(15px,1.7vw,19px); line-height:1.7; }
+    .project-page-content { width:min(1120px,100%); margin:0 auto; padding:70px clamp(22px,6vw,88px) 90px; }
+    .project-page-overview { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(220px,.8fr); gap:clamp(28px,6vw,90px); padding-bottom:58px; border-bottom:1px solid rgba(245,254,239,.5); }
+    .project-page-eyebrow { margin:0 0 12px; font:700 10px var(--font-mono); letter-spacing:2px; text-transform:uppercase; }
+    .project-page-heading { margin:0 0 20px; font-size:clamp(26px,3vw,38px); line-height:1.15; }
+    .project-page-description { margin:0; font-size:16px; line-height:1.9; white-space:pre-line; }
+    .project-page-facts { display:grid; align-content:start; gap:8px; border-top:1px solid #F5FeEF; }
+    .project-page-fact { padding:14px 0; border-bottom:1px solid rgba(245,254,239,.5); }
+    .project-page-fact-label { display:block; margin-bottom:7px; font:600 10px var(--font-mono); letter-spacing:1.5px; text-transform:uppercase; }
+    .project-page-fact-value { font-size:14px; line-height:1.5; }
+    .project-page-tech { padding:54px 0; border-bottom:1px solid rgba(245,254,239,.5); }
+    .project-page-tags { display:flex; flex-wrap:wrap; gap:9px; }
+    .project-page-tags span { border:1px solid #F5FeEF; padding:9px 12px; font:600 11px var(--font-mono); }
+    .project-page-gallery { padding:58px 0 0; }
+    .project-page-gallery-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .project-page-shot { margin:0; border:1px solid rgba(245,254,239,.65); background:#050606; }
+    .project-page-shot:first-child:nth-last-child(odd) { grid-column:1/-1; }
+    .project-page-shot img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; }
+    .project-page-shot figcaption { padding:10px 12px; font:600 10px var(--font-mono); letter-spacing:.8px; }
+    .project-page-footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px; margin-top:64px; padding-top:24px; border-top:1px solid #F5FeEF; }
+    .project-page-cta { display:inline-flex; align-items:center; justify-content:center; padding:14px 20px; background:#F5FeEF; color:#050606 !important; text-decoration:none; font:700 12px var(--font-mono); text-transform:uppercase; }
+    .project-page-cta[hidden] { display:none; }
+    .project-page-more { display:flex; align-items:center; gap:12px; font:600 11px var(--font-mono); text-transform:uppercase; }
+    @media(max-width:700px) {
+      .project-page-topbar { padding:12px 14px; }
+      .project-page-kicker { display:none; }
+      .project-page-back,.project-page-next { padding:9px 10px; font-size:9px; }
+      .project-page-hero { min-height:62vh; }
+      .project-page-hero-content { padding:70px 20px 34px; }
+      .project-page-title { font-size:clamp(38px,11vw,58px); letter-spacing:-1.5px; }
+      .project-page-content { padding:42px 20px 64px; }
+      .project-page-overview { grid-template-columns:1fr; gap:30px; padding-bottom:38px; }
+      .project-page-description { font-size:14px; }
+      .project-page-tech { padding:38px 0; }
+      .project-page-gallery { padding-top:38px; }
+      .project-page-gallery-grid { grid-template-columns:1fr; gap:12px; }
+      .project-page-shot:first-child:nth-last-child(odd) { grid-column:auto; }
+      .project-page-footer { align-items:flex-start; flex-direction:column; margin-top:42px; }
+    }
+
 </style>
 </head>
 <body>
@@ -1913,8 +1969,38 @@
       </section>    </main>
   </div>
 
+  <!-- Full-page project case study view; the modal below is reserved for gallery zoom. -->
+  <div class="project-detail-page" id="projectDetailPage" aria-hidden="true">
+    <div class="project-page-topbar">
+      <button class="project-page-back" type="button" onclick="closeProjectPage()">← Back to portfolio</button>
+      <span class="project-page-kicker">PROJECT CASE STUDY</span>
+      <button class="project-page-next" id="projectPageNext" type="button">Next project →</button>
+    </div>
+    <header class="project-page-hero">
+      <img class="project-page-hero-image" id="projectPageHero" src="" alt="" fetchpriority="high" />
+      <div class="project-page-hero-content">
+        <div class="project-page-meta"><span id="projectPageCategory"></span><span id="projectPageTimeline"></span></div>
+        <h1 class="project-page-title" id="projectPageTitle"></h1>
+        <p class="project-page-lead" id="projectPageLead"></p>
+      </div>
+    </header>
+    <main class="project-page-content">
+      <section class="project-page-overview">
+        <div><p class="project-page-eyebrow">01 / Overview</p><h2 class="project-page-heading">About the project</h2><p class="project-page-description" id="projectPageDescription"></p></div>
+        <aside class="project-page-facts">
+          <div class="project-page-fact"><span class="project-page-fact-label">Project type</span><span class="project-page-fact-value" id="projectPageType"></span></div>
+          <div class="project-page-fact"><span class="project-page-fact-label">Development</span><span class="project-page-fact-value" id="projectPageDevelopment"></span></div>
+          <div class="project-page-fact"><span class="project-page-fact-label">Media</span><span class="project-page-fact-value" id="projectPageMedia"></span></div>
+        </aside>
+      </section>
+      <section class="project-page-tech"><p class="project-page-eyebrow">02 / Tools & Focus</p><h2 class="project-page-heading">Built with</h2><div class="project-page-tags" id="projectPageTags"></div></section>
+      <section class="project-page-gallery" id="projectPageGallerySection" hidden><p class="project-page-eyebrow">03 / Visual Showcase</p><h2 class="project-page-heading">Screenshots & Gameplay</h2><div class="project-page-gallery-grid" id="projectPageGallery"></div></section>
+      <footer class="project-page-footer"><a class="project-page-cta" id="projectPageAction" href="" target="_blank" rel="noopener noreferrer" hidden></a><div class="project-page-more"><span>Explore another project</span><span>↗</span></div></footer>
+    </main>
+  </div>
+
   <!-- ====================================================================
-       PROJECT DETAIL POPUP MODAL
+       GALLERY IMAGE PREVIEW MODAL (not used for project details)
        ==================================================================== -->
   <div class="modal-backdrop" id="projectModal" onclick="closeModal(event)">
     <div class="modal-window" onclick="event.stopPropagation()">
@@ -2057,9 +2143,14 @@
 
     // Build the screenshot gallery only when the visitor opens it.
     let galleryRendered = false;
+    let currentPortfolioTab = 'about';
+    let currentProjectId = null;
+    let portfolioScrollY = 0;
+    let previousPortfolioHash = '#projects';
 
     // Tab Navigation
     function switchTab(tabId) {
+      currentPortfolioTab = tabId;
       document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
       document.querySelectorAll('.nav-pill').forEach(pill => pill.classList.remove('active'));
 
@@ -2080,7 +2171,7 @@
         ? `<img class="card-thumb" src="${p.image}" alt="${p.title}" loading="lazy" decoding="async" />`
         : `<div class="project-visual-placeholder"><span>PROJECT / ${p.category.toUpperCase()}</span><strong>${p.title}</strong><small>Gameplay project · Unity</small></div>`;
       return `
-        <div class="project-card" onclick="openModal('${p.id}')">
+        <div class="project-card" role="link" tabindex="0" onclick="openProjectPage('${p.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProjectPage('${p.id}')}">
           <div class="card-thumb-wrap">
             <span class="card-platform-badge">${p.category}</span>
             ${visual}
@@ -2162,46 +2253,98 @@
       `).join('');
     }
 
-    // Modal Control
-    function openModal(projId) {
+    // Full-page project detail routing.
+    function renderProjectPage(projId) {
       const proj = PROJECTS.find(p => p.id === projId);
-      if (!proj) return;
+      if (!proj) return false;
+      const index = PROJECTS.findIndex(p => p.id === projId);
+      const hero = document.getElementById('projectPageHero');
+      hero.src = proj.image || '';
+      hero.alt = proj.title + ' project artwork';
+      document.getElementById('projectPageCategory').textContent = proj.category;
+      document.getElementById('projectPageTimeline').textContent = proj.timeline;
+      document.getElementById('projectPageTitle').textContent = proj.title;
+      document.getElementById('projectPageLead').textContent = proj.shortDesc;
+      document.getElementById('projectPageDescription').textContent = proj.fullDesc;
+      document.getElementById('projectPageType').textContent = proj.category;
+      document.getElementById('projectPageDevelopment').textContent = proj.timeline;
+      document.getElementById('projectPageMedia').textContent = (proj.screenshots || []).length ? (proj.screenshots.length + ' screenshots') : 'Cover artwork';
+      document.getElementById('projectPageTags').innerHTML = proj.tags.map(tag => `<span>${tag}</span>`).join('');
 
-      document.getElementById('modalImg').src = proj.image;
-      document.getElementById('modalScreenshots').innerHTML = (proj.screenshots || []).map(src => `<img src="${src}" alt="${proj.title} gameplay screenshot" loading="lazy" />`).join('');
-      document.getElementById('modalCat').textContent = proj.category;
-      document.getElementById('modalTimeline').textContent = proj.timeline;
-      document.getElementById('modalTitle').textContent = proj.title;
-      document.getElementById('modalDesc').textContent = proj.fullDesc;
-      document.getElementById('modalTags').innerHTML = proj.tags.map(t => `<span class="tag-badge" style="color: var(--ice-silver-base); border-color: var(--ice-silver-border);">${t}</span>`).join('');
-      const action = document.getElementById('modalAction');
-      if (proj.link) {
-        action.href = proj.link;
-        action.textContent = proj.linkLabel || 'View Project →';
-        action.style.display = 'inline-flex';
-      } else {
-        action.removeAttribute('href');
-        action.style.display = 'none';
-      }
+      const gallerySection = document.getElementById('projectPageGallerySection');
+      const gallery = document.getElementById('projectPageGallery');
+      const shots = proj.screenshots || [];
+      gallerySection.hidden = shots.length === 0;
+      gallery.innerHTML = shots.map((src, i) => `
+        <figure class="project-page-shot"><img src="${src}" alt="${proj.title} gameplay screenshot ${i + 1}" loading="lazy" decoding="async" /><figcaption>SCREENSHOT / ${String(i + 1).padStart(2, '0')}</figcaption></figure>
+      `).join('');
 
-      document.getElementById('projectModal').classList.add('active');
-      document.body.style.overflow = 'hidden';
+      const action = document.getElementById('projectPageAction');
+      if (proj.link) { action.href = proj.link; action.textContent = proj.linkLabel || 'View project'; action.hidden = false; }
+      else { action.removeAttribute('href'); action.hidden = true; }
+
+      const next = PROJECTS[(index + 1) % PROJECTS.length];
+      const nextButton = document.getElementById('projectPageNext');
+      nextButton.textContent = 'Next: ' + next.title + ' →';
+      nextButton.onclick = () => openProjectPage(next.id);
+      return true;
     }
 
+    function openProjectPage(projId, updateHistory = true) {
+      if (!PROJECTS.some(p => p.id === projId)) return;
+      if (!currentProjectId) {
+        portfolioScrollY = window.scrollY;
+        previousPortfolioHash = window.location.hash.startsWith('#project/') ? '#projects' : (window.location.hash || '#projects');
+      }
+      currentProjectId = projId;
+      if (updateHistory) history.pushState({ projectId: projId }, '', '#project/' + projId);
+      if (!renderProjectPage(projId)) return;
+      document.body.classList.add('project-page-open');
+      const page = document.getElementById('projectDetailPage');
+      page.classList.add('active');
+      page.setAttribute('aria-hidden', 'false');
+      window.scrollTo(0, 0);
+    }
+
+    function closeProjectPage(updateHistory = true) {
+      if (!currentProjectId) return;
+      if (updateHistory) history.replaceState({}, '', previousPortfolioHash);
+      currentProjectId = null;
+      const page = document.getElementById('projectDetailPage');
+      page.classList.remove('active');
+      page.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('project-page-open');
+      window.scrollTo(0, portfolioScrollY);
+    }
+
+    window.addEventListener('popstate', () => {
+      const match = window.location.hash.match(/^#project\/(.+)$/);
+      if (match) openProjectPage(decodeURIComponent(match[1]), false);
+      else closeProjectPage(false);
+    });
+
+    // Gallery image zoom remains a lightweight media preview.
     function closeModal() {
       document.getElementById('projectModal').classList.remove('active');
       document.getElementById('modalScreenshots').innerHTML = '';
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
+      if (e.key === 'Escape') {
+        if (currentProjectId) closeProjectPage();
+        else closeModal();
+      }
     });
 
     // Initialize
     renderFeatured();
     renderAllProjects();
     renderArsenal();
+
+    // Support direct links such as /#project/magnet-maniac.
+    const initialProjectRoute = window.location.hash.match(/^#project\/(.+)$/);
+    if (initialProjectRoute) openProjectPage(decodeURIComponent(initialProjectRoute[1]), false);
   </script>
 </body>
 </html>

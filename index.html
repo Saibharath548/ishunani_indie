@@ -957,8 +957,14 @@
       text-shadow: none;
     }
 
-    .app-container, .profile-sidebar, .dashboard-content,
-    .top-nav, .tab-section, .hero-card, .stat-box,
+    /* Keep the page canvas transparent so the grid shows through the layout gaps. */
+    .app-container, .dashboard-content, .tab-section {
+      background-color: transparent !important;
+      background-image: none !important;
+    }
+
+    /* Actual content surfaces remain Midnight Black. */
+    .profile-sidebar, .top-nav, .hero-card, .stat-box,
     .project-card, .arsenal-card, .gallery-item,
     .modal-content, .modal-overlay, .contact-card,
     .info-list, .social-btn, .project-modal,

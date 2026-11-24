@@ -1507,6 +1507,35 @@
       .resume-viewer { height: 75vh; min-height: 520px; }
     }
 
+    
+    /* Restore crisp text contrast while keeping the strict two-colour palette. */
+    :root {
+      --ice-silver-pure: rgba(245, 254, 239, 0.98);
+      --ice-silver-base: rgba(245, 254, 239, 0.94);
+      --ice-silver-heading: rgba(245, 254, 239, 0.98);
+      --ice-silver-body: rgba(245, 254, 239, 0.86);
+      --ice-silver-muted: rgba(245, 254, 239, 0.74);
+    }
+    body, p, li, .arsenal-desc, .card-desc, .modal-desc,
+    .credentials-desc, .profile-bio, .stat-label,
+    .programmer-exp-content p, .info-label {
+      color: rgba(245, 254, 239, 0.86) !important;
+    }
+    h1, h2, h3, h4, strong, .hero-title, .section-title-wrap h2,
+    .arsenal-title, .card-title, .programmer-exp-content h3,
+    .profile-name, .info-val {
+      color: rgba(245, 254, 239, 0.98) !important;
+    }
+    .hero-eyebrow, .hero-title span, .profile-role,
+    .card-category, .card-timeline, .credentials-date,
+    .credentials-org, .programmer-exp-marker,
+    .programmer-exp-meta, .programmer-exp-meta span,
+    .programmer-exp-content .programmer-exp-projects,
+    .stat-num {
+      color: rgba(245, 254, 239, 0.90) !important;
+    }
+    .nav-pill { color: rgba(245, 254, 239, 0.78) !important; }
+
 </style>
 </head>
 <body>

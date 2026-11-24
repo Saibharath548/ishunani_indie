@@ -13,34 +13,34 @@
 
   <style>
     /* ==========================================================================
-       STRICT 2-COLOR DUAL-TONE: Jet Black (#E5E8CE) & Cerulean Blue (#789575)
+       STRICT 2-COLOR DUAL-TONE: Midnight Black (#050606) & Frost White (#F5FeEF)
        Only these two hex codes are permitted across the entire system.
        ========================================================================== */
     :root {
-      /* 1. Jet Black & Obsidian Grid Foundation */
-      --aubergine-canvas: #E5E8CE;
-      --aubergine-base: #E5E8CE;
-      --aubergine-surface: #E5E8CE;
-      --aubergine-card: #E5E8CE;
-      --aubergine-elevated: #E5E8CE;
-      --aubergine-border: #789575;
-      --aubergine-shadow: #789575;
+      /* 1. Midnight Black & Obsidian Grid Foundation */
+      --aubergine-canvas: #050606;
+      --aubergine-base: #050606;
+      --aubergine-surface: #050606;
+      --aubergine-card: #050606;
+      --aubergine-elevated: #050606;
+      --aubergine-border: #F5FeEF;
+      --aubergine-shadow: #F5FeEF;
 
-      /* 2. Cerulean Blue (#789575) */
-      --ice-silver-pure: #789575;
-      --ice-silver-base: #789575;
-      --ice-silver-heading: #789575;
-      --ice-silver-body: #789575;
-      --ice-silver-muted: #789575;
-      --ice-silver-border: #789575;
-      --ice-silver-border-hover: #789575;
+      /* 2. Frost White (#F5FeEF) */
+      --ice-silver-pure: #F5FeEF;
+      --ice-silver-base: #F5FeEF;
+      --ice-silver-heading: #F5FeEF;
+      --ice-silver-body: #F5FeEF;
+      --ice-silver-muted: #F5FeEF;
+      --ice-silver-border: #F5FeEF;
+      --ice-silver-border-hover: #F5FeEF;
       --ice-silver-glow: transparent;
-      --ice-silver-soft: #789575;
+      --ice-silver-soft: #F5FeEF;
 
-      /* 3. Neon Rose (#789575) - Highlights & Micro Details */
-      --neon-rose: #789575;
+      /* 3. Frost White (#F5FeEF) - Highlights & Micro Details */
+      --neon-rose: #F5FeEF;
       --neon-rose-glow: transparent;
-      --neon-rose-soft: #789575;
+      --neon-rose-soft: #F5FeEF;
 
       --radius-sm: 8px;
       --radius-md: 14px;
@@ -61,16 +61,16 @@
     }
 
     body {
-      background-color: #E5E8CE;
+      background-color: #050606;
       background-image: 
         /* Intersection Points on Major Grid */
-        radial-gradient(circle at 0px 0px, #789575 1.5px, transparent 1.5px),
+        radial-gradient(circle at 0px 0px, #F5FeEF 1.5px, transparent 1.5px),
         /* Major Grid Lines */
-        linear-gradient(to right, #789575 1px, transparent 1px),
-        linear-gradient(to bottom, #789575 1px, transparent 1px),
+        linear-gradient(to right, #F5FeEF 1px, transparent 1px),
+        linear-gradient(to bottom, #F5FeEF 1px, transparent 1px),
         /* Minor Subdivided Grid Lines */
-        linear-gradient(to right, #789575 1px, transparent 1px),
-        linear-gradient(to bottom, #789575 1px, transparent 1px);
+        linear-gradient(to right, #F5FeEF 1px, transparent 1px),
+        linear-gradient(to bottom, #F5FeEF 1px, transparent 1px);
       background-size: 
         60px 60px,
         60px 60px,
@@ -715,7 +715,7 @@
     .gallery-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 35%, #E5E8CE 100%);
+      background: linear-gradient(180deg, transparent 35%, #050606 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -724,7 +724,7 @@
     }
 
     .gallery-item:hover .gallery-overlay {
-      background: linear-gradient(180deg, #789575 0%, #E5E8CE 100%);
+      background: linear-gradient(180deg, #F5FeEF 0%, #050606 100%);
     }
 
     .gallery-tag {
@@ -810,7 +810,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: #E5E8CE;
+      background: #050606;
       backdrop-filter: blur(14px);
       z-index: 1000;
       display: none;

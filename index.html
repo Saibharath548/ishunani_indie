@@ -1826,7 +1826,7 @@
         resumeContainer.innerHTML = "";
         const renderWidth = Math.max(320, resumeContainer.clientWidth);
         // Render above display resolution so text stays sharp on high-DPI and zoomed screens.
-        const qualityScale = Math.max(2.5, window.devicePixelRatio || 1);
+        const qualityScale = Math.max(4, (window.devicePixelRatio || 1) * 2);
 
         for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
           const page = await pdf.getPage(pageNumber);

@@ -960,7 +960,7 @@
     }
 
     /* FINAL GLOBAL PALETTE ENFORCEMENT
-       The interface uses ONLY Midnight Black and Frost White.
+       The interface uses Midnight Black, Frost White, and one Electric Cyan detail accent.
        Photos/project artwork remain original content, not UI theme colors. */
     :root {
       color-scheme: dark;
@@ -980,9 +980,9 @@
       --ice-silver-border-hover: #F5FeEF;
       --ice-silver-glow: transparent;
       --ice-silver-soft: #050606;
-      --neon-rose: #F5FeEF;
-      --neon-rose-glow: transparent;
-      --neon-rose-soft: #050606;
+      --neon-rose: #43D9E6;
+      --neon-rose-glow: rgba(67, 217, 230, 0.16);
+      --neon-rose-soft: rgba(67, 217, 230, 0.08);
     }
 
     html {
@@ -1039,6 +1039,99 @@
     img, video, canvas, iframe {
       /* Media remains content; the surrounding interface stays two-tone. */
       border-color: #F5FeEF;
+    }
+
+    
+    /* Programmer experience: technical timeline, not a claim of full-time employment. */
+    .programmer-experience { margin: 34px 0; }
+    .experience-list {
+      display: grid;
+      gap: 14px;
+      position: relative;
+    }
+    .programmer-exp-card {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 16px;
+      padding: 22px;
+      background: #050606;
+      border: 1px solid rgba(245, 254, 239, 0.72);
+      border-left: 3px solid #43D9E6;
+      border-radius: 14px;
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+    .programmer-exp-card:hover {
+      border-color: #43D9E6;
+      transform: translateY(-2px);
+    }
+    .programmer-exp-marker {
+      color: #43D9E6 !important;
+      font: 700 14px var(--font-mono);
+      padding-top: 3px;
+      letter-spacing: 1px;
+    }
+    .programmer-exp-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 18px;
+      color: #43D9E6 !important;
+      font: 700 10px var(--font-mono);
+      letter-spacing: 1.1px;
+      margin-bottom: 8px;
+    }
+    .programmer-exp-meta span { color: #43D9E6 !important; }
+    .programmer-exp-content h3 {
+      color: #F5FeEF !important;
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+    .programmer-exp-content p {
+      color: #F5FeEF !important;
+      font-size: 13px;
+      line-height: 1.7;
+      margin-top: 7px;
+    }
+    .programmer-exp-content .programmer-exp-projects {
+      color: #43D9E6 !important;
+      font: 600 12px var(--font-mono);
+      margin-top: 0;
+    }
+    .programmer-exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+    .programmer-exp-tags span {
+      border: 1px solid rgba(67, 217, 230, 0.65);
+      color: #43D9E6 !important;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font: 600 10px var(--font-mono);
+      letter-spacing: 0.3px;
+    }
+    .hero-eyebrow { color: #43D9E6 !important; }
+    .hero-title span {
+      color: #43D9E6 !important;
+      text-decoration-color: #43D9E6 !important;
+    }
+    .profile-role, .card-category, .card-timeline,
+    .credentials-date, .credentials-org {
+      color: #43D9E6 !important;
+    }
+    .section-title-wrap h2 { text-decoration-color: #43D9E6; }
+    .nav-pill.active {
+      box-shadow: inset 0 -2px 0 #43D9E6 !important;
+    }
+    .filter-btn.active, .btn-resume, .btn-talk {
+      border-color: #43D9E6 !important;
+    }
+    .stat-num { color: #43D9E6 !important; }
+    @media (max-width: 560px) {
+      .programmer-exp-card { grid-template-columns: 28px 1fr; padding: 16px; gap: 10px; }
+      .programmer-exp-meta { font-size: 9px; }
     }
 
   </style>
@@ -1125,20 +1218,50 @@
           </div>
         </div>
 
-        <!-- Featured Projects Preview -->
-        <div>
+        <!-- Programmer Experience -->
+        <section class="programmer-experience">
           <div class="section-header">
             <div class="section-title-wrap">
-              <h2>Featured Works</h2>
-              <p>Personal projects, game jam work, and gameplay prototypes.</p>
+              <div class="hero-eyebrow">HANDS-ON DEVELOPMENT</div>
+              <h2>Programmer Experience</h2>
+              <p>Practical game programming through independent development, game jams, and collaborative work.</p>
             </div>
-            <button class="filter-btn active" onclick="switchTab('projects')">Explore All Projects →</button>
+            <button class="filter-btn active" onclick="switchTab('projects')">Explore Projects →</button>
           </div>
-          
-          <div class="projects-grid" id="featuredProjectsContainer">
-            <!-- Dynamically populated -->
+
+          <div class="experience-list">
+            <article class="programmer-exp-card">
+              <div class="programmer-exp-marker">01</div>
+              <div class="programmer-exp-content">
+                <div class="programmer-exp-meta"><span>INDEPENDENT DEVELOPMENT</span><span>ONGOING</span></div>
+                <h3>Unity Gameplay Programmer</h3>
+                <p class="programmer-exp-projects">Magnet Maniac · FPS Prototype</p>
+                <p>Building gameplay systems independently in Unity and C#. Work includes Rigidbody-based movement, custom magnetic attraction and repulsion, polarity switching, interfaces and C# events, plus first-person movement, raycast shooting, reload logic and combat feedback.</p>
+                <div class="programmer-exp-tags"><span>Unity</span><span>C#</span><span>Physics</span><span>Gameplay Systems</span></div>
+              </div>
+            </article>
+
+            <article class="programmer-exp-card">
+              <div class="programmer-exp-marker">02</div>
+              <div class="programmer-exp-content">
+                <div class="programmer-exp-meta"><span>GAME JAM · TEAM OF TWO</span><span>GLOBAL GAME JAM 2025</span></div>
+                <h3>Gameplay Programmer — Bubble Rush</h3>
+                <p>Implemented player movement, core gameplay mechanics, abilities and UI systems during a 48-hour game jam. Also worked with physics-driven interactions, object pooling and coroutines for timed power-ups and temporary gameplay states. Target platforms: PC and Android.</p>
+                <div class="programmer-exp-tags"><span>Team Collaboration</span><span>Object Pooling</span><span>Coroutines</span><span>PC / Android</span></div>
+              </div>
+            </article>
+
+            <article class="programmer-exp-card">
+              <div class="programmer-exp-marker">03</div>
+              <div class="programmer-exp-content">
+                <div class="programmer-exp-meta"><span>GAME JAM PROTOTYPE</span><span>MINI JAME GAM #47</span></div>
+                <h3>Gameplay Development — Frutty Cutty</h3>
+                <p>Created a fruit-slicing game prototype with a playful twist: an egg takes the place of the traditional bomb hazard.</p>
+                <div class="programmer-exp-tags"><span>Unity</span><span>Gameplay Prototyping</span><span>Game Jam</span></div>
+              </div>
+            </article>
           </div>
-        </div>
+        </section>
 
         <!-- Core Arsenal Suite -->
         <div>
@@ -1156,7 +1279,7 @@
         <!-- Verified Experience & Education -->
         <div class="credentials-grid">
           <section class="credentials-card">
-            <div class="hero-eyebrow">Professional Experience</div>
+            <div class="hero-eyebrow">INDUSTRY INTERNSHIP</div>
             <h2 class="arsenal-title">Unity Developer Intern</h2>
             <p class="credentials-org">SR Edu Technologies Pvt. Ltd.</p>
             <p class="credentials-date">30 March 2026 – 31 May 2026 · 2-month internship</p>

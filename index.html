@@ -1586,6 +1586,117 @@
       border-color: rgba(101, 214, 208, 0.30) !important;
     }
 
+
+    /* Mobile layout pass: prevent cramped navigation, overflow and modal clipping. */
+    @media (max-width: 760px) {
+      .app-container {
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+        padding: 14px 12px 28px;
+        gap: 18px;
+      }
+
+      .profile-sidebar {
+        position: static;
+        width: 100%;
+        padding: 20px 16px;
+      }
+      .avatar-wrapper {
+        width: 104px;
+        height: 104px;
+        margin-bottom: 12px;
+      }
+      .profile-name { font-size: 23px; }
+      .profile-role { font-size: 11px; }
+      .info-list { padding: 14px 0; gap: 10px; }
+      .info-item { gap: 12px; flex-wrap: wrap; }
+      .info-val { text-align: right; overflow-wrap: anywhere; }
+
+      .dashboard-content { min-width: 0; gap: 20px; }
+      .top-nav {
+        width: 100%;
+        align-self: stretch;
+        justify-content: space-between;
+        gap: 2px;
+        padding: 5px;
+        border-radius: 6px;
+      }
+      .nav-pill {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 10px 5px;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+
+      .tab-section { gap: 20px; }
+      .hero-card { padding: 24px 20px; }
+      .hero-title {
+        font-size: clamp(25px, 7vw, 32px);
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+      }
+      .hero-desc { font-size: 14px; margin-bottom: 22px; }
+      .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .stat-box { min-width: 0; padding: 15px 12px; }
+      .stat-num { font-size: 29px; }
+      .stat-label { font-size: 10px; }
+
+      .section-header { align-items: flex-start; }
+      .section-title-wrap h2 { font-size: 23px; }
+      .filter-pills {
+        width: 100%;
+        gap: 7px;
+      }
+      .filter-btn {
+        max-width: 100%;
+        padding: 7px 11px;
+        font-size: 11px;
+      }
+      .projects-grid { grid-template-columns: minmax(0, 1fr); gap: 15px; }
+      .project-card { min-width: 0; }
+      .card-thumb-wrap { height: 190px; }
+      .card-body { padding: 18px; }
+      .card-meta { flex-wrap: wrap; gap: 5px 12px; }
+      .card-timeline { overflow-wrap: anywhere; }
+      .card-title { font-size: 20px; }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+
+      .modal-backdrop {
+        align-items: flex-start;
+        padding: 8px;
+        overflow-y: auto;
+      }
+      .modal-window {
+        width: 100%;
+        max-width: 100%;
+        max-height: calc(100dvh - 16px);
+        margin: auto 0;
+        overflow-y: auto;
+      }
+      .modal-img-banner { height: clamp(170px, 42vw, 250px); }
+      .modal-body { padding: 20px 16px; }
+      .modal-header-meta { flex-wrap: wrap; gap: 5px 12px; }
+      .modal-title { font-size: 24px; line-height: 1.2; }
+      .modal-desc { font-size: 14px; }
+      .modal-screenshots {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin: 0 16px 18px;
+      }
+      .resume-viewer { min-height: 480px; height: 72dvh; }
+    }
+
+    @media (max-width: 390px) {
+      .app-container { padding-left: 9px; padding-right: 9px; }
+      .top-nav { flex-wrap: wrap; }
+      .nav-pill { flex: 1 1 40%; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .modal-screenshots { grid-template-columns: 1fr; }
+    }
+
 </style>
 </head>
 <body>

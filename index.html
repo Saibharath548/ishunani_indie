@@ -1625,7 +1625,7 @@
         </a>
       </div>
 
-      <a href="https://github.com/Saibharath548/Resume/blob/main/Venkat%20Sai%20Bharath%20Resume.pdf" class="btn-resume" target="_blank" rel="noopener noreferrer">Resume</a>
+      <a href="#tab-resume" class="btn-resume" onclick="switchTab('resume'); return false;">Resume</a>
     </aside>
 
     <!-- ====================================================================
@@ -1743,6 +1743,7 @@
             <button class="filter-btn" onclick="filterProjects('Physics Games')">Physics Games</button>
             <button class="filter-btn" onclick="filterProjects('FPS & Combat')">FPS & Combat</button>
             <button class="filter-btn" onclick="filterProjects('Arcade & Speed')">Arcade & Speed</button>
+            <button class="filter-btn" onclick="filterProjects('Platformer')">Platformer</button>
           </div>
         </div>
 
@@ -1848,6 +1849,32 @@
         linkLabel: "",
         featured: true
       }
+      {
+        id: "build-your-way",
+        title: "Build Your Way",
+        category: "Platformer",
+        timeline: "Solo Development",
+        tags: ["2D Platformer", "Level Design", "Pixel Art", "Aseprite", "Tile Placement"],
+        shortDesc: "A 2D platformer where you place tiles to build a path, collect keys, and reach the exit before the platforms disappear.",
+        fullDesc: "Build Your Way is a solo-developed 2D platformer. I handled gameplay programming, level design, pixel art, and Aseprite animations. Players place tiles with mouse clicks to create a route, but the tiles disappear after a limited time. The challenge is to collect the key and reach the exit before the path collapses.",
+        image: "",
+        link: "",
+        linkLabel: "",
+        featured: true
+      },
+      {
+        id: "fruity-cutty-cut-cut",
+        title: "Fruity Cutty Cut Cut",
+        category: "Arcade & Speed",
+        timeline: "Mini Jame Gam #47",
+        tags: ["Arcade", "Fruit Slicing", "Game Jam", "Egg Mechanic"],
+        shortDesc: "A fruit-slicing arcade game inspired by Fruit Ninja, with eggs taking the place of bombs.",
+        fullDesc: "Fruity Cutty Cut Cut is a fruit-slicing arcade game made for Mini Jame Gam #47. It takes inspiration from Fruit Ninja and replaces the familiar bomb hazard with eggs.",
+        image: "",
+        link: "",
+        linkLabel: "",
+        featured: true
+      },
     ];
 
     const GALLERY = [];

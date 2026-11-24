@@ -1134,6 +1134,122 @@
       .programmer-exp-meta { font-size: 9px; }
     }
 
+
+    /* Refined panel geometry: intentional, squared-off surfaces instead of default bento cards. */
+    .profile-sidebar,
+    .hero-card,
+    .stat-box,
+    .project-card,
+    .arsenal-card,
+    .credentials-card,
+    .gallery-empty,
+    .contact-card,
+    .modal-window {
+      border-radius: 3px !important;
+      box-shadow: none !important;
+    }
+
+    .hero-card,
+    .profile-sidebar,
+    .credentials-card,
+    .contact-card {
+      border-width: 1px 1px 1px 3px !important;
+    }
+
+    .stat-box {
+      border-width: 1px 1px 1px 3px !important;
+      padding: 18px 20px;
+    }
+
+    .project-card {
+      border-width: 1px !important;
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: none !important;
+    }
+
+    .tag-badge,
+    .card-platform-badge {
+      border-radius: 2px !important;
+    }
+
+    /* Technical skills: compact capability rows, not four oversized feature cards. */
+    .arsenal-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border-top: 1px solid #F5FeEF;
+      border-bottom: 1px solid #F5FeEF;
+    }
+
+    .arsenal-card {
+      display: grid;
+      grid-template-columns: 54px minmax(150px, 0.85fr) minmax(0, 1.5fr);
+      grid-template-areas:
+        "icon title desc"
+        "icon skills skills";
+      align-items: start;
+      column-gap: 18px;
+      row-gap: 7px;
+      padding: 22px 10px;
+      border: 0 !important;
+      border-bottom: 1px solid rgba(245, 254, 239, 0.45) !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+    .arsenal-card:last-child { border-bottom: 0 !important; }
+
+    .arsenal-icon {
+      grid-area: icon;
+      width: 42px;
+      height: 42px;
+      margin: 0;
+      border-radius: 2px !important;
+      background: #050606 !important;
+      color: #F5FeEF !important;
+    }
+    .arsenal-title {
+      grid-area: title;
+      align-self: end;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+    .arsenal-desc {
+      grid-area: desc;
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .arsenal-skills {
+      grid-area: skills;
+      gap: 7px;
+      align-self: start;
+    }
+    .arsenal-skills .tag-badge {
+      padding: 4px 8px;
+      font: 600 10px var(--font-mono);
+      letter-spacing: 0.1px;
+    }
+
+    @media (max-width: 760px) {
+      .arsenal-card {
+        grid-template-columns: 42px minmax(0, 1fr);
+        grid-template-areas:
+          "icon title"
+          "desc desc"
+          "skills skills";
+        column-gap: 12px;
+        padding: 18px 4px;
+      }
+      .arsenal-icon { grid-row: 1; }
+      .arsenal-desc { padding-top: 4px; }
+      .arsenal-skills { padding-top: 4px; }
+    }
+
   </style>
 </head>
 <body>

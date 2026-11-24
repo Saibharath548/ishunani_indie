@@ -1250,6 +1250,123 @@
       .arsenal-skills { padding-top: 4px; }
     }
 
+
+    /* Tone down the white outlines so the page has a calmer visual hierarchy. */
+    .profile-sidebar,
+    .hero-card,
+    .stat-box,
+    .project-card,
+    .credentials-card,
+    .gallery-empty,
+    .contact-card,
+    .modal-window {
+      border-color: rgba(245, 254, 239, 0.42) !important;
+      box-shadow: none !important;
+    }
+
+    .profile-sidebar,
+    .hero-card,
+    .contact-card,
+    .credentials-card {
+      border-left-color: #F5FeEF !important;
+    }
+
+    .stat-box {
+      border-color: rgba(245, 254, 239, 0.32) !important;
+      border-left-color: rgba(245, 254, 239, 0.78) !important;
+    }
+
+    .project-card {
+      border-color: rgba(245, 254, 239, 0.34) !important;
+    }
+    .project-card:hover {
+      border-color: rgba(245, 254, 239, 0.72) !important;
+    }
+
+    /* Restore clear, contained surfaces for each skill group. */
+    .arsenal-grid {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+      border: 0 !important;
+    }
+
+    .arsenal-card {
+      display: grid !important;
+      grid-template-columns: 46px minmax(150px, 0.8fr) minmax(0, 1.5fr) !important;
+      grid-template-areas:
+        "icon title desc"
+        "icon skills skills" !important;
+      align-items: center;
+      column-gap: 16px !important;
+      row-gap: 8px !important;
+      padding: 20px 22px !important;
+      background: #050606 !important;
+      border: 1px solid rgba(245, 254, 239, 0.34) !important;
+      border-left: 2px solid rgba(245, 254, 239, 0.78) !important;
+      border-radius: 2px !important;
+      box-shadow: none !important;
+    }
+
+    .arsenal-card:hover {
+      border-color: rgba(245, 254, 239, 0.62) !important;
+    }
+
+    .arsenal-icon {
+      grid-area: icon;
+      width: 40px !important;
+      height: 40px !important;
+      margin: 0 !important;
+      background: #050606 !important;
+      border: 1px solid rgba(245, 254, 239, 0.35) !important;
+      border-radius: 2px !important;
+    }
+
+    .arsenal-title {
+      grid-area: title;
+      align-self: end;
+      margin: 0 !important;
+      font-size: 16px !important;
+      line-height: 1.35;
+    }
+
+    .arsenal-desc {
+      grid-area: desc;
+      margin: 0 !important;
+      color: rgba(245, 254, 239, 0.76) !important;
+      font-size: 13px !important;
+      line-height: 1.55;
+    }
+
+    .arsenal-skills {
+      grid-area: skills;
+      gap: 7px !important;
+      margin-top: 2px;
+    }
+
+    .arsenal-skills .tag-badge {
+      background: #050606 !important;
+      border: 1px solid rgba(245, 254, 239, 0.32) !important;
+      color: rgba(245, 254, 239, 0.86) !important;
+      border-radius: 2px !important;
+      padding: 4px 8px !important;
+      font: 600 10px var(--font-mono) !important;
+    }
+
+    @media (max-width: 760px) {
+      .arsenal-card {
+        grid-template-columns: 40px minmax(0, 1fr) !important;
+        grid-template-areas:
+          "icon title"
+          "desc desc"
+          "skills skills" !important;
+        padding: 17px 15px !important;
+        column-gap: 12px !important;
+      }
+      .arsenal-desc { padding-top: 3px; }
+      .arsenal-skills { padding-top: 3px; }
+    }
+
   </style>
 </head>
 <body>

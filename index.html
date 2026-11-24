@@ -909,6 +909,75 @@
       display: flex;
       gap: 12px;
     }
+
+    /* FINAL GLOBAL PALETTE ENFORCEMENT
+       The interface uses ONLY Midnight Black and Frost White.
+       Photos/project artwork remain original content, not UI theme colors. */
+    :root {
+      color-scheme: dark;
+      --aubergine-canvas: #050606;
+      --aubergine-base: #050606;
+      --aubergine-surface: #050606;
+      --aubergine-card: #050606;
+      --aubergine-elevated: #050606;
+      --aubergine-border: #F5FeEF;
+      --aubergine-shadow: #050606;
+      --ice-silver-pure: #F5FeEF;
+      --ice-silver-base: #F5FeEF;
+      --ice-silver-heading: #F5FeEF;
+      --ice-silver-body: #F5FeEF;
+      --ice-silver-muted: #F5FeEF;
+      --ice-silver-border: #F5FeEF;
+      --ice-silver-border-hover: #F5FeEF;
+      --ice-silver-glow: transparent;
+      --ice-silver-soft: #050606;
+      --neon-rose: #F5FeEF;
+      --neon-rose-glow: transparent;
+      --neon-rose-soft: #050606;
+    }
+
+    html, body {
+      background: #050606 !important;
+      background-image: none !important;
+      color: #F5FeEF !important;
+    }
+
+    body, body * {
+      color: #F5FeEF;
+      border-color: #F5FeEF;
+      box-shadow: none;
+      text-shadow: none;
+    }
+
+    .app-container, .profile-sidebar, .dashboard-content,
+    .top-nav, .tab-section, .hero-card, .stat-box,
+    .project-card, .arsenal-card, .gallery-item,
+    .modal-content, .modal-overlay, .contact-card,
+    .info-list, .social-btn, .project-modal,
+    .filter-pills, .filter-btn, .card-body {
+      background-color: #050606 !important;
+      background-image: none !important;
+    }
+
+    .status-badge, .tag-badge, .card-platform-badge,
+    .gallery-tag, .filter-btn.active, .nav-pill.active,
+    .btn-resume, .social-btn:hover, .modal-close,
+    .btn-primary, .btn-secondary {
+      background: #F5FeEF !important;
+      color: #050606 !important;
+      border-color: #F5FeEF !important;
+    }
+
+    a, a:visited, .nav-pill, .nav-pill:hover,
+    .filter-btn, button, button:hover {
+      color: #F5FeEF;
+    }
+
+    img, video, canvas, iframe {
+      /* Media remains content; the surrounding interface stays two-tone. */
+      border-color: #F5FeEF;
+    }
+
   </style>
 </head>
 <body>

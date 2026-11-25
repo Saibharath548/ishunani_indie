@@ -2306,6 +2306,7 @@
       document.getElementById('projectPageTitle').textContent = proj.title;
       document.getElementById('projectPageLead').textContent = proj.shortDesc;
       document.getElementById('projectPageDescription').textContent = proj.fullDesc;
+      const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
       document.getElementById('projectPageType').textContent = proj.category;
       document.getElementById('projectPageDevelopment').textContent = proj.timeline;
       const teamSection = document.getElementById('projectPageTeamSection');
@@ -2321,7 +2322,6 @@
       `).join('');
       document.getElementById('projectPageTags').innerHTML = proj.tags.map(tag => `<span>${tag}</span>`).join('');
       const devContent = document.getElementById('projectPageDevelopmentContent');
-      const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
       const development = proj.development || [{title:'Implementation notes',body:proj.fullDesc}];
       devContent.innerHTML = `
         <div class="project-page-dev-grid">

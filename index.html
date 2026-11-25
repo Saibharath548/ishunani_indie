@@ -2021,13 +2021,13 @@
         <div class="project-page-team-grid" id="projectPageTeam"></div>
       </section>
       <details class="project-page-development" id="projectPageDevelopmentDetails">
-        <summary><span><span class="project-page-eyebrow">02 / Technical Case Study</span><br />Development</span></summary>
+        <summary><span><span class="project-page-eyebrow">03 / Technical Case Study</span><br />Development</span></summary>
         <div class="project-page-development-panel">
           <div id="projectPageDevelopmentContent"></div>
           <div class="project-page-dev-stack"><h3>Tools & Technologies</h3><div class="project-page-tags" id="projectPageTags"></div></div>
         </div>
       </details>
-      <section class="project-page-gallery" id="projectPageGallerySection" hidden><p class="project-page-eyebrow">03 / Visual Showcase</p><h2 class="project-page-heading">Screenshots & Gameplay</h2><div class="project-page-gallery-grid" id="projectPageGallery"></div></section>
+      <section class="project-page-gallery" id="projectPageGallerySection" hidden><p class="project-page-eyebrow">04 / Visual Showcase</p><h2 class="project-page-heading">Screenshots & Gameplay</h2><div class="project-page-gallery-grid" id="projectPageGallery"></div></section>
       <footer class="project-page-footer"><a class="project-page-cta" id="projectPageAction" href="" target="_blank" rel="noopener noreferrer" hidden></a><div class="project-page-more"><span>Explore another project</span><span>↗</span></div></footer>
     </main>
   </div>
@@ -2083,11 +2083,12 @@
         tags: ["Unity", "C#", "PC", "Android", "2-Member Team", "Object Pooling", "Coroutines"],
         shortDesc: "A game jam project built in a two-member team, where I handled player movement, core mechanics, abilities, and UI systems.",
         fullDesc: "Bubble Rush was developed during Global Game Jam 2025 as part of a two-member team. My role was Gameplay Programmer. Within the 48-hour development cycle, I implemented player movement, core mechanics, abilities, and UI systems. I also integrated physics-driven interactions and object pooling for runtime instantiation, and used coroutines to manage timed power-ups, fuel consumption, and temporary ability states. The project targeted PC and Android.",
+        team: [{name:"Kiran Mouli",role:"Designer & Artist",linkedin:"https://www.linkedin.com/in/it-is-kiru?utm_source=share_via&utm_content=profile&utm_medium=member_android"},{name:"Venkat Sai Bharath",role:"Gameplay Programmer"}],
         development: [{"title":"Gameplay implementation","body":"Developed during Global Game Jam 2025 in a two-person team, with responsibility for gameplay programming. Implemented player movement, the core gameplay loop, abilities, and UI systems within the 48-hour jam."},{"title":"Runtime systems","body":"Used object pooling for repeated runtime object creation and coroutines for time-based gameplay behaviour, including temporary power-ups, fuel consumption, and ability durations. Physics-driven interactions support the moment-to-moment gameplay."},{"title":"Platforms & scope","body":"The project targeted both PC and Android. The work focused on getting the core experience playable within the game-jam time limit rather than building a large reusable framework."}],
         image: "Pics/Temp%20Pics/Bubble%20Rush/main.png",
         screenshots: ["Pics/Temp%20Pics/Bubble%20Rush/Game 1.png", "Pics/Temp%20Pics/Bubble%20Rush/Game 2.png"],
-        link: "",
-        linkLabel: "",
+        link: "https://itiskiruhere.itch.io/bubble-rush",
+        linkLabel: "Play on itch.io",
         featured: true
       },
       {
@@ -2098,6 +2099,7 @@
         tags: ["Unity", "C#", "CharacterController", "Raycasting", "Reload System", "Animator"],
         shortDesc: "A first-person gameplay prototype featuring CharacterController movement, raycast shooting, reload and magazine management, and combat feedback.",
         fullDesc: "An ongoing personal PC prototype. I implemented a first-person controller using Unity's CharacterController with custom camera rotation handling. The shooting system uses raycasting and includes reload mechanics and magazine management. I also integrated particle-based bullet collision effects, camera shake, and Animator transitions to improve combat feedback.",
+        team: [{name:"Venkat Sai Bharath",role:"Programmer"}],
         development: [{"title":"Character movement","body":"Built a first-person controller around Unity's CharacterController, with custom camera rotation handling for looking around independently of the player body."},{"title":"Shooting & ammunition","body":"Implemented raycast-based shooting and a reload flow with magazine management. Raycasts provide immediate hit detection without relying on physical projectile objects."},{"title":"Combat feedback","body":"Added particle effects at bullet collision points, camera shake, and Animator transitions to make weapon interactions and player feedback more readable. This remains a personal PC prototype."}],
         image: "Pics/Temp%20Pics/FPS%20Shooter/Main.png",
         screenshots: [],
@@ -2113,11 +2115,12 @@
         tags: ["2D Platformer", "Level Design", "Pixel Art", "Aseprite", "Tile Placement"],
         shortDesc: "A 2D platformer where you place tiles to build a path, collect keys, and reach the exit before the platforms disappear.",
         fullDesc: "Build Your Way is a solo-developed 2D platformer. I handled gameplay programming, level design, pixel art, and Aseprite animations. Players place tiles with mouse clicks to create a route, but the tiles disappear after a limited time. The challenge is to collect the key and reach the exit before the path collapses.",
+        team: [{name:"Venkat Sai Bharath",role:"Designer, Artist & Programmer"}],
         development: [{"title":"Core gameplay loop","body":"Designed and programmed a solo 2D platformer built around temporary player-placed platforms. The player places tiles with mouse input to create a route, then has to move quickly before those tiles disappear."},{"title":"Level design & art","body":"Handled gameplay programming, level design, pixel art, and Aseprite animation. The level challenge combines route planning, key collection, and reaching the exit while the created path is under a time limit."}],
         image: "Pics/Temp%20Pics/Build%20Your%20Way/Main.png",
         screenshots: [],
-        link: "",
-        linkLabel: "",
+        link: "https://saibharath2006.itch.io/build-ypur-way",
+        linkLabel: "Play on itch.io",
         featured: true
       },
       {
@@ -2128,6 +2131,7 @@
         tags: ["Unity", "NavMesh", "Touch Input", "Line Renderer", "Destination Movement"],
         shortDesc: "A mobile stealth-action prototype inspired by Ruby Games' Hunter Assassin, featuring NavMesh controls and touch-to-move navigation.",
         fullDesc: "An in-progress clone of Hunter Assassin by Ruby Games. Current work includes NavMesh-based player controls, a Line Renderer path indicator, and touch input that moves the player toward the selected destination. Development is ongoing.",
+        team: [{name:"Venkat Sai Bharath",role:"Programmer"}],
         development: [{"title":"Click-to-move navigation","body":"Built a mobile stealth-action prototype inspired by Hunter Assassin. Touch input selects a destination, and Unity NavMesh-based movement handles navigation toward the selected point."},{"title":"Path feedback","body":"Added a Line Renderer path indicator to communicate the selected route to the player. The current work is a prototype of the navigation and input loop, not a claim of a complete clone."}],
         image: "Pics/Temp%20Pics/Hunter%20Assassin/Main.png",
         screenshots: [],
@@ -2143,11 +2147,12 @@
         tags: ["Arcade", "Fruit Slicing", "Game Jam", "Egg Mechanic"],
         shortDesc: "A fruit-slicing arcade game inspired by Fruit Ninja, with eggs taking the place of bombs.",
         fullDesc: "Fruity Cutty Cut Cut is a fruit-slicing arcade game made for Mini Jame Gam #47. It takes inspiration from Fruit Ninja and replaces the familiar bomb hazard with eggs.",
+        team: [{name:"Gagan",role:"Designer",linkedin:"https://www.linkedin.com/in/gagan-kollepara-855439337?utm_source=share_via&utm_content=profile&utm_medium=member_android"},{name:"Venkat Sai Bharath",role:"Programmer"}],
         development: [{"title":"Game-jam concept","body":"Created for Mini Jame Gam #47, this arcade fruit-slicing game takes the familiar swipe-to-slice premise and changes the hazard language: eggs replace the bomb-style hazard."},{"title":"Gameplay focus","body":"The project is a compact game-jam experiment centred on quick recognition, slicing interaction, and the risk of hitting the egg hazard. The portfolio description is limited to the mechanics currently documented for the project."}],
         image: "Pics/Temp%20Pics/Fruity%20Cutty%20Cut%20Cut/Main.png",
         screenshots: ["Pics/Temp%20Pics/Fruity%20Cutty%20Cut%20Cut/Game 1.png"],
-        link: "",
-        linkLabel: "",
+        link: "https://saibharath2006.itch.io/fruity-cutty-cut-cut",
+        linkLabel: "Play on itch.io",
         featured: true
       },
     ];
